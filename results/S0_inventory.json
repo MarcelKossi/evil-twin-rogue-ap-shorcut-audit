@@ -1,0 +1,4653 @@
+{
+  "meta": {
+    "script": "scripts/00_inventory.py",
+    "git_commit": "f5d0893de137311a0972bebbccfad2ebf11a579b-dirty",
+    "timestamp_utc": "2026-11-12T14:16:19+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "archive": "AWID3_Dataset_CSV.zip",
+    "elapsed_seconds": 168.4
+  },
+  "archive_layout": {
+    "CSV\\1.Deauth": {
+      "csv_files": 33,
+      "uncompressed_bytes": 1963902445
+    },
+    "CSV\\2.Disas": {
+      "csv_files": 41,
+      "uncompressed_bytes": 2376064054
+    },
+    "CSV\\3.(Re)Assoc": {
+      "csv_files": 37,
+      "uncompressed_bytes": 2546045957
+    },
+    "CSV\\4.Rogue_AP": {
+      "csv_files": 40,
+      "uncompressed_bytes": 2494565417
+    },
+    "CSV\\5.Krack": {
+      "csv_files": 29,
+      "uncompressed_bytes": 2476537969
+    },
+    "CSV\\6.Kr00k": {
+      "csv_files": 59,
+      "uncompressed_bytes": 3698499299
+    },
+    "CSV\\7.SSH": {
+      "csv_files": 49,
+      "uncompressed_bytes": 3002633640
+    },
+    "CSV\\8.Botnet": {
+      "csv_files": 65,
+      "uncompressed_bytes": 4270211129
+    },
+    "CSV\\9.Malware": {
+      "csv_files": 47,
+      "uncompressed_bytes": 3408771500
+    },
+    "CSV\\10.SQL_Injection": {
+      "csv_files": 52,
+      "uncompressed_bytes": 3796911146
+    },
+    "CSV\\11.SSDP": {
+      "csv_files": 163,
+      "uncompressed_bytes": 8020556106
+    },
+    "CSV\\12.Evil_Twin": {
+      "csv_files": 76,
+      "uncompressed_bytes": 5241090141
+    },
+    "CSV\\13.Website_spoofing": {
+      "csv_files": 54,
+      "uncompressed_bytes": 2852818222
+    }
+  },
+  "classes": {
+    "Rogue_AP": {
+      "files_in_order": [
+        "CSV/4.Rogue_AP/RogueAP_0.csv",
+        "CSV/4.Rogue_AP/RogueAP_1.csv",
+        "CSV/4.Rogue_AP/RogueAP_2.csv",
+        "CSV/4.Rogue_AP/RogueAP_3.csv",
+        "CSV/4.Rogue_AP/RogueAP_4.csv",
+        "CSV/4.Rogue_AP/RogueAP_5.csv",
+        "CSV/4.Rogue_AP/RogueAP_6.csv",
+        "CSV/4.Rogue_AP/RogueAP_7.csv",
+        "CSV/4.Rogue_AP/RogueAP_8.csv",
+        "CSV/4.Rogue_AP/RogueAP_9.csv",
+        "CSV/4.Rogue_AP/RogueAP_10.csv",
+        "CSV/4.Rogue_AP/RogueAP_11.csv",
+        "CSV/4.Rogue_AP/RogueAP_12.csv",
+        "CSV/4.Rogue_AP/RogueAP_13.csv",
+        "CSV/4.Rogue_AP/RogueAP_14.csv",
+        "CSV/4.Rogue_AP/RogueAP_15.csv",
+        "CSV/4.Rogue_AP/RogueAP_16.csv",
+        "CSV/4.Rogue_AP/RogueAP_17.csv",
+        "CSV/4.Rogue_AP/RogueAP_18.csv",
+        "CSV/4.Rogue_AP/RogueAP_19.csv",
+        "CSV/4.Rogue_AP/RogueAP_20.csv",
+        "CSV/4.Rogue_AP/RogueAP_21.csv",
+        "CSV/4.Rogue_AP/RogueAP_22.csv",
+        "CSV/4.Rogue_AP/RogueAP_23.csv",
+        "CSV/4.Rogue_AP/RogueAP_24.csv",
+        "CSV/4.Rogue_AP/RogueAP_25.csv",
+        "CSV/4.Rogue_AP/RogueAP_26.csv",
+        "CSV/4.Rogue_AP/RogueAP_27.csv",
+        "CSV/4.Rogue_AP/RogueAP_28.csv",
+        "CSV/4.Rogue_AP/RogueAP_29.csv",
+        "CSV/4.Rogue_AP/RogueAP_30.csv",
+        "CSV/4.Rogue_AP/RogueAP_31.csv",
+        "CSV/4.Rogue_AP/RogueAP_32.csv",
+        "CSV/4.Rogue_AP/RogueAP_33.csv",
+        "CSV/4.Rogue_AP/RogueAP_34.csv",
+        "CSV/4.Rogue_AP/RogueAP_35.csv",
+        "CSV/4.Rogue_AP/RogueAP_36.csv",
+        "CSV/4.Rogue_AP/RogueAP_37.csv",
+        "CSV/4.Rogue_AP/RogueAP_38.csv",
+        "CSV/4.Rogue_AP/RogueAP_39.csv"
+      ],
+      "identical_headers": true,
+      "total_rows": 1973185,
+      "label_counts": {
+        "Normal": 1971875,
+        "RogueAP": 1310
+      },
+      "missing_rate": {
+        "frame.number": 0.0,
+        "frame.len": 0.0,
+        "wlan.fc.protected": 0.0,
+        "ip.src": 0.658075,
+        "ip.dst": 0.658075,
+        "wlan.sa": 0.579364,
+        "wlan.da": 0.580463,
+        "wlan.ta": 0.189242,
+        "wlan.ra": 0.0,
+        "wlan.bssid": 0.579318,
+        "Label": 0.0
+      },
+      "frame_number_min": 1,
+      "frame_number_max": 1973193,
+      "frame_number_continuous_across_files": true,
+      "frame_number_gaps": [],
+      "all_files_increasing": true
+    },
+    "Evil_Twin": {
+      "files_in_order": [
+        "CSV/12.Evil_Twin/Evil_Twin_0.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_1.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_2.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_3.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_4.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_5.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_6.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_7.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_8.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_9.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_10.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_11.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_12.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_13.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_14.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_15.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_16.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_17.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_18.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_19.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_20.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_21.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_22.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_23.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_24.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_25.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_26.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_27.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_28.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_29.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_30.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_31.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_32.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_33.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_34.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_35.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_36.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_37.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_38.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_39.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_40.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_41.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_42.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_43.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_44.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_45.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_46.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_47.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_48.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_49.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_50.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_51.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_52.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_53.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_54.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_55.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_56.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_57.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_58.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_59.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_60.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_61.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_62.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_63.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_64.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_65.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_66.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_67.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_68.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_69.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_70.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_71.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_72.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_73.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_74.csv",
+        "CSV/12.Evil_Twin/Evil_Twin_75.csv"
+      ],
+      "identical_headers": true,
+      "total_rows": 3778706,
+      "label_counts": {
+        "Normal": 3673854,
+        "Evil_Twin": 104827,
+        "<missing>": 25
+      },
+      "missing_rate": {
+        "frame.number": 4e-06,
+        "frame.len": 4e-06,
+        "wlan.fc.protected": 4e-06,
+        "ip.src": 0.582023,
+        "ip.dst": 0.582023,
+        "wlan.sa": 0.573728,
+        "wlan.da": 0.573941,
+        "wlan.ta": 0.199101,
+        "wlan.ra": 4e-06,
+        "wlan.bssid": 0.573746,
+        "Label": 7e-06
+      },
+      "frame_number_min": 1,
+      "frame_number_max": 3778728,
+      "frame_number_continuous_across_files": true,
+      "frame_number_gaps": [],
+      "all_files_increasing": true
+    }
+  },
+  "files": {
+    "Rogue_AP": {
+      "CSV/4.Rogue_AP/RogueAP_0.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": [
+          "frame.encap_type",
+          "frame.len",
+          "frame.number",
+          "frame.time",
+          "frame.time_delta",
+          "frame.time_delta_displayed",
+          "frame.time_epoch",
+          "frame.time_relative",
+          "radiotap.channel.flags.cck",
+          "radiotap.channel.flags.ofdm",
+          "radiotap.channel.freq",
+          "radiotap.datarate",
+          "radiotap.dbm_antsignal",
+          "radiotap.length",
+          "radiotap.mactime",
+          "radiotap.present.tsft",
+          "radiotap.rxflags",
+          "radiotap.timestamp.ts",
+          "radiotap.vendor_oui",
+          "wlan.duration",
+          "wlan.analysis.kck",
+          "wlan.analysis.kek",
+          "wlan.bssid",
+          "wlan.country_info.fnm",
+          "wlan.country_info.code",
+          "wlan.da",
+          "wlan.fc.ds",
+          "wlan.fc.frag",
+          "wlan.fc.order",
+          "wlan.fc.moredata",
+          "wlan.fc.protected",
+          "wlan.fc.pwrmgt",
+          "wlan.fc.type",
+          "wlan.fc.retry",
+          "wlan.fc.subtype",
+          "wlan.fcs.bad_checksum",
+          "wlan.fixed.beacon",
+          "wlan.fixed.capabilities.ess",
+          "wlan.fixed.capabilities.ibss",
+          "wlan.fixed.reason_code",
+          "wlan.fixed.timestamp",
+          "wlan.ra",
+          "wlan_radio.duration",
+          "wlan.rsn.ie.gtk.key",
+          "wlan.rsn.ie.igtk.key",
+          "wlan.rsn.ie.pmkid",
+          "wlan.sa",
+          "wlan.seq",
+          "wlan.ssid",
+          "wlan.ta",
+          "wlan.tag",
+          "wlan.tag.length",
+          "wlan_radio.channel",
+          "wlan_radio.data_rate",
+          "wlan_radio.end_tsf",
+          "wlan_radio.frequency",
+          "wlan_radio.signal_dbm",
+          "wlan_radio.start_tsf",
+          "wlan_radio.phy",
+          "wlan_radio.timestamp",
+          "wlan.rsn.capabilities.mfpc",
+          "wlan_rsna_eapol.keydes.msgnr",
+          "wlan_rsna_eapol.keydes.data",
+          "wlan_rsna_eapol.keydes.data_len",
+          "wlan_rsna_eapol.keydes.key_info.key_mic",
+          "wlan_rsna_eapol.keydes.nonce",
+          "eapol.keydes.key_len",
+          "eapol.keydes.replay_counter",
+          "eapol.len",
+          "eapol.type",
+          "llc",
+          "arp",
+          "arp.hw.type",
+          "arp.proto.type",
+          "arp.hw.size",
+          "arp.proto.size",
+          "arp.opcode",
+          "arp.src.hw_mac",
+          "arp.src.proto_ipv4",
+          "arp.dst.hw_mac",
+          "arp.dst.proto_ipv4",
+          "ip.dst",
+          "ip.proto",
+          "ip.src",
+          "ip.ttl",
+          "ip.version",
+          "data.data",
+          "data.len",
+          "icmpv6.mldr.nb_mcast_records",
+          "icmpv6.ni.nonce",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.analysis",
+          "tcp.analysis.flags",
+          "tcp.analysis.retransmission",
+          "tcp.analysis.reused_ports",
+          "tcp.analysis.rto_frame",
+          "tcp.checksum",
+          "tcp.checksum.status",
+          "tcp.flags.syn",
+          "tcp.dstport",
+          "tcp.flags.ack",
+          "tcp.flags.fin",
+          "tcp.flags.push",
+          "tcp.flags.reset",
+          "tcp.option_len",
+          "tcp.payload",
+          "tcp.seq",
+          "tcp.seq_raw",
+          "tcp.srcport",
+          "tcp.time_delta",
+          "tcp.time_relative",
+          "udp.dstport",
+          "udp.srcport",
+          "udp.length",
+          "udp.payload",
+          "udp.time_relative",
+          "udp.time_delta",
+          "nbns",
+          "nbss.continuation_data",
+          "nbss.type",
+          "nbss.length",
+          "ldap",
+          "smb.access.generic_execute",
+          "smb.access.generic_read",
+          "smb.access.generic_write",
+          "smb.flags.notify",
+          "smb.flags.response",
+          "smb.flags2.nt_error",
+          "smb.flags2.sec_sig",
+          "smb.mid",
+          "smb.nt_status",
+          "smb.server_component",
+          "smb.pid.high",
+          "smb.tid",
+          "smb2.acct",
+          "smb2.auth_frame",
+          "smb2.buffer_code",
+          "smb2.cmd",
+          "smb2.data_offset",
+          "smb2.domain",
+          "smb2.fid",
+          "smb2.filename",
+          "smb2.header_len",
+          "smb2.host",
+          "smb2.msg_id",
+          "smb2.pid",
+          "smb2.previous_sesid",
+          "smb2.protocol_id",
+          "smb2.sesid",
+          "smb2.session_flags",
+          "smb2.tid",
+          "smb2.write_length",
+          "dhcp",
+          "dhcp.client_id.duid_ll_hw_type",
+          "dhcp.cookie",
+          "dhcp.hw.addr_padding",
+          "dhcp.hw.mac_addr",
+          "dhcp.id",
+          "dhcp.ip.client",
+          "dhcp.ip.relay",
+          "dhcp.ip.server",
+          "dhcp.option.broadcast_address",
+          "dhcp.option.dhcp_server_id",
+          "dhcp.option.router",
+          "dhcp.option.vendor.bsdp.message_type",
+          "mdns",
+          "dns",
+          "dns.a",
+          "dns.count.add_rr",
+          "dns.count.answers",
+          "dns.count.auth_rr",
+          "dns.count.labels",
+          "dns.count.queries",
+          "dns.flags.authoritative",
+          "dns.flags.checkdisable",
+          "dns.flags.opcode",
+          "dns.flags.response",
+          "dns.id",
+          "dns.ptr.domain_name",
+          "dns.qry.name",
+          "dns.qry.name.len",
+          "dns.resp.len",
+          "dns.resp.name",
+          "dns.resp.ttl",
+          "dns.resp.len.1",
+          "dns.retransmit_request",
+          "dns.retransmit_response",
+          "dns.time",
+          "ssdp",
+          "http.connection",
+          "http.content_length",
+          "http.content_type",
+          "http.date",
+          "http.file_data",
+          "http.host",
+          "http.last_modified",
+          "http.location",
+          "http.next_request_in",
+          "http.next_response_in",
+          "http.request.full_uri",
+          "http.request.line",
+          "http.request.method",
+          "http.request.uri.path",
+          "http.request.uri.query",
+          "http.request.uri.query.parameter",
+          "http.request.version",
+          "http.request_in",
+          "http.response.code",
+          "http.response.code.desc",
+          "http.response.line",
+          "http.response.phrase",
+          "http.response.version",
+          "http.response_for.uri",
+          "http.response_in",
+          "http.referer",
+          "http.time",
+          "http.server",
+          "json.value.string",
+          "json.key",
+          "ssh.cookie",
+          "ssh.compression_algorithms_client_to_server_length",
+          "ssh.compression_algorithms_server_to_client_length",
+          "ssh.direction",
+          "ssh.dh_gex.max",
+          "ssh.dh_gex.min",
+          "ssh.dh_gex.nbits",
+          "ssh.encryption_algorithms_client_to_server_length",
+          "ssh.encryption_algorithms_server_to_client_length",
+          "ssh.host_key.length",
+          "ssh.host_key.type_length",
+          "ssh.kex_algorithms_length",
+          "ssh.mac_algorithms_client_to_server_length",
+          "ssh.mac_algorithms_server_to_client_length",
+          "ssh.message_code",
+          "ssh.mpint_length",
+          "ssh.packet_length",
+          "ssh.packet_length_encrypted",
+          "ssh.padding_length",
+          "ssh.padding_string",
+          "ssh.protocol",
+          "ssh.server_host_key_algorithms_length",
+          "tls.alert_message.desc",
+          "tls.alert_message.level",
+          "tls.app_data_proto",
+          "tls.compress_certificate.compressed_certificate_message.length",
+          "tls.connection_id",
+          "tls.handshake.extension.type",
+          "tls.handshake.extensions_key_share_group",
+          "tls.handshake.session_ticket_length",
+          "tls.handshake.version",
+          "tls.record.content_type",
+          "tls.record.version",
+          "Label"
+        ],
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1,
+        "frame_number_last": 50000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 43068,
+          "ip.dst": 43068,
+          "wlan.sa": 38355,
+          "wlan.da": 38355,
+          "wlan.ta": 6613,
+          "wlan.ra": 0,
+          "wlan.bssid": 38356,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 41739,
+          "1": 8261
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 35232516,
+        "compressed_bytes": 6436202
+      },
+      "CSV/4.Rogue_AP/RogueAP_1.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 50001,
+        "frame_number_last": 100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 38284,
+          "ip.dst": 38284,
+          "wlan.sa": 36906,
+          "wlan.da": 36903,
+          "wlan.ta": 11104,
+          "wlan.ra": 0,
+          "wlan.bssid": 36900,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 37054,
+          "1": 12946
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 46812607,
+        "compressed_bytes": 13457938
+      },
+      "CSV/4.Rogue_AP/RogueAP_2.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 100001,
+        "frame_number_last": 150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31714,
+          "ip.dst": 31714,
+          "wlan.sa": 30477,
+          "wlan.da": 30487,
+          "wlan.ta": 8656,
+          "wlan.ra": 0,
+          "wlan.bssid": 30478,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30738,
+          "1": 19261
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 69989716,
+        "compressed_bytes": 25745135
+      },
+      "CSV/4.Rogue_AP/RogueAP_3.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 150001,
+        "frame_number_last": 200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 17487,
+          "ip.dst": 17487,
+          "wlan.sa": 16768,
+          "wlan.da": 16781,
+          "wlan.ta": 3957,
+          "wlan.ra": 0,
+          "wlan.bssid": 16768,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 33064,
+          "0": 16936
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 123792746,
+        "compressed_bytes": 34383584
+      },
+      "CSV/4.Rogue_AP/RogueAP_4.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 200001,
+        "frame_number_last": 250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 25810,
+          "ip.dst": 25810,
+          "wlan.sa": 19809,
+          "wlan.da": 19812,
+          "wlan.ta": 5880,
+          "wlan.ra": 0,
+          "wlan.bssid": 19836,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 29941,
+          "0": 20059
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 106444153,
+        "compressed_bytes": 36723883
+      },
+      "CSV/4.Rogue_AP/RogueAP_5.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 250001,
+        "frame_number_last": 300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29688,
+          "ip.dst": 29688,
+          "wlan.sa": 28773,
+          "wlan.da": 28774,
+          "wlan.ta": 8224,
+          "wlan.ra": 0,
+          "wlan.bssid": 28777,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28889,
+          "1": 21111
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 76535868,
+        "compressed_bytes": 29622071
+      },
+      "CSV/4.Rogue_AP/RogueAP_6.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 300001,
+        "frame_number_last": 350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 37814,
+          "ip.dst": 37814,
+          "wlan.sa": 35396,
+          "wlan.da": 35395,
+          "wlan.ta": 9143,
+          "wlan.ra": 0,
+          "wlan.bssid": 35399,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35517,
+          "1": 14483
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 56573252,
+        "compressed_bytes": 16912418
+      },
+      "CSV/4.Rogue_AP/RogueAP_7.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 350001,
+        "frame_number_last": 400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 35914,
+          "ip.dst": 35914,
+          "wlan.sa": 34177,
+          "wlan.da": 34172,
+          "wlan.ta": 8541,
+          "wlan.ra": 0,
+          "wlan.bssid": 34172,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 34351,
+          "1": 15649
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 56959328,
+        "compressed_bytes": 17578812
+      },
+      "CSV/4.Rogue_AP/RogueAP_8.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 400001,
+        "frame_number_last": 450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28604,
+          "ip.dst": 28604,
+          "wlan.sa": 27365,
+          "wlan.da": 27368,
+          "wlan.ta": 6757,
+          "wlan.ra": 0,
+          "wlan.bssid": 27361,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27503,
+          "1": 22497
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 80357869,
+        "compressed_bytes": 30882817
+      },
+      "CSV/4.Rogue_AP/RogueAP_9.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 450001,
+        "frame_number_last": 500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 33382,
+          "ip.dst": 33382,
+          "wlan.sa": 32369,
+          "wlan.da": 32600,
+          "wlan.ta": 7502,
+          "wlan.ra": 0,
+          "wlan.bssid": 32370,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32469,
+          "1": 17531
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 71082842,
+        "compressed_bytes": 24633882
+      },
+      "CSV/4.Rogue_AP/RogueAP_10.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 500001,
+        "frame_number_last": 550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 37655,
+          "ip.dst": 37655,
+          "wlan.sa": 35821,
+          "wlan.da": 36040,
+          "wlan.ta": 8045,
+          "wlan.ra": 0,
+          "wlan.bssid": 35818,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35923,
+          "1": 14077
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 57257111,
+        "compressed_bytes": 18331748
+      },
+      "CSV/4.Rogue_AP/RogueAP_11.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 550001,
+        "frame_number_last": 600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 41167,
+          "ip.dst": 41167,
+          "wlan.sa": 39687,
+          "wlan.da": 39784,
+          "wlan.ta": 8401,
+          "wlan.ra": 0,
+          "wlan.bssid": 39685,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 39831,
+          "1": 10169
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 42442030,
+        "compressed_bytes": 10724100
+      },
+      "CSV/4.Rogue_AP/RogueAP_12.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 600001,
+        "frame_number_last": 650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 34546,
+          "ip.dst": 34546,
+          "wlan.sa": 31855,
+          "wlan.da": 31987,
+          "wlan.ta": 8242,
+          "wlan.ra": 0,
+          "wlan.bssid": 31850,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31979,
+          "1": 18021
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 70603797,
+        "compressed_bytes": 24260013
+      },
+      "CSV/4.Rogue_AP/RogueAP_13.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 650001,
+        "frame_number_last": 700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 35339,
+          "ip.dst": 35339,
+          "wlan.sa": 31687,
+          "wlan.da": 31764,
+          "wlan.ta": 8588,
+          "wlan.ra": 0,
+          "wlan.bssid": 31676,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31791,
+          "1": 18209
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 65936951,
+        "compressed_bytes": 20328597
+      },
+      "CSV/4.Rogue_AP/RogueAP_14.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 700001,
+        "frame_number_last": 750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31876,
+          "ip.dst": 31876,
+          "wlan.sa": 27017,
+          "wlan.da": 27009,
+          "wlan.ta": 8091,
+          "wlan.ra": 0,
+          "wlan.bssid": 27003,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27105,
+          "1": 22895
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 81261496,
+        "compressed_bytes": 27811983
+      },
+      "CSV/4.Rogue_AP/RogueAP_15.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 750001,
+        "frame_number_last": 800000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 34104,
+          "ip.dst": 34104,
+          "wlan.sa": 27908,
+          "wlan.da": 27896,
+          "wlan.ta": 8656,
+          "wlan.ra": 0,
+          "wlan.bssid": 27887,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28012,
+          "1": 21988
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 77725403,
+        "compressed_bytes": 26069135
+      },
+      "CSV/4.Rogue_AP/RogueAP_16.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 800001,
+        "frame_number_last": 850000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 43470,
+          "ip.dst": 43470,
+          "wlan.sa": 40693,
+          "wlan.da": 40692,
+          "wlan.ta": 11504,
+          "wlan.ra": 0,
+          "wlan.bssid": 40694,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 40916,
+          "1": 9084
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 44558894,
+        "compressed_bytes": 12784997
+      },
+      "CSV/4.Rogue_AP/RogueAP_17.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 850001,
+        "frame_number_last": 900000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 43142,
+          "ip.dst": 43142,
+          "wlan.sa": 39889,
+          "wlan.da": 39890,
+          "wlan.ta": 11962,
+          "wlan.ra": 0,
+          "wlan.bssid": 39887,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 40100,
+          "1": 9900
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 49103210,
+        "compressed_bytes": 13819665
+      },
+      "CSV/4.Rogue_AP/RogueAP_18.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 900001,
+        "frame_number_last": 950000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 39751,
+          "ip.dst": 39751,
+          "wlan.sa": 36966,
+          "wlan.da": 36969,
+          "wlan.ta": 9309,
+          "wlan.ra": 0,
+          "wlan.bssid": 36965,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 37149,
+          "1": 12851
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 51851553,
+        "compressed_bytes": 16506424
+      },
+      "CSV/4.Rogue_AP/RogueAP_19.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 950001,
+        "frame_number_last": 1000000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 35729,
+          "ip.dst": 35729,
+          "wlan.sa": 35052,
+          "wlan.da": 35061,
+          "wlan.ta": 8649,
+          "wlan.ra": 0,
+          "wlan.bssid": 35053,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35180,
+          "1": 14820
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 61240662,
+        "compressed_bytes": 21337554
+      },
+      "CSV/4.Rogue_AP/RogueAP_20.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1000001,
+        "frame_number_last": 1050000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 37032,
+          "ip.dst": 37032,
+          "wlan.sa": 35116,
+          "wlan.da": 35113,
+          "wlan.ta": 8817,
+          "wlan.ra": 0,
+          "wlan.bssid": 35112,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35289,
+          "1": 14711
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 56117334,
+        "compressed_bytes": 18482936
+      },
+      "CSV/4.Rogue_AP/RogueAP_21.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1050001,
+        "frame_number_last": 1100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 34872,
+          "ip.dst": 34872,
+          "wlan.sa": 33122,
+          "wlan.da": 33132,
+          "wlan.ta": 7319,
+          "wlan.ra": 0,
+          "wlan.bssid": 33122,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33280,
+          "1": 16720
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 63308579,
+        "compressed_bytes": 22171339
+      },
+      "CSV/4.Rogue_AP/RogueAP_22.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1100001,
+        "frame_number_last": 1150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 39597,
+          "ip.dst": 39597,
+          "wlan.sa": 38329,
+          "wlan.da": 38354,
+          "wlan.ta": 9908,
+          "wlan.ra": 0,
+          "wlan.bssid": 38329,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 38663,
+          "1": 11337
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 43263111,
+        "compressed_bytes": 11123979
+      },
+      "CSV/4.Rogue_AP/RogueAP_23.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999,
+          "RogueAP": 1
+        },
+        "frame_number_first": 1150001,
+        "frame_number_last": 1200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 39677,
+          "ip.dst": 39677,
+          "wlan.sa": 37405,
+          "wlan.da": 37409,
+          "wlan.ta": 11318,
+          "wlan.ra": 0,
+          "wlan.bssid": 37400,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 37638,
+          "1": 12362
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 38732948,
+        "compressed_bytes": 9358448
+      },
+      "CSV/4.Rogue_AP/RogueAP_24.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49972,
+          "RogueAP": 28
+        },
+        "frame_number_first": 1200001,
+        "frame_number_last": 1250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31226,
+          "ip.dst": 31226,
+          "wlan.sa": 21565,
+          "wlan.da": 21828,
+          "wlan.ta": 10652,
+          "wlan.ra": 0,
+          "wlan.bssid": 21559,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27380,
+          "1": 22620
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 61859051,
+        "compressed_bytes": 20761379
+      },
+      "CSV/4.Rogue_AP/RogueAP_25.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49917,
+          "RogueAP": 83
+        },
+        "frame_number_first": 1250001,
+        "frame_number_last": 1300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26420,
+          "ip.dst": 26420,
+          "wlan.sa": 21918,
+          "wlan.da": 22451,
+          "wlan.ta": 8094,
+          "wlan.ra": 0,
+          "wlan.bssid": 21917,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25271,
+          "1": 24729
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 86548667,
+        "compressed_bytes": 31749993
+      },
+      "CSV/4.Rogue_AP/RogueAP_26.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49921,
+          "RogueAP": 79
+        },
+        "frame_number_first": 1300001,
+        "frame_number_last": 1350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27002,
+          "ip.dst": 27002,
+          "wlan.sa": 23342,
+          "wlan.da": 23409,
+          "wlan.ta": 8737,
+          "wlan.ra": 0,
+          "wlan.bssid": 23340,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25630,
+          "1": 24370
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 60293738,
+        "compressed_bytes": 19807808
+      },
+      "CSV/4.Rogue_AP/RogueAP_27.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49929,
+          "RogueAP": 71
+        },
+        "frame_number_first": 1350001,
+        "frame_number_last": 1400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32336,
+          "ip.dst": 32336,
+          "wlan.sa": 25946,
+          "wlan.da": 25962,
+          "wlan.ta": 9754,
+          "wlan.ra": 0,
+          "wlan.bssid": 25933,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28047,
+          "1": 21953
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 59297245,
+        "compressed_bytes": 20168129
+      },
+      "CSV/4.Rogue_AP/RogueAP_28.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49915,
+          "RogueAP": 85
+        },
+        "frame_number_first": 1400001,
+        "frame_number_last": 1450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31115,
+          "ip.dst": 31115,
+          "wlan.sa": 24464,
+          "wlan.da": 24499,
+          "wlan.ta": 11294,
+          "wlan.ra": 0,
+          "wlan.bssid": 24460,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29055,
+          "1": 20945
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 58417844,
+        "compressed_bytes": 19809534
+      },
+      "CSV/4.Rogue_AP/RogueAP_29.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49834,
+          "RogueAP": 166
+        },
+        "frame_number_first": 1450001,
+        "frame_number_last": 1500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 37264,
+          "ip.dst": 37264,
+          "wlan.sa": 22764,
+          "wlan.da": 22767,
+          "wlan.ta": 14659,
+          "wlan.ra": 0,
+          "wlan.bssid": 22759,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33806,
+          "1": 16194
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 34370881,
+        "compressed_bytes": 5879865
+      },
+      "CSV/4.Rogue_AP/RogueAP_30.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49943,
+          "RogueAP": 57
+        },
+        "frame_number_first": 1500001,
+        "frame_number_last": 1550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26908,
+          "ip.dst": 26908,
+          "wlan.sa": 19494,
+          "wlan.da": 19689,
+          "wlan.ta": 10216,
+          "wlan.ra": 0,
+          "wlan.bssid": 19493,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25535,
+          "1": 24465
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 54916575,
+        "compressed_bytes": 16609580
+      },
+      "CSV/4.Rogue_AP/RogueAP_31.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49939,
+          "RogueAP": 61
+        },
+        "frame_number_first": 1550001,
+        "frame_number_last": 1600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29137,
+          "ip.dst": 29137,
+          "wlan.sa": 21895,
+          "wlan.da": 21950,
+          "wlan.ta": 14221,
+          "wlan.ra": 0,
+          "wlan.bssid": 21893,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28452,
+          "1": 21548
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 62454877,
+        "compressed_bytes": 21507396
+      },
+      "CSV/4.Rogue_AP/RogueAP_32.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49936,
+          "RogueAP": 64
+        },
+        "frame_number_first": 1600001,
+        "frame_number_last": 1650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27533,
+          "ip.dst": 27533,
+          "wlan.sa": 21712,
+          "wlan.da": 21785,
+          "wlan.ta": 13596,
+          "wlan.ra": 0,
+          "wlan.bssid": 21705,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25907,
+          "1": 24093
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 65379495,
+        "compressed_bytes": 20747486
+      },
+      "CSV/4.Rogue_AP/RogueAP_33.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49930,
+          "RogueAP": 68
+        },
+        "frame_number_first": 1650001,
+        "frame_number_last": 1700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28512,
+          "ip.dst": 28512,
+          "wlan.sa": 24067,
+          "wlan.da": 24069,
+          "wlan.ta": 10439,
+          "wlan.ra": 0,
+          "wlan.bssid": 24066,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28128,
+          "1": 21870
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 61113096,
+        "compressed_bytes": 20770743
+      },
+      "CSV/4.Rogue_AP/RogueAP_34.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49909,
+          "RogueAP": 91
+        },
+        "frame_number_first": 1700001,
+        "frame_number_last": 1750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29424,
+          "ip.dst": 29424,
+          "wlan.sa": 23157,
+          "wlan.da": 23158,
+          "wlan.ta": 11030,
+          "wlan.ra": 0,
+          "wlan.bssid": 23154,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27837,
+          "1": 22163
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 58880541,
+        "compressed_bytes": 18890452
+      },
+      "CSV/4.Rogue_AP/RogueAP_35.csv": {
+        "rows": 49997,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49854,
+          "RogueAP": 143
+        },
+        "frame_number_first": 1750001,
+        "frame_number_last": 1800000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30462,
+          "ip.dst": 30462,
+          "wlan.sa": 24055,
+          "wlan.da": 24069,
+          "wlan.ta": 12111,
+          "wlan.ra": 0,
+          "wlan.bssid": 24054,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29442,
+          "1": 20555
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 56750695,
+        "compressed_bytes": 18281422
+      },
+      "CSV/4.Rogue_AP/RogueAP_36.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49931,
+          "RogueAP": 67
+        },
+        "frame_number_first": 1800001,
+        "frame_number_last": 1850000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26788,
+          "ip.dst": 26788,
+          "wlan.sa": 23386,
+          "wlan.da": 23433,
+          "wlan.ta": 9530,
+          "wlan.ra": 0,
+          "wlan.bssid": 23386,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 26535,
+          "1": 23463
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 76251259,
+        "compressed_bytes": 28815732
+      },
+      "CSV/4.Rogue_AP/RogueAP_37.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49895,
+          "RogueAP": 105
+        },
+        "frame_number_first": 1850001,
+        "frame_number_last": 1900000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 25982,
+          "ip.dst": 25982,
+          "wlan.sa": 23305,
+          "wlan.da": 23314,
+          "wlan.ta": 8683,
+          "wlan.ra": 0,
+          "wlan.bssid": 23306,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25386,
+          "1": 24614
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 57234398,
+        "compressed_bytes": 17079202
+      },
+      "CSV/4.Rogue_AP/RogueAP_38.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49883,
+          "RogueAP": 117
+        },
+        "frame_number_first": 1900001,
+        "frame_number_last": 1950000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27491,
+          "ip.dst": 27491,
+          "wlan.sa": 21582,
+          "wlan.da": 21632,
+          "wlan.ta": 10574,
+          "wlan.ra": 0,
+          "wlan.bssid": 21582,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 26948,
+          "1": 23052
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 78850374,
+        "compressed_bytes": 24140232
+      },
+      "CSV/4.Rogue_AP/RogueAP_39.csv": {
+        "rows": 23193,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 23169,
+          "RogueAP": 24
+        },
+        "frame_number_first": 1950001,
+        "frame_number_last": 1973193,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 11182,
+          "ip.dst": 11182,
+          "wlan.sa": 9598,
+          "wlan.da": 9598,
+          "wlan.ta": 4633,
+          "wlan.ra": 0,
+          "wlan.bssid": 9597,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 12489,
+          "0": 10704
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 34762705,
+        "compressed_bytes": 12344793
+      }
+    },
+    "Evil_Twin": {
+      "CSV/12.Evil_Twin/Evil_Twin_0.csv": {
+        "rows": 49997,
+        "n_columns": 254,
+        "columns": [
+          "frame.encap_type",
+          "frame.len",
+          "frame.number",
+          "frame.time",
+          "frame.time_delta",
+          "frame.time_delta_displayed",
+          "frame.time_epoch",
+          "frame.time_relative",
+          "radiotap.channel.flags.cck",
+          "radiotap.channel.flags.ofdm",
+          "radiotap.channel.freq",
+          "radiotap.datarate",
+          "radiotap.dbm_antsignal",
+          "radiotap.length",
+          "radiotap.mactime",
+          "radiotap.present.tsft",
+          "radiotap.rxflags",
+          "radiotap.timestamp.ts",
+          "radiotap.vendor_oui",
+          "wlan.duration",
+          "wlan.analysis.kck",
+          "wlan.analysis.kek",
+          "wlan.bssid",
+          "wlan.country_info.fnm",
+          "wlan.country_info.code",
+          "wlan.da",
+          "wlan.fc.ds",
+          "wlan.fc.frag",
+          "wlan.fc.order",
+          "wlan.fc.moredata",
+          "wlan.fc.protected",
+          "wlan.fc.pwrmgt",
+          "wlan.fc.type",
+          "wlan.fc.retry",
+          "wlan.fc.subtype",
+          "wlan.fcs.bad_checksum",
+          "wlan.fixed.beacon",
+          "wlan.fixed.capabilities.ess",
+          "wlan.fixed.capabilities.ibss",
+          "wlan.fixed.reason_code",
+          "wlan.fixed.timestamp",
+          "wlan.ra",
+          "wlan_radio.duration",
+          "wlan.rsn.ie.gtk.key",
+          "wlan.rsn.ie.igtk.key",
+          "wlan.rsn.ie.pmkid",
+          "wlan.sa",
+          "wlan.seq",
+          "wlan.ssid",
+          "wlan.ta",
+          "wlan.tag",
+          "wlan.tag.length",
+          "wlan_radio.channel",
+          "wlan_radio.data_rate",
+          "wlan_radio.end_tsf",
+          "wlan_radio.frequency",
+          "wlan_radio.signal_dbm",
+          "wlan_radio.start_tsf",
+          "wlan_radio.phy",
+          "wlan_radio.timestamp",
+          "wlan.rsn.capabilities.mfpc",
+          "wlan_rsna_eapol.keydes.msgnr",
+          "wlan_rsna_eapol.keydes.data",
+          "wlan_rsna_eapol.keydes.data_len",
+          "wlan_rsna_eapol.keydes.key_info.key_mic",
+          "wlan_rsna_eapol.keydes.nonce",
+          "eapol.keydes.key_len",
+          "eapol.keydes.replay_counter",
+          "eapol.len",
+          "eapol.type",
+          "llc",
+          "arp",
+          "arp.hw.type",
+          "arp.proto.type",
+          "arp.hw.size",
+          "arp.proto.size",
+          "arp.opcode",
+          "arp.src.hw_mac",
+          "arp.src.proto_ipv4",
+          "arp.dst.hw_mac",
+          "arp.dst.proto_ipv4",
+          "ip.dst",
+          "ip.proto",
+          "ip.src",
+          "ip.ttl",
+          "ip.version",
+          "data.data",
+          "data.len",
+          "icmpv6.mldr.nb_mcast_records",
+          "icmpv6.ni.nonce",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.analysis",
+          "tcp.analysis.flags",
+          "tcp.analysis.retransmission",
+          "tcp.analysis.reused_ports",
+          "tcp.analysis.rto_frame",
+          "tcp.checksum",
+          "tcp.checksum.status",
+          "tcp.flags.syn",
+          "tcp.dstport",
+          "tcp.flags.ack",
+          "tcp.flags.fin",
+          "tcp.flags.push",
+          "tcp.flags.reset",
+          "tcp.option_len",
+          "tcp.payload",
+          "tcp.seq",
+          "tcp.seq_raw",
+          "tcp.srcport",
+          "tcp.time_delta",
+          "tcp.time_relative",
+          "udp.dstport",
+          "udp.srcport",
+          "udp.length",
+          "udp.payload",
+          "udp.time_relative",
+          "udp.time_delta",
+          "nbns",
+          "nbss.continuation_data",
+          "nbss.type",
+          "nbss.length",
+          "ldap",
+          "smb.access.generic_execute",
+          "smb.access.generic_read",
+          "smb.access.generic_write",
+          "smb.flags.notify",
+          "smb.flags.response",
+          "smb.flags2.nt_error",
+          "smb.flags2.sec_sig",
+          "smb.mid",
+          "smb.nt_status",
+          "smb.server_component",
+          "smb.pid.high",
+          "smb.tid",
+          "smb2.acct",
+          "smb2.auth_frame",
+          "smb2.buffer_code",
+          "smb2.cmd",
+          "smb2.data_offset",
+          "smb2.domain",
+          "smb2.fid",
+          "smb2.filename",
+          "smb2.header_len",
+          "smb2.host",
+          "smb2.msg_id",
+          "smb2.pid",
+          "smb2.previous_sesid",
+          "smb2.protocol_id",
+          "smb2.sesid",
+          "smb2.session_flags",
+          "smb2.tid",
+          "smb2.write_length",
+          "dhcp",
+          "dhcp.client_id.duid_ll_hw_type",
+          "dhcp.cookie",
+          "dhcp.hw.addr_padding",
+          "dhcp.hw.mac_addr",
+          "dhcp.id",
+          "dhcp.ip.client",
+          "dhcp.ip.relay",
+          "dhcp.ip.server",
+          "dhcp.option.broadcast_address",
+          "dhcp.option.dhcp_server_id",
+          "dhcp.option.router",
+          "dhcp.option.vendor.bsdp.message_type",
+          "mdns",
+          "dns",
+          "dns.a",
+          "dns.count.add_rr",
+          "dns.count.answers",
+          "dns.count.auth_rr",
+          "dns.count.labels",
+          "dns.count.queries",
+          "dns.flags.authoritative",
+          "dns.flags.checkdisable",
+          "dns.flags.opcode",
+          "dns.flags.response",
+          "dns.id",
+          "dns.ptr.domain_name",
+          "dns.qry.name",
+          "dns.qry.name.len",
+          "dns.resp.len",
+          "dns.resp.name",
+          "dns.resp.ttl",
+          "dns.resp.len.1",
+          "dns.retransmit_request",
+          "dns.retransmit_response",
+          "dns.time",
+          "ssdp",
+          "http.connection",
+          "http.content_length",
+          "http.content_type",
+          "http.date",
+          "http.file_data",
+          "http.host",
+          "http.last_modified",
+          "http.location",
+          "http.next_request_in",
+          "http.next_response_in",
+          "http.request.full_uri",
+          "http.request.line",
+          "http.request.method",
+          "http.request.uri.path",
+          "http.request.uri.query",
+          "http.request.uri.query.parameter",
+          "http.request.version",
+          "http.request_in",
+          "http.response.code",
+          "http.response.code.desc",
+          "http.response.line",
+          "http.response.phrase",
+          "http.response.version",
+          "http.response_for.uri",
+          "http.response_in",
+          "http.referer",
+          "http.time",
+          "http.server",
+          "json.value.string",
+          "json.key",
+          "ssh.cookie",
+          "ssh.compression_algorithms_client_to_server_length",
+          "ssh.compression_algorithms_server_to_client_length",
+          "ssh.direction",
+          "ssh.dh_gex.max",
+          "ssh.dh_gex.min",
+          "ssh.dh_gex.nbits",
+          "ssh.encryption_algorithms_client_to_server_length",
+          "ssh.encryption_algorithms_server_to_client_length",
+          "ssh.host_key.length",
+          "ssh.host_key.type_length",
+          "ssh.kex_algorithms_length",
+          "ssh.mac_algorithms_client_to_server_length",
+          "ssh.mac_algorithms_server_to_client_length",
+          "ssh.message_code",
+          "ssh.mpint_length",
+          "ssh.packet_length",
+          "ssh.packet_length_encrypted",
+          "ssh.padding_length",
+          "ssh.padding_string",
+          "ssh.protocol",
+          "ssh.server_host_key_algorithms_length",
+          "tls.alert_message.desc",
+          "tls.alert_message.level",
+          "tls.app_data_proto",
+          "tls.compress_certificate.compressed_certificate_message.length",
+          "tls.connection_id",
+          "tls.handshake.extension.type",
+          "tls.handshake.extensions_key_share_group",
+          "tls.handshake.session_ticket_length",
+          "tls.handshake.version",
+          "tls.record.content_type",
+          "tls.record.version",
+          "Label"
+        ],
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49997
+        },
+        "frame_number_first": 1,
+        "frame_number_last": 50000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29652,
+          "ip.dst": 29652,
+          "wlan.sa": 25309,
+          "wlan.da": 25392,
+          "wlan.ta": 7287,
+          "wlan.ra": 0,
+          "wlan.bssid": 25310,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28632,
+          "1": 21365
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 65211008,
+        "compressed_bytes": 22582091
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_1.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 50001,
+        "frame_number_last": 100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30853,
+          "ip.dst": 30853,
+          "wlan.sa": 30588,
+          "wlan.da": 30593,
+          "wlan.ta": 9717,
+          "wlan.ra": 0,
+          "wlan.bssid": 30589,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30748,
+          "1": 19252
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 63309694,
+        "compressed_bytes": 22162133
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_2.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 100001,
+        "frame_number_last": 150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31607,
+          "ip.dst": 31607,
+          "wlan.sa": 31473,
+          "wlan.da": 31480,
+          "wlan.ta": 10464,
+          "wlan.ra": 0,
+          "wlan.bssid": 31473,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31571,
+          "1": 18429
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 57453547,
+        "compressed_bytes": 17459348
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_3.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 150001,
+        "frame_number_last": 200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32959,
+          "ip.dst": 32959,
+          "wlan.sa": 32664,
+          "wlan.da": 32667,
+          "wlan.ta": 10841,
+          "wlan.ra": 0,
+          "wlan.bssid": 32664,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32900,
+          "1": 17100
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 57500030,
+        "compressed_bytes": 19191031
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_4.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 200001,
+        "frame_number_last": 250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 34481,
+          "ip.dst": 34481,
+          "wlan.sa": 34234,
+          "wlan.da": 34255,
+          "wlan.ta": 11288,
+          "wlan.ra": 0,
+          "wlan.bssid": 34236,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 34392,
+          "1": 15608
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 53930376,
+        "compressed_bytes": 17245157
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_5.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 250001,
+        "frame_number_last": 300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 36134,
+          "ip.dst": 36134,
+          "wlan.sa": 35803,
+          "wlan.da": 35819,
+          "wlan.ta": 12263,
+          "wlan.ra": 0,
+          "wlan.bssid": 35804,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 36009,
+          "1": 13991
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 50103284,
+        "compressed_bytes": 15002493
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_6.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 300001,
+        "frame_number_last": 350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31158,
+          "ip.dst": 31158,
+          "wlan.sa": 30857,
+          "wlan.da": 30866,
+          "wlan.ta": 11125,
+          "wlan.ra": 0,
+          "wlan.bssid": 30857,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31071,
+          "1": 18928
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 59103229,
+        "compressed_bytes": 20225941
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_7.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49998
+        },
+        "frame_number_first": 350001,
+        "frame_number_last": 400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29637,
+          "ip.dst": 29637,
+          "wlan.sa": 28974,
+          "wlan.da": 29017,
+          "wlan.ta": 10089,
+          "wlan.ra": 0,
+          "wlan.bssid": 28975,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29253,
+          "1": 20745
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 75293017,
+        "compressed_bytes": 29334101
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_8.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 400001,
+        "frame_number_last": 450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 33236,
+          "ip.dst": 33236,
+          "wlan.sa": 32670,
+          "wlan.da": 32689,
+          "wlan.ta": 11431,
+          "wlan.ra": 0,
+          "wlan.bssid": 32672,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32990,
+          "1": 17010
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 63637352,
+        "compressed_bytes": 22645157
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_9.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 450001,
+        "frame_number_last": 500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30931,
+          "ip.dst": 30931,
+          "wlan.sa": 30744,
+          "wlan.da": 30747,
+          "wlan.ta": 10289,
+          "wlan.ra": 0,
+          "wlan.bssid": 30745,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30894,
+          "1": 19106
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 62961880,
+        "compressed_bytes": 21093080
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_10.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 500001,
+        "frame_number_last": 550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 24758,
+          "ip.dst": 24758,
+          "wlan.sa": 24556,
+          "wlan.da": 24564,
+          "wlan.ta": 8316,
+          "wlan.ra": 0,
+          "wlan.bssid": 24558,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 25301,
+          "0": 24698
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 77633991,
+        "compressed_bytes": 29054919
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_11.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 550001,
+        "frame_number_last": 600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 22373,
+          "ip.dst": 22373,
+          "wlan.sa": 22177,
+          "wlan.da": 22199,
+          "wlan.ta": 7666,
+          "wlan.ra": 0,
+          "wlan.bssid": 22177,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 27691,
+          "0": 22308
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 78813781,
+        "compressed_bytes": 29713924
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_12.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49998
+        },
+        "frame_number_first": 600001,
+        "frame_number_last": 650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28025,
+          "ip.dst": 28025,
+          "wlan.sa": 27868,
+          "wlan.da": 27875,
+          "wlan.ta": 9488,
+          "wlan.ra": 0,
+          "wlan.bssid": 27868,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27978,
+          "1": 22020
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 66201535,
+        "compressed_bytes": 23660304
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_13.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 650001,
+        "frame_number_last": 700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 35771,
+          "ip.dst": 35771,
+          "wlan.sa": 35520,
+          "wlan.da": 35532,
+          "wlan.ta": 12388,
+          "wlan.ra": 0,
+          "wlan.bssid": 35521,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35713,
+          "1": 14287
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 51579329,
+        "compressed_bytes": 16029807
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_14.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 700001,
+        "frame_number_last": 750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 34384,
+          "ip.dst": 34384,
+          "wlan.sa": 34002,
+          "wlan.da": 34015,
+          "wlan.ta": 10877,
+          "wlan.ra": 0,
+          "wlan.bssid": 34002,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 34281,
+          "1": 15719
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 50888189,
+        "compressed_bytes": 15045130
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_15.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 750001,
+        "frame_number_last": 800000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 31412,
+          "ip.dst": 31412,
+          "wlan.sa": 31159,
+          "wlan.da": 31180,
+          "wlan.ta": 10039,
+          "wlan.ra": 0,
+          "wlan.bssid": 31159,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31347,
+          "1": 18652
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 55628632,
+        "compressed_bytes": 18130936
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_16.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49998
+        },
+        "frame_number_first": 800001,
+        "frame_number_last": 850000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29693,
+          "ip.dst": 29693,
+          "wlan.sa": 29342,
+          "wlan.da": 29363,
+          "wlan.ta": 10372,
+          "wlan.ra": 0,
+          "wlan.bssid": 29341,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29558,
+          "1": 20440
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 64153219,
+        "compressed_bytes": 23085439
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_17.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 850001,
+        "frame_number_last": 900000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 33422,
+          "ip.dst": 33422,
+          "wlan.sa": 33069,
+          "wlan.da": 33084,
+          "wlan.ta": 10579,
+          "wlan.ra": 0,
+          "wlan.bssid": 33070,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33241,
+          "1": 16759
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 54013510,
+        "compressed_bytes": 17047656
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_18.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 900001,
+        "frame_number_last": 950000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32726,
+          "ip.dst": 32726,
+          "wlan.sa": 32446,
+          "wlan.da": 32464,
+          "wlan.ta": 10641,
+          "wlan.ra": 0,
+          "wlan.bssid": 32448,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32586,
+          "1": 17414
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 59787746,
+        "compressed_bytes": 19783318
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_19.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49998
+        },
+        "frame_number_first": 950001,
+        "frame_number_last": 1000000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32851,
+          "ip.dst": 32851,
+          "wlan.sa": 32502,
+          "wlan.da": 32511,
+          "wlan.ta": 10910,
+          "wlan.ra": 0,
+          "wlan.bssid": 32506,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32737,
+          "1": 17261
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 65162167,
+        "compressed_bytes": 23274115
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_20.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1000001,
+        "frame_number_last": 1050000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26547,
+          "ip.dst": 26547,
+          "wlan.sa": 26278,
+          "wlan.da": 26286,
+          "wlan.ta": 9203,
+          "wlan.ra": 0,
+          "wlan.bssid": 26286,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 26393,
+          "1": 23607
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 80081737,
+        "compressed_bytes": 31571682
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_21.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1050001,
+        "frame_number_last": 1100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29658,
+          "ip.dst": 29658,
+          "wlan.sa": 29319,
+          "wlan.da": 29322,
+          "wlan.ta": 9671,
+          "wlan.ra": 0,
+          "wlan.bssid": 29318,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29561,
+          "1": 20439
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 66621020,
+        "compressed_bytes": 24067064
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_22.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1100001,
+        "frame_number_last": 1150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28708,
+          "ip.dst": 28708,
+          "wlan.sa": 28405,
+          "wlan.da": 28414,
+          "wlan.ta": 10015,
+          "wlan.ra": 0,
+          "wlan.bssid": 28405,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28645,
+          "1": 21355
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 79657075,
+        "compressed_bytes": 30442934
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_23.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49998
+        },
+        "frame_number_first": 1150001,
+        "frame_number_last": 1200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32422,
+          "ip.dst": 32422,
+          "wlan.sa": 32098,
+          "wlan.da": 32107,
+          "wlan.ta": 10287,
+          "wlan.ra": 0,
+          "wlan.bssid": 32100,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32323,
+          "1": 17675
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 64125496,
+        "compressed_bytes": 22736886
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_24.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1200001,
+        "frame_number_last": 1250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 36238,
+          "ip.dst": 36238,
+          "wlan.sa": 35952,
+          "wlan.da": 35966,
+          "wlan.ta": 12039,
+          "wlan.ra": 0,
+          "wlan.bssid": 35952,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 36120,
+          "1": 13880
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 54204232,
+        "compressed_bytes": 17943941
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_25.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 1250001,
+        "frame_number_last": 1300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 35514,
+          "ip.dst": 35514,
+          "wlan.sa": 35269,
+          "wlan.da": 35281,
+          "wlan.ta": 12044,
+          "wlan.ra": 0,
+          "wlan.bssid": 35268,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35405,
+          "1": 14594
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 55333750,
+        "compressed_bytes": 18332273
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_26.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 50000
+        },
+        "frame_number_first": 1300001,
+        "frame_number_last": 1350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 32569,
+          "ip.dst": 32569,
+          "wlan.sa": 32447,
+          "wlan.da": 32455,
+          "wlan.ta": 11810,
+          "wlan.ra": 0,
+          "wlan.bssid": 32447,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 32548,
+          "1": 17452
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 52492427,
+        "compressed_bytes": 16979324
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_27.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49999
+        },
+        "frame_number_first": 1350001,
+        "frame_number_last": 1400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29434,
+          "ip.dst": 29434,
+          "wlan.sa": 29298,
+          "wlan.da": 29298,
+          "wlan.ta": 10702,
+          "wlan.ra": 0,
+          "wlan.bssid": 29298,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29404,
+          "1": 20595
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 60787170,
+        "compressed_bytes": 21420477
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_28.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49814,
+          "Evil_Twin": 186
+        },
+        "frame_number_first": 1400001,
+        "frame_number_last": 1450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29346,
+          "ip.dst": 29346,
+          "wlan.sa": 28735,
+          "wlan.da": 28741,
+          "wlan.ta": 10685,
+          "wlan.ra": 0,
+          "wlan.bssid": 28737,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29222,
+          "1": 20778
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 72261358,
+        "compressed_bytes": 28016149
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_29.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49835,
+          "Evil_Twin": 165
+        },
+        "frame_number_first": 1450001,
+        "frame_number_last": 1500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30120,
+          "ip.dst": 30120,
+          "wlan.sa": 29577,
+          "wlan.da": 29585,
+          "wlan.ta": 9876,
+          "wlan.ra": 0,
+          "wlan.bssid": 29578,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30068,
+          "1": 19932
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 71817518,
+        "compressed_bytes": 27535242
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_30.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49834,
+          "Evil_Twin": 165
+        },
+        "frame_number_first": 1500001,
+        "frame_number_last": 1550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 36605,
+          "ip.dst": 36605,
+          "wlan.sa": 36137,
+          "wlan.da": 36147,
+          "wlan.ta": 12404,
+          "wlan.ra": 0,
+          "wlan.bssid": 36137,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 36573,
+          "1": 13426
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 52082316,
+        "compressed_bytes": 16500342
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_31.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49653,
+          "Evil_Twin": 347
+        },
+        "frame_number_first": 1550001,
+        "frame_number_last": 1600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30478,
+          "ip.dst": 30478,
+          "wlan.sa": 30183,
+          "wlan.da": 30193,
+          "wlan.ta": 10590,
+          "wlan.ra": 0,
+          "wlan.bssid": 30184,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30668,
+          "1": 19332
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 72817191,
+        "compressed_bytes": 27444073
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_32.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49924,
+          "Evil_Twin": 76
+        },
+        "frame_number_first": 1600001,
+        "frame_number_last": 1650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 33605,
+          "ip.dst": 33605,
+          "wlan.sa": 33335,
+          "wlan.da": 33337,
+          "wlan.ta": 11120,
+          "wlan.ra": 0,
+          "wlan.bssid": 33335,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33550,
+          "1": 16450
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 58944023,
+        "compressed_bytes": 20549573
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_33.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49920,
+          "Evil_Twin": 80
+        },
+        "frame_number_first": 1650001,
+        "frame_number_last": 1700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26597,
+          "ip.dst": 26597,
+          "wlan.sa": 26284,
+          "wlan.da": 26285,
+          "wlan.ta": 9582,
+          "wlan.ra": 0,
+          "wlan.bssid": 26287,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 26507,
+          "1": 23493
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 73201327,
+        "compressed_bytes": 28367647
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_34.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49590,
+          "Evil_Twin": 410
+        },
+        "frame_number_first": 1700001,
+        "frame_number_last": 1750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 24980,
+          "ip.dst": 24980,
+          "wlan.sa": 24550,
+          "wlan.da": 24554,
+          "wlan.ta": 8899,
+          "wlan.ra": 0,
+          "wlan.bssid": 24550,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25251,
+          "1": 24749
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 78155875,
+        "compressed_bytes": 31171826
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_35.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 39194,
+          "Evil_Twin": 10806
+        },
+        "frame_number_first": 1750001,
+        "frame_number_last": 1800000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26280,
+          "ip.dst": 26280,
+          "wlan.sa": 25828,
+          "wlan.da": 25843,
+          "wlan.ta": 8003,
+          "wlan.ra": 0,
+          "wlan.bssid": 25828,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 36839,
+          "1": 13161
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 72905596,
+        "compressed_bytes": 27451114
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_36.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 43416,
+          "Evil_Twin": 6584
+        },
+        "frame_number_first": 1800001,
+        "frame_number_last": 1850000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27195,
+          "ip.dst": 27195,
+          "wlan.sa": 26589,
+          "wlan.da": 26600,
+          "wlan.ta": 8361,
+          "wlan.ra": 0,
+          "wlan.bssid": 26591,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33463,
+          "1": 16537
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 75265214,
+        "compressed_bytes": 28298100
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_37.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 45934,
+          "Evil_Twin": 4066
+        },
+        "frame_number_first": 1850001,
+        "frame_number_last": 1900000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26127,
+          "ip.dst": 26127,
+          "wlan.sa": 25793,
+          "wlan.da": 25800,
+          "wlan.ta": 8323,
+          "wlan.ra": 0,
+          "wlan.bssid": 25794,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30036,
+          "1": 19964
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 78132413,
+        "compressed_bytes": 30506509
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_38.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49619,
+          "Evil_Twin": 380
+        },
+        "frame_number_first": 1900001,
+        "frame_number_last": 1950000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28523,
+          "ip.dst": 28523,
+          "wlan.sa": 28296,
+          "wlan.da": 28300,
+          "wlan.ta": 10140,
+          "wlan.ra": 0,
+          "wlan.bssid": 28296,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28785,
+          "1": 21214
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 65308454,
+        "compressed_bytes": 23487679
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_39.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 46681,
+          "Evil_Twin": 3317
+        },
+        "frame_number_first": 1950001,
+        "frame_number_last": 2000000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 26754,
+          "ip.dst": 26754,
+          "wlan.sa": 26551,
+          "wlan.da": 26557,
+          "wlan.ta": 9228,
+          "wlan.ra": 0,
+          "wlan.bssid": 26552,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29962,
+          "1": 20036
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 78033929,
+        "compressed_bytes": 31196123
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_40.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 43857,
+          "Evil_Twin": 6143
+        },
+        "frame_number_first": 2000001,
+        "frame_number_last": 2050000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27262,
+          "ip.dst": 27262,
+          "wlan.sa": 26871,
+          "wlan.da": 26874,
+          "wlan.ta": 8586,
+          "wlan.ra": 0,
+          "wlan.bssid": 26871,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33225,
+          "1": 16775
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 74844271,
+        "compressed_bytes": 29007106
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_41.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 41010,
+          "Evil_Twin": 8990
+        },
+        "frame_number_first": 2050001,
+        "frame_number_last": 2100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27688,
+          "ip.dst": 27688,
+          "wlan.sa": 27115,
+          "wlan.da": 27127,
+          "wlan.ta": 9403,
+          "wlan.ra": 0,
+          "wlan.bssid": 27116,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 36420,
+          "1": 13580
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 80476006,
+        "compressed_bytes": 30610439
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_42.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 27799,
+          "Evil_Twin": 22201
+        },
+        "frame_number_first": 2100001,
+        "frame_number_last": 2150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 20214,
+          "ip.dst": 20214,
+          "wlan.sa": 19665,
+          "wlan.da": 19677,
+          "wlan.ta": 5180,
+          "wlan.ra": 0,
+          "wlan.bssid": 19666,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 42164,
+          "1": 7836
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 93925605,
+        "compressed_bytes": 36443686
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_43.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 40121,
+          "Evil_Twin": 9879
+        },
+        "frame_number_first": 2150001,
+        "frame_number_last": 2200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 25714,
+          "ip.dst": 25714,
+          "wlan.sa": 25450,
+          "wlan.da": 25461,
+          "wlan.ta": 8069,
+          "wlan.ra": 0,
+          "wlan.bssid": 25451,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 35436,
+          "1": 14564
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 81866562,
+        "compressed_bytes": 31991651
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_44.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49862,
+          "Evil_Twin": 138
+        },
+        "frame_number_first": 2200001,
+        "frame_number_last": 2250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27943,
+          "ip.dst": 27943,
+          "wlan.sa": 27777,
+          "wlan.da": 27779,
+          "wlan.ta": 10000,
+          "wlan.ra": 0,
+          "wlan.bssid": 27777,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27982,
+          "1": 22018
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 73180031,
+        "compressed_bytes": 27861191
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_45.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49917,
+          "Evil_Twin": 83
+        },
+        "frame_number_first": 2250001,
+        "frame_number_last": 2300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28387,
+          "ip.dst": 28387,
+          "wlan.sa": 28181,
+          "wlan.da": 28190,
+          "wlan.ta": 9320,
+          "wlan.ra": 0,
+          "wlan.bssid": 28182,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28355,
+          "1": 21645
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 69872307,
+        "compressed_bytes": 25800446
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_46.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 43996,
+          "Evil_Twin": 6003
+        },
+        "frame_number_first": 2300001,
+        "frame_number_last": 2350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 23349,
+          "ip.dst": 23349,
+          "wlan.sa": 23140,
+          "wlan.da": 23146,
+          "wlan.ta": 7805,
+          "wlan.ra": 0,
+          "wlan.bssid": 23142,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29243,
+          "1": 20756
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 85788464,
+        "compressed_bytes": 33820606
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_47.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 47706,
+          "Evil_Twin": 2294
+        },
+        "frame_number_first": 2350001,
+        "frame_number_last": 2400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29074,
+          "ip.dst": 29074,
+          "wlan.sa": 28796,
+          "wlan.da": 28803,
+          "wlan.ta": 9374,
+          "wlan.ra": 0,
+          "wlan.bssid": 28796,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31244,
+          "1": 18756
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 69756060,
+        "compressed_bytes": 25738182
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_48.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49884,
+          "Evil_Twin": 114
+        },
+        "frame_number_first": 2400001,
+        "frame_number_last": 2450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28007,
+          "ip.dst": 28007,
+          "wlan.sa": 27685,
+          "wlan.da": 27691,
+          "wlan.ta": 8964,
+          "wlan.ra": 0,
+          "wlan.bssid": 27687,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27991,
+          "1": 22007
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 75347135,
+        "compressed_bytes": 28925742
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_49.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49773,
+          "Evil_Twin": 227
+        },
+        "frame_number_first": 2450001,
+        "frame_number_last": 2500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28279,
+          "ip.dst": 28279,
+          "wlan.sa": 27936,
+          "wlan.da": 27945,
+          "wlan.ta": 9315,
+          "wlan.ra": 0,
+          "wlan.bssid": 27940,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28364,
+          "1": 21636
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 74060625,
+        "compressed_bytes": 28783688
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_50.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 40146,
+          "Evil_Twin": 9854
+        },
+        "frame_number_first": 2500001,
+        "frame_number_last": 2550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 20974,
+          "ip.dst": 20974,
+          "wlan.sa": 20694,
+          "wlan.da": 20696,
+          "wlan.ta": 6989,
+          "wlan.ra": 0,
+          "wlan.bssid": 20696,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30670,
+          "1": 19330
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 93466371,
+        "compressed_bytes": 37487017
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_51.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49868,
+          "Evil_Twin": 132
+        },
+        "frame_number_first": 2550001,
+        "frame_number_last": 2600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29008,
+          "ip.dst": 29008,
+          "wlan.sa": 28695,
+          "wlan.da": 28703,
+          "wlan.ta": 10326,
+          "wlan.ra": 0,
+          "wlan.bssid": 28694,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28974,
+          "1": 21026
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 69825933,
+        "compressed_bytes": 26267598
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_52.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49917,
+          "Evil_Twin": 83
+        },
+        "frame_number_first": 2600001,
+        "frame_number_last": 2650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29622,
+          "ip.dst": 29622,
+          "wlan.sa": 29286,
+          "wlan.da": 29291,
+          "wlan.ta": 10150,
+          "wlan.ra": 0,
+          "wlan.bssid": 29289,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29542,
+          "1": 20458
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 71156371,
+        "compressed_bytes": 26783100
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_53.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 40074,
+          "Evil_Twin": 9926
+        },
+        "frame_number_first": 2650001,
+        "frame_number_last": 2700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 22026,
+          "ip.dst": 22026,
+          "wlan.sa": 21683,
+          "wlan.da": 21689,
+          "wlan.ta": 6738,
+          "wlan.ra": 0,
+          "wlan.bssid": 21685,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 31753,
+          "1": 18247
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 92115514,
+        "compressed_bytes": 37345241
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_54.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49878,
+          "Evil_Twin": 122
+        },
+        "frame_number_first": 2700001,
+        "frame_number_last": 2750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 33491,
+          "ip.dst": 33491,
+          "wlan.sa": 32814,
+          "wlan.da": 32820,
+          "wlan.ta": 11756,
+          "wlan.ra": 0,
+          "wlan.bssid": 32815,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 33409,
+          "1": 16591
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 61743779,
+        "compressed_bytes": 22102920
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_55.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49868,
+          "Evil_Twin": 132
+        },
+        "frame_number_first": 2750001,
+        "frame_number_last": 2800000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 29533,
+          "ip.dst": 29533,
+          "wlan.sa": 29084,
+          "wlan.da": 29090,
+          "wlan.ta": 10510,
+          "wlan.ra": 0,
+          "wlan.bssid": 29086,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 29486,
+          "1": 20514
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 77660211,
+        "compressed_bytes": 30568755
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_56.csv": {
+        "rows": 50006,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49849,
+          "Evil_Twin": 145,
+          "<missing>": 12
+        },
+        "frame_number_first": 2800001,
+        "frame_number_last": 2850000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 6,
+          "frame.len": 6,
+          "wlan.fc.protected": 6,
+          "ip.src": 28881,
+          "ip.dst": 28881,
+          "wlan.sa": 28265,
+          "wlan.da": 28280,
+          "wlan.ta": 9711,
+          "wlan.ra": 6,
+          "wlan.bssid": 28266,
+          "Label": 12
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28699,
+          "1": 21301,
+          "<missing>": 6
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 87043025,
+        "compressed_bytes": 28446624
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_57.csv": {
+        "rows": 50010,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49963,
+          "Evil_Twin": 34,
+          "<missing>": 13
+        },
+        "frame_number_first": 2850001,
+        "frame_number_last": 2900000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 10,
+          "frame.len": 10,
+          "wlan.fc.protected": 10,
+          "ip.src": 27067,
+          "ip.dst": 27067,
+          "wlan.sa": 26585,
+          "wlan.da": 26597,
+          "wlan.ta": 8668,
+          "wlan.ra": 10,
+          "wlan.bssid": 26585,
+          "Label": 13
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 26918,
+          "1": 23082,
+          "<missing>": 10
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 73459203,
+        "compressed_bytes": 27846490
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_58.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49997,
+          "Evil_Twin": 2
+        },
+        "frame_number_first": 2900001,
+        "frame_number_last": 2950000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30834,
+          "ip.dst": 30834,
+          "wlan.sa": 30466,
+          "wlan.da": 30473,
+          "wlan.ta": 12511,
+          "wlan.ra": 0,
+          "wlan.bssid": 30466,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30719,
+          "1": 19280
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 59312231,
+        "compressed_bytes": 19816838
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_59.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49889,
+          "Evil_Twin": 110
+        },
+        "frame_number_first": 2950001,
+        "frame_number_last": 3000000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30711,
+          "ip.dst": 30711,
+          "wlan.sa": 30133,
+          "wlan.da": 30147,
+          "wlan.ta": 12979,
+          "wlan.ra": 0,
+          "wlan.bssid": 30133,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30572,
+          "1": 19427
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 60172378,
+        "compressed_bytes": 20064362
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_60.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49836,
+          "Evil_Twin": 164
+        },
+        "frame_number_first": 3000001,
+        "frame_number_last": 3050000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27670,
+          "ip.dst": 27670,
+          "wlan.sa": 26884,
+          "wlan.da": 26923,
+          "wlan.ta": 12691,
+          "wlan.ra": 0,
+          "wlan.bssid": 26885,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27493,
+          "1": 22507
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 73916869,
+        "compressed_bytes": 27671728
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_61.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49906,
+          "Evil_Twin": 92
+        },
+        "frame_number_first": 3050001,
+        "frame_number_last": 3100000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 23826,
+          "ip.dst": 23826,
+          "wlan.sa": 23429,
+          "wlan.da": 23442,
+          "wlan.ta": 7241,
+          "wlan.ra": 0,
+          "wlan.bssid": 23429,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 26248,
+          "0": 23750
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 81285092,
+        "compressed_bytes": 31890653
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_62.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49956,
+          "Evil_Twin": 44
+        },
+        "frame_number_first": 3100001,
+        "frame_number_last": 3150000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 24002,
+          "ip.dst": 24002,
+          "wlan.sa": 23817,
+          "wlan.da": 23819,
+          "wlan.ta": 7893,
+          "wlan.ra": 0,
+          "wlan.bssid": 23817,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 26028,
+          "0": 23972
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 86686431,
+        "compressed_bytes": 33846828
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_63.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49921,
+          "Evil_Twin": 79
+        },
+        "frame_number_first": 3150001,
+        "frame_number_last": 3200000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 22912,
+          "ip.dst": 22912,
+          "wlan.sa": 22568,
+          "wlan.da": 22575,
+          "wlan.ta": 8159,
+          "wlan.ra": 0,
+          "wlan.bssid": 22568,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "1": 27149,
+          "0": 22851
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 86999584,
+        "compressed_bytes": 33445377
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_64.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49937,
+          "Evil_Twin": 62
+        },
+        "frame_number_first": 3200001,
+        "frame_number_last": 3250000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27743,
+          "ip.dst": 27743,
+          "wlan.sa": 27382,
+          "wlan.da": 27394,
+          "wlan.ta": 11761,
+          "wlan.ra": 0,
+          "wlan.bssid": 27383,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27657,
+          "1": 22342
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 70686557,
+        "compressed_bytes": 26498356
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_65.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49950,
+          "Evil_Twin": 49
+        },
+        "frame_number_first": 3250001,
+        "frame_number_last": 3300000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28935,
+          "ip.dst": 28935,
+          "wlan.sa": 28627,
+          "wlan.da": 28639,
+          "wlan.ta": 14871,
+          "wlan.ra": 0,
+          "wlan.bssid": 28628,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28885,
+          "1": 21114
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 67823171,
+        "compressed_bytes": 25295384
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_66.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49890,
+          "Evil_Twin": 108
+        },
+        "frame_number_first": 3300001,
+        "frame_number_last": 3350000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 25740,
+          "ip.dst": 25740,
+          "wlan.sa": 25376,
+          "wlan.da": 25379,
+          "wlan.ta": 9170,
+          "wlan.ra": 0,
+          "wlan.bssid": 25378,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25706,
+          "1": 24292
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 79421966,
+        "compressed_bytes": 30200253
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_67.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49836,
+          "Evil_Twin": 164
+        },
+        "frame_number_first": 3350001,
+        "frame_number_last": 3400000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28003,
+          "ip.dst": 28003,
+          "wlan.sa": 27471,
+          "wlan.da": 27476,
+          "wlan.ta": 10068,
+          "wlan.ra": 0,
+          "wlan.bssid": 27472,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27937,
+          "1": 22063
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 69587705,
+        "compressed_bytes": 25317176
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_68.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49936,
+          "Evil_Twin": 63
+        },
+        "frame_number_first": 3400001,
+        "frame_number_last": 3450000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30340,
+          "ip.dst": 30340,
+          "wlan.sa": 30013,
+          "wlan.da": 30022,
+          "wlan.ta": 11909,
+          "wlan.ra": 0,
+          "wlan.bssid": 30014,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30277,
+          "1": 19722
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 58977897,
+        "compressed_bytes": 20048820
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_69.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49894,
+          "Evil_Twin": 106
+        },
+        "frame_number_first": 3450001,
+        "frame_number_last": 3500000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28463,
+          "ip.dst": 28463,
+          "wlan.sa": 28067,
+          "wlan.da": 28080,
+          "wlan.ta": 10306,
+          "wlan.ra": 0,
+          "wlan.bssid": 28068,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28365,
+          "1": 21635
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 66637899,
+        "compressed_bytes": 24387150
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_70.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49841,
+          "Evil_Twin": 159
+        },
+        "frame_number_first": 3500001,
+        "frame_number_last": 3550000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30500,
+          "ip.dst": 30500,
+          "wlan.sa": 29801,
+          "wlan.da": 29807,
+          "wlan.ta": 9576,
+          "wlan.ra": 0,
+          "wlan.bssid": 29801,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30461,
+          "1": 19539
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 58157399,
+        "compressed_bytes": 19062575
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_71.csv": {
+        "rows": 49999,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49803,
+          "Evil_Twin": 196
+        },
+        "frame_number_first": 3550001,
+        "frame_number_last": 3600000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 25377,
+          "ip.dst": 25377,
+          "wlan.sa": 24743,
+          "wlan.da": 24752,
+          "wlan.ta": 7544,
+          "wlan.ra": 0,
+          "wlan.bssid": 24744,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 25318,
+          "1": 24681
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 80945430,
+        "compressed_bytes": 31576747
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_72.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49904,
+          "Evil_Twin": 96
+        },
+        "frame_number_first": 3600001,
+        "frame_number_last": 3650000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 28610,
+          "ip.dst": 28610,
+          "wlan.sa": 28263,
+          "wlan.da": 28268,
+          "wlan.ta": 10199,
+          "wlan.ra": 0,
+          "wlan.bssid": 28263,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 28548,
+          "1": 21452
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 64634345,
+        "compressed_bytes": 22965619
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_73.csv": {
+        "rows": 49998,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49897,
+          "Evil_Twin": 101
+        },
+        "frame_number_first": 3650001,
+        "frame_number_last": 3700000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 30575,
+          "ip.dst": 30575,
+          "wlan.sa": 30137,
+          "wlan.da": 30143,
+          "wlan.ta": 10596,
+          "wlan.ra": 0,
+          "wlan.bssid": 30137,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 30518,
+          "1": 19480
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 63131267,
+        "compressed_bytes": 22429624
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_74.csv": {
+        "rows": 50000,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 49901,
+          "Evil_Twin": 99
+        },
+        "frame_number_first": 3700001,
+        "frame_number_last": 3750000,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 27493,
+          "ip.dst": 27493,
+          "wlan.sa": 27207,
+          "wlan.da": 27208,
+          "wlan.ta": 9099,
+          "wlan.ra": 0,
+          "wlan.bssid": 27207,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 27479,
+          "1": 22521
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 74401348,
+        "compressed_bytes": 28010518
+      },
+      "CSV/12.Evil_Twin/Evil_Twin_75.csv": {
+        "rows": 28728,
+        "n_columns": 254,
+        "columns": "same as first file",
+        "label_column": "Label",
+        "label_counts": {
+          "Normal": 28677,
+          "Evil_Twin": 51
+        },
+        "frame_number_first": 3750001,
+        "frame_number_last": 3778728,
+        "frame_number_increasing": true,
+        "missing_counts": {
+          "frame.number": 0,
+          "frame.len": 0,
+          "wlan.fc.protected": 0,
+          "ip.src": 17276,
+          "ip.dst": 17276,
+          "wlan.sa": 16961,
+          "wlan.da": 16964,
+          "wlan.ta": 5857,
+          "wlan.ra": 0,
+          "wlan.bssid": 16962,
+          "Label": 0
+        },
+        "type_subtype_raw_counts": {},
+        "protected_raw_counts": {
+          "0": 17246,
+          "1": 11482
+        },
+        "label_by_type_subtype": {},
+        "uncompressed_bytes": 38131462,
+        "compressed_bytes": 13954807
+      }
+    }
+  }
+}

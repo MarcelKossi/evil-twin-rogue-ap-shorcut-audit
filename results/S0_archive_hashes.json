@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "script": "scripts/00_inventory.py --hash",
+    "git_commit": "f5d0893de137311a0972bebbccfad2ebf11a579b-dirty",
+    "timestamp_utc": "2026-11-12T14:22:24+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0"
+  },
+  "archives": {
+    "AWID3_Dataset_CSV.zip": {
+      "sha256": "ac661c03c066e1b12970f7bc11e2fb03b7a60f571df83262a6c08752c8d7ba17",
+      "bytes": 14471343012,
+      "seconds": 85.9
+    },
+    "AWID3_Dataset.zip": {
+      "sha256": "d088338303a78cf6e460cd7261baa0feac514492bdf88874dfba3005f162abda",
+      "bytes": 12063714960,
+      "seconds": 77.7
+    },
+    "AWID-ATK-R-Trn.tar.gz": {
+      "sha256": "c71ec68fe6ffdf9ebeef1dfedbee339b3ae24ffd2068494ed859276b41c8cb65",
+      "bytes": 60228858,
+      "seconds": 0.4
+    },
+    "AWID-ATK-R-Tst.tar.gz": {
+      "sha256": "e9c6331a37e94a3ddd8f32bb3ebdb440b802a9065330654a6fd06f99b842d06d",
+      "bytes": 19444423,
+      "seconds": 0.1
+    },
+    "AWID-CLS-R-Trn.tar.gz": {
+      "sha256": "ed3e4faa5a144a6572c3ca18866d98cba684263458ed0e8cc1cd6defacc53a8c",
+      "bytes": 60280110,
+      "seconds": 0.4
+    },
+    "AWID-CLS-R-Tst.tar.gz": {
+      "sha256": "d06b20a660b9c8125de6c77d5ff19ee388e779a2b477ec3624b1e167b65e8cae",
+      "bytes": 19451296,
+      "seconds": 0.1
+    }
+  }
+}
