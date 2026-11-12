@@ -52,3 +52,10 @@ and any deviation from `docs/protocol_v0.3.md`.
 - 208 rogue beacons are labelled Normal (5.5% of the rogue beacons): 143 beacons of 150 bytes inside the window and 65 beacons of 241 bytes before the window, the first one at frame 1,351,181, about 69,000 frames before the labelled attack period starts. The rogue AP is active before the labelled period.
 - 25,169 control frames involving the rogue AP inside the window (ACK, CTS, block ack) are labelled Normal: the labelling covers management and data frames only.
 - Next: S1d figures for the label structure, then S2 taxonomy.
+
+## 2026-11-13 - S1d figures
+
+- Ran `scripts/04_figures_labels.py`. Outputs: `figures/fig1_rogue_ap_capture.png`, `figures/fig2_evil_twin_capture.png`, `results/S1d_figure_data.json`. Counts agree with S1 and S1c.
+- Rogue_AP: the unprotected deauthentication frames (62,458; 62,457 inside the filter window) start exactly at the window and coincide with the 263-byte rogue beacons; none before it. This strengthens the reading that they belong to the attack, although they are labelled Normal.
+- Evil_Twin: the rogue AP uses two beacon configurations in sequence, 241 bytes from about frame 1.35 M to 2.75 M, then 150 bytes until the end of the capture. The rogue beacons labelled Normal are not scattered: they form two contiguous blocks, one just before the labelled window (241 bytes) and one around frames 2.85-2.95 M (150 bytes).
+- The labelled Evil_Twin data traffic comes in bursts between about 1.75 M and 2.7 M frames.

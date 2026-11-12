@@ -37,7 +37,8 @@ The pre-registered threshold for H1a was kappa >= 0.80.
 - Beacon length is set by the attacker's software configuration: it is
   a fingerprint of this particular attack run, not of rogue APs in general.
 - 62,455 unprotected deauthentication frames carrying the cloned address
-  appear inside the attack window (1 outside). All are labelled Normal.
+  appear inside the attack window (1 outside). They start with the rogue
+  beacons and none appear before; all are labelled Normal.
 
 **Evil_Twin** ([`figures/fig2_evil_twin_capture.png`](figures/fig2_evil_twin_capture.png))
 
@@ -49,8 +50,11 @@ The pre-registered threshold for H1a was kappa >= 0.80.
   disassociation 27 frames in total.
 - A rule using only the time window, the rogue MAC address and the frame
   class reproduces the labels with kappa = 0.994.
-- 208 rogue beacons (5.5%) are labelled Normal, 65 of them before the labelled
-  attack period starts: the rogue AP is active about 69,000 frames earlier.
+- The rogue AP runs two beacon configurations in sequence (241 bytes, then
+  150 bytes); legitimate beacons are 342-343 bytes.
+- 208 rogue beacons (5.5%) are labelled Normal, in two contiguous blocks: 65
+  just before the labelled attack period (the rogue AP is active about 69,000
+  frames earlier) and 143 around frames 2.85-2.95 M.
 
 Sources: [`results/S1c_label_diagnostics.json`](results/S1c_label_diagnostics.json)
 (exploratory, not in the pre-registered plan),

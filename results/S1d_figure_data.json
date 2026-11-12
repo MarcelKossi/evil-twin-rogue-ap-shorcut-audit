@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "script": "scripts/04_figures_labels.py",
+    "git_commit": "c57d4b524e2fcbd11ad9724a62c09131d56f0ee2",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-12T21:18:59+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "inputs_sha256": {
+      "awid3_rogue_ap.parquet": "f37c101bd7f974de5dab96c38a6ed32831ebda396b17104460ccd706db207a02",
+      "awid3_evil_twin.parquet": "b2fa76db40baf0abd7b148104c477e146b9152a5e70d42c169e6c164bb6fa112"
+    }
+  },
+  "Rogue_AP": {
+    "beacons_normal": 5636,
+    "beacons_attack": 1310,
+    "beacon_lengths_attack": [
+      263
+    ],
+    "beacon_lengths_normal": [
+      342,
+      343,
+      1618
+    ],
+    "unprotected_deauth_total": 62458,
+    "unprotected_deauth_in_window": 62457,
+    "unprotected_deauth_labelled_attack": 0
+  },
+  "Evil_Twin": {
+    "attack_frames": 104827,
+    "attack_qos_data": 100574,
+    "legit_beacons": 8685,
+    "rogue_beacons_labelled_attack": 3568,
+    "rogue_beacons_labelled_normal": 208,
+    "rogue_beacons_labelled_normal_before_window": 65,
+    "first_rogue_beacon_frame_number": 1351181,
+    "rogue_beacon_lengths": [
+      150,
+      241
+    ],
+    "legit_beacon_lengths": [
+      342,
+      343
+    ]
+  }
+}
