@@ -31,10 +31,26 @@ def git_commit() -> str | None:
         commit = subprocess.run(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True
         ).stdout.strip()
+        # Only tracked code and docs count; result files and the journal change on every run.
         dirty = subprocess.run(
-            ["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True, check=True
+            ["git", "status", "--porcelain", "--untracked-files=no", "--", ".",
+             ":(exclude)results", ":(exclude)docs/journal.md"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
         ).stdout.strip()
         return commit + ("-dirty" if dirty else "")
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def uncommitted_files() -> list[str] | None:
+    """Tracked files (outside results/ and the journal) that differ from the last commit."""
+    try:
+        out = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=no", "--", ".",
+             ":(exclude)results", ":(exclude)docs/journal.md"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout
+        return [line[3:] for line in out.splitlines() if line.strip()]
     except (OSError, subprocess.CalledProcessError):
         return None
 
@@ -44,6 +60,7 @@ def run_metadata(script: str, **extra: Any) -> dict[str, Any]:
     meta = {
         "script": script,
         "git_commit": git_commit(),
+        "uncommitted_files": uncommitted_files(),
         "timestamp_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "python": sys.version.split()[0],
         "platform": platform.platform(),

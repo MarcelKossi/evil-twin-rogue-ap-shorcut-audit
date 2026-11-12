@@ -1,0 +1,366 @@
+{
+  "meta": {
+    "script": "scripts/02_filter_agreement.py",
+    "git_commit": "0890d0798f8ef4f6bdea175bc315ea488679587f-dirty",
+    "timestamp_utc": "2026-11-12T19:06:07+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "inputs_sha256": {
+      "awid3_rogue_ap.parquet": "f37c101bd7f974de5dab96c38a6ed32831ebda396b17104460ccd706db207a02",
+      "awid3_evil_twin.parquet": "b2fa76db40baf0abd7b148104c477e146b9152a5e70d42c169e6c164bb6fa112"
+    }
+  },
+  "filters": {
+    "Rogue_AP": "wlan.fc.type_subtype==8 && frame.number>=1198551 && frame.number<=1973111 && frame.len<264",
+    "Evil_Twin": "((wlan.fc.type_subtype==8 && frame.len<242) || ((wlan.fc.type_subtype==10 || wlan.fc.type_subtype==12 || wlan.fc.type_subtype==40) && wlan.fc.protected==0)) && frame.number>=1420038 && frame.number<=3778728 && (ip.addr==192.168.30.1 || wlan.addr==0c:9d:92:54:fe:35)"
+  },
+  "results": {
+    "Rogue_AP": {
+      "data_checks": {
+        "rows_total": 1973185,
+        "rows_excluded_missing_label_or_frame_number": 0,
+        "excluded_examples": [],
+        "frame_number_range": [
+          1,
+          1973193
+        ],
+        "frame_numbers_absent_in_range": 8,
+        "duplicate_frame_numbers": 0
+      },
+      "encoding_check": {
+        "wlan.fc.type_raw_values": {
+          "1": 1143007,
+          "2": 749814,
+          "0": 80364
+        },
+        "wlan.fc.subtype_raw_values": {
+          "8": 748712,
+          "11": 478576,
+          "12": 333556,
+          "9": 260328,
+          "13": 115278,
+          "5": 28327,
+          "4": 4133,
+          "0": 3888,
+          "10": 222,
+          "14": 99,
+          "3": 28,
+          "2": 21,
+          "1": 17
+        },
+        "derived_type_subtype_top": {
+          "40 (QoS data)": 738337,
+          "27 (RTS)": 478486,
+          "28 (CTS)": 267214,
+          "25 (?)": 260233,
+          "29 (ACK)": 106195,
+          "12 (deauth)": 62459,
+          "21 (?)": 27415,
+          "13 (action)": 9082,
+          "8 (beacon)": 6946,
+          "44 (QoS null)": 3883,
+          "32 (data)": 3876,
+          "36 (null)": 3452,
+          "24 (?)": 3429,
+          "5 (probe resp)": 912,
+          "4 (probe req)": 681,
+          "42 (?)": 153,
+          "41 (?)": 94,
+          "14 (?)": 93,
+          "11 (auth)": 87,
+          "26 (?)": 35
+        }
+      },
+      "labels_seen": {
+        "Normal": 1971875,
+        "RogueAP": 1310
+      },
+      "unexpected_labels": [],
+      "agreement": {
+        "n": 1973185,
+        "tp": 1310,
+        "fp": 0,
+        "fn": 0,
+        "tn": 1971875,
+        "cohen_kappa": 1.0,
+        "filter_precision": 1.0,
+        "filter_recall": 1.0,
+        "mcc": 1.0,
+        "H1a_kappa_threshold": 0.8,
+        "H1a_met": true
+      },
+      "labelled_attack_frame_number_range": [
+        1198551,
+        1973111
+      ],
+      "labelled_attack_outside_filter_window": 0,
+      "clause_pass_rates_on_labelled_attack": {
+        "beacon (type_subtype==8)": {
+          "pass": 1310,
+          "rate": 1.0
+        },
+        "frame.len<264": {
+          "pass": 1310,
+          "rate": 1.0
+        },
+        "frame.number in window": {
+          "pass": 1310,
+          "rate": 1.0
+        }
+      },
+      "clause_pass_rates_on_normal_inside_window": {
+        "beacon (type_subtype==8)": {
+          "pass": 1690,
+          "rate": 0.002186
+        },
+        "frame.len<264": {
+          "pass": 590848,
+          "rate": 0.764116
+        },
+        "frame.number in window": {
+          "pass": 773244,
+          "rate": 1.0
+        }
+      },
+      "labelled_attack_by_frame_type": {
+        "8 (beacon)": 1310
+      },
+      "filter_positive_by_frame_type": {
+        "8 (beacon)": 1310
+      },
+      "false_negatives_by_frame_type": {},
+      "false_positives_by_frame_type": {},
+      "frame_len_labelled_attack": {
+        "count": 1310.0,
+        "mean": 263.0,
+        "std": 0.0,
+        "min": 263.0,
+        "25%": 263.0,
+        "50%": 263.0,
+        "75%": 263.0,
+        "max": 263.0
+      },
+      "frame_len_normal_beacons_in_window": {
+        "count": 1690.0,
+        "mean": 342.2,
+        "std": 0.4,
+        "min": 342.0,
+        "25%": 342.0,
+        "50%": 342.0,
+        "75%": 342.0,
+        "max": 343.0
+      }
+    },
+    "Evil_Twin": {
+      "data_checks": {
+        "rows_total": 3778706,
+        "rows_excluded_missing_label_or_frame_number": 27,
+        "excluded_examples": [
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "2822368",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "None",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "2829696",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "None",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "2831207",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "None",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "2831732",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "None",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "2836825",
+            "Label": "None"
+          },
+          {
+            "source_file": "Evil_Twin_56.csv",
+            "frame.number": "None",
+            "Label": "None"
+          }
+        ],
+        "frame_number_range": [
+          1,
+          3778728
+        ],
+        "frame_numbers_absent_in_range": 49,
+        "duplicate_frame_numbers": 0
+      },
+      "encoding_check": {
+        "wlan.fc.type_raw_values": {
+          "1": 2167923,
+          "2": 1595705,
+          "0": 15051
+        },
+        "wlan.fc.subtype_raw_values": {
+          "8": 1595816,
+          "11": 739143,
+          "12": 684194,
+          "9": 653305,
+          "13": 72900,
+          "5": 23069,
+          "0": 5994,
+          "4": 3989,
+          "10": 105,
+          "14": 95,
+          "1": 37,
+          "2": 18,
+          "3": 13,
+          "15": 1
+        },
+        "derived_type_subtype_top": {
+          "40 (QoS data)": 1582096,
+          "27 (RTS)": 739047,
+          "28 (CTS)": 679751,
+          "25 (?)": 653272,
+          "29 (ACK)": 72579,
+          "21 (?)": 22015,
+          "8 (beacon)": 12461,
+          "32 (data)": 5960,
+          "44 (QoS null)": 4422,
+          "36 (null)": 3125,
+          "24 (?)": 1259,
+          "5 (probe resp)": 1053,
+          "4 (probe req)": 864,
+          "13 (action)": 320,
+          "11 (auth)": 94,
+          "14 (?)": 93,
+          "42 (?)": 54,
+          "10 (disassoc)": 51,
+          "0 (assoc req)": 34,
+          "1 (assoc resp)": 34
+        }
+      },
+      "labels_seen": {
+        "Evil_Twin": 104827,
+        "Normal": 3673852
+      },
+      "unexpected_labels": [],
+      "agreement": {
+        "n": 3778679,
+        "tp": 104168,
+        "fp": 183,
+        "fn": 659,
+        "tn": 3673669,
+        "cohen_kappa": 0.99586,
+        "filter_precision": 0.998246,
+        "filter_recall": 0.993713,
+        "mcc": 0.995863,
+        "H1a_kappa_threshold": 0.8,
+        "H1a_met": true
+      },
+      "labelled_attack_frame_number_range": [
+        1420038,
+        3778728
+      ],
+      "labelled_attack_outside_filter_window": 0,
+      "clause_pass_rates_on_labelled_attack": {
+        "beacon and frame.len<242": {
+          "pass": 3568,
+          "rate": 0.034037
+        },
+        "disassoc/deauth/QoS data unprotected": {
+          "pass": 100600,
+          "rate": 0.959676
+        },
+        "frame.number in window": {
+          "pass": 104827,
+          "rate": 1.0
+        },
+        "ip.addr==192.168.30.1": {
+          "pass": 99904,
+          "rate": 0.953037
+        },
+        "wlan.addr==rogue MAC": {
+          "pass": 104827,
+          "rate": 1.0
+        }
+      },
+      "clause_pass_rates_on_normal_inside_window": {
+        "beacon and frame.len<242": {
+          "pass": 143,
+          "rate": 6.3e-05
+        },
+        "disassoc/deauth/QoS data unprotected": {
+          "pass": 147,
+          "rate": 6.5e-05
+        },
+        "frame.number in window": {
+          "pass": 2253834,
+          "rate": 1.0
+        },
+        "ip.addr==192.168.30.1": {
+          "pass": 28,
+          "rate": 1.2e-05
+        },
+        "wlan.addr==rogue MAC": {
+          "pass": 26343,
+          "rate": 0.011688
+        }
+      },
+      "labelled_attack_by_frame_type": {
+        "40 (QoS data)": 100574,
+        "8 (beacon)": 3568,
+        "44 (QoS null)": 360,
+        "32 (data)": 250,
+        "5 (probe resp)": 26,
+        "0 (assoc req)": 22,
+        "10 (disassoc)": 17,
+        "12 (deauth)": 10
+      },
+      "filter_positive_by_frame_type": {
+        "40 (QoS data)": 100609,
+        "8 (beacon)": 3711,
+        "10 (disassoc)": 21,
+        "12 (deauth)": 10
+      },
+      "false_negatives_by_frame_type": {
+        "44 (QoS null)": 360,
+        "32 (data)": 250,
+        "5 (probe resp)": 26,
+        "0 (assoc req)": 22,
+        "40 (QoS data)": 1
+      },
+      "false_positives_by_frame_type": {
+        "8 (beacon)": 143,
+        "40 (QoS data)": 36,
+        "10 (disassoc)": 4
+      },
+      "evil_twin_subtasks": {
+        "ET-D QoS data": 100574,
+        "ET-B beacon": 3568,
+        "other": 658,
+        "ET-M disassoc": 17,
+        "ET-M deauth": 10
+      }
+    }
+  }
+}

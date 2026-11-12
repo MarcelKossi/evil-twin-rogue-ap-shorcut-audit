@@ -60,3 +60,14 @@ git commit -m "S0: AWID3 inventory and archive hashes"
 git add results/S1_parquet_manifest.json results/S1_filter_agreement.json docs/journal.md
 git commit -m "S1: Parquet conversion and label/filter agreement"
 ```
+
+## 5. Stage S1c - label diagnostics (exploratory)
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/03_label_diagnostics.py` | `results/S1c_label_diagnostics.json` | about 5-10 min |
+
+```cmd
+git add results/S1c_label_diagnostics.json docs/journal.md
+git commit -m "S1c: label diagnostics"
+```

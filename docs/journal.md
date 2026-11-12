@@ -28,3 +28,16 @@ and any deviation from `docs/protocol_v0.3.md`.
 - Fields available for the semantic family include `wlan.seq`, `wlan.fixed.timestamp` (beacon TSF), `wlan.fixed.beacon` (beacon interval), the capability bits, `wlan.fixed.reason_code`, `wlan.rsn.capabilities.mfpc`, `wlan.ssid`, `radiotap.dbm_antsignal` and `wlan_radio.channel`. RSN cipher-suite fields are not exported, which limits rule R2 (protocol Section 9.6).
 - Missing rates: `ip.src` / `ip.dst` 58-66% (non-IP frames), `wlan.sa` / `wlan.da` / `wlan.bssid` about 57-58%.
 - Next: S1.
+
+## 2026-11-13 - S1 Parquet conversion and label/filter agreement (H1a)
+
+- S1a (`scripts/01_to_parquet.py`) ran on commit `e6971b6` while the script itself was not yet committed; it was committed unchanged in `0890d07`. Evil_Twin: 3,778,706 rows, 1.70 GB Parquet, 630 s. Rogue_AP: 1,973,185 rows, 0.78 GB, 361 s. 256 columns (254 + `source_file` + `row_in_file`). Row counts equal S0.
+- S1b (`scripts/02_filter_agreement.py`): the first run loaded the full Evil_Twin table and failed for lack of memory. The script now reads the Parquet files in batches of 200,000 rows (commit `0890d07`); the computation is unchanged.
+- Encoding check: `wlan.fc.type` takes 0/1/2 (management/control/data). With type_subtype = 16 x type + subtype, beacons are 8 and the other codes are consistent with Wireshark (RTS 27, CTS 28, ACK 29, block ack 25, QoS Data 40). The translation of the filters is confirmed.
+- **Rogue_AP: the published filter reproduces the labels exactly.** kappa = 1.000 (TP 1,310, FP 0, FN 0). All 1,310 attack frames are beacons of exactly 263 bytes; the 1,690 normal beacons inside the window are 342-343 bytes. The labelled attack frames span exactly frame.number 1,198,551-1,973,111, the bounds of the filter.
+- **Evil_Twin: near-exact agreement.** 27 rows excluded (no label or no frame number, files 56-57). kappa = 0.9959 (TP 104,168, FP 183, FN 659; filter precision 0.9982, recall 0.9937). The labelled attack frames span exactly 1,420,038-3,778,728. Every labelled attack frame involves the MAC address 0c:9d:92:54:fe:35 (100%) and 95.3% involve the IP 192.168.30.1.
+- Composition of the Evil_Twin label: QoS Data 100,574 (95.9%), beacons 3,568 (3.4%), QoS Null 360, Data 250, probe responses 26, association requests 22, disassociation 17, deauthentication 10. The false negatives of the filter are exactly the frame types it does not list (QoS Null, Data, probe response, association request). The false positives are 143 short beacons, 36 QoS Data and 4 disassociation frames that meet the filter but are labelled Normal.
+- The Rogue_AP capture contains 62,459 deauthentication frames, all labelled Normal.
+- **Gate G0:** kappa >= 0.80 for both attacks, so RQ1 (label provenance) is the headline of the paper, as planned in protocol Section 14.
+- **Deviation 1** (decided after seeing the S1 counts, before any model is trained): sub-task ET-M (deauthentication/disassociation) has only 27 labelled frames and is too small to analyse on its own. It is reported descriptively only. ET-D (post-association data, 95.9%) and ET-B (beacons, 3.4%) are kept. In practice the AWID3 Evil_Twin class is mostly data traffic of victims already associated with the rogue AP, not impersonation frames.
+- Next: S1c label diagnostics (exploratory), then S2.
