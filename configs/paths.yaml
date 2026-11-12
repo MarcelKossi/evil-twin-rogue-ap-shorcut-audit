@@ -1,0 +1,5 @@
+# Data locations, relative to the repository root.
+awid3_csv_zip: data/AWID3_Dataset_CSV.zip
+awid3_pcap_zip: data/AWID3_Dataset.zip
+awid2_dir: data/DATASET/DATASET
+interim_dir: data/interim

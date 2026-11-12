@@ -1,0 +1,16 @@
+# Datasets and derived data (never committed)
+data/
+*.parquet
+*.zip
+*.tar.gz
+*.pcap
+*.pcapng
+
+# Local tooling
+CLAUDE.md
+.claude/
+.vscode/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
