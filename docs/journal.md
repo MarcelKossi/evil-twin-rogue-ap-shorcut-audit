@@ -41,3 +41,14 @@ and any deviation from `docs/protocol_v0.3.md`.
 - **Gate G0:** kappa >= 0.80 for both attacks, so RQ1 (label provenance) is the headline of the paper, as planned in protocol Section 14.
 - **Deviation 1** (decided after seeing the S1 counts, before any model is trained): sub-task ET-M (deauthentication/disassociation) has only 27 labelled frames and is too small to analyse on its own. It is reported descriptively only. ET-D (post-association data, 95.9%) and ET-B (beacons, 3.4%) are kept. In practice the AWID3 Evil_Twin class is mostly data traffic of victims already associated with the rogue AP, not impersonation frames.
 - Next: S1c label diagnostics (exploratory), then S2.
+
+## 2026-11-13 - S1c label diagnostics (exploratory)
+
+- Ran `scripts/03_label_diagnostics.py` on commit `d66fa93` (clean tree). Output: `results/S1c_label_diagnostics.json`. These analyses are not in protocol v0.3 and are reported as exploratory.
+- **Rogue_AP capture.** The 1,310 attack beacons carry SSID `ASUS_5G` and BSSID `0c:9d:92:54:fe:34`, the same SSID and BSSID as the 5,634 beacons labelled Normal. The rogue AP therefore clones the legitimate AP's identity, and the only difference visible in the beacon frames exported here is the length: 263 bytes for every attack beacon, 342-343 bytes for the legitimate beacons (plus 1 beacon of 1,618 bytes). No 263-byte beacon exists outside the filter window, so the labels are recovered by beacon length alone; the frame.number window is redundant for this class.
+- The Rogue_AP capture contains 62,455 unprotected deauthentication frames with source address `0c:9d:92:54:fe:34` inside the filter window, and 1 outside it. All are labelled Normal. Their timing is consistent with forged deauthentication accompanying the rogue AP, but the source address is the cloned one, so their origin cannot be established from the frames alone.
+- **Evil_Twin capture.** The rogue AP uses SSID `ASUS_5G` (the legitimate SSID) and BSSID `0c:9d:92:54:fe:35`, which differs from `...:34` only in the last byte. Its beacons come in two lengths, 241 and 150 bytes (1,784 of each labelled Evil_Twin). Legitimate beacons are 342-343 bytes.
+- A simpler rule than the published filter reproduces the Evil_Twin labels almost as well: frame.number in the window AND frame involving `0c:9d:92:54:fe:35` AND management or data frame gives kappa = 0.9943 (recall 1.000, precision 0.989; 1,174 false positives).
+- 208 rogue beacons are labelled Normal (5.5% of the rogue beacons): 143 beacons of 150 bytes inside the window and 65 beacons of 241 bytes before the window, the first one at frame 1,351,181, about 69,000 frames before the labelled attack period starts. The rogue AP is active before the labelled period.
+- 25,169 control frames involving the rogue AP inside the window (ACK, CTS, block ack) are labelled Normal: the labelling covers management and data frames only.
+- Next: S1d figures for the label structure, then S2 taxonomy.

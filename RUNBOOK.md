@@ -71,3 +71,14 @@ git commit -m "S1: Parquet conversion and label/filter agreement"
 git add results/S1c_label_diagnostics.json docs/journal.md
 git commit -m "S1c: label diagnostics"
 ```
+
+## 6. Stage S1d - figures of the label structure
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/04_figures_labels.py` | `figures/fig1_rogue_ap_capture.png`, `figures/fig2_evil_twin_capture.png`, `results/S1d_figure_data.json` | about 5 min |
+
+```cmd
+git add figures results/S1d_figure_data.json docs/journal.md RESULTS.md
+git commit -m "S1d: label structure figures and preliminary results"
+```
