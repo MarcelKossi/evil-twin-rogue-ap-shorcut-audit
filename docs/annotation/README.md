@@ -12,11 +12,10 @@ The family of each AWID3 field (protocol Section 7.1) was set as follows.
    - Annotator B: Claude Sonnet (Anthropic), run on 2026-11-15
    - Annotator C: Claude Haiku (Anthropic), run on 2026-11-15
 3. Final family = majority vote of the three annotators (every field had a
-   majority of at least two). I reviewed the result and the fields where the
-   annotators disagreed, and approved the taxonomy; I am responsible for it.
-   My decisions are listed in `author_overrides.csv` and applied by the
-   script: a different family than the majority (with the reason), or my own
-   wording of the justification.
+   majority of at least two). I went through the result, mainly the fields
+   where the annotators disagreed, and kept it. Changes I make by hand (a
+   different family, with the reason, or my own wording of a justification)
+   go in `manual_overrides.csv` and are applied by the script.
 4. `scripts/05_taxonomy_agreement.py` computes the majority and the agreement
    statistics (`results/S2_taxonomy_agreement.json`) and writes
    `docs/taxonomy.csv`.

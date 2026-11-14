@@ -1,9 +1,9 @@
 """Stage S2 - final feature taxonomy and inter-annotator agreement.
 
 Reads the three independent annotations in docs/annotation/, sets each
-field's family to the majority vote, applies the author's documented
-decisions in docs/annotation/author_overrides.csv (a different family and/or
-the author's own justification wording), and reports agreement (pairwise Cohen's
+field's family to the majority vote, applies the manual changes listed in
+docs/annotation/manual_overrides.csv (a different family with its reason,
+and/or a reworded justification), and reports agreement (pairwise Cohen's
 kappa, Fleiss' kappa) on all fields, on 802.11/radio fields, and on the fields
 not cited as examples in the guidelines.
 
@@ -87,19 +87,19 @@ def main() -> None:
         notes[f] = "" if n == 3 else "votes " + " ".join(f"{k}:{labels.loc[f, k]}" for k in ANNOTATORS)
 
     contested = {f: notes[f] for f in fields if notes[f]}  # annotator disagreements only
-    overrides_path = ann_dir / "author_overrides.csv"
+    overrides_path = ann_dir / "manual_overrides.csv"
     overrides = {}
     if overrides_path.exists():
         ov = pd.read_csv(overrides_path, dtype=str, keep_default_na=False)
         for _, row in ov.iterrows():
             f, fam = row["field"].strip(), row["family"].strip().upper()
             if f not in majority or fam not in FAMILIES:
-                sys.exit(f"Invalid author decision: {row.to_dict()}")
+                sys.exit(f"Invalid manual override: {row.to_dict()}")
             text = row.get("justification", "").strip()
-            overrides[f] = {"majority": majority[f], "author": fam, "reason": row["reason"],
+            overrides[f] = {"majority": majority[f], "final": fam, "reason": row["reason"],
                             "justification": text or None}
             if fam != majority[f]:
-                notes[f] = (notes[f] + "; " if notes[f] else "") + f"author decision {majority[f]}->{fam}: {row['reason']}"
+                notes[f] = (notes[f] + "; " if notes[f] else "") + f"changed {majority[f]}->{fam}: {row['reason']}"
                 majority[f] = fam
             if text:
                 justification[f] = text
@@ -126,9 +126,9 @@ def main() -> None:
     out = write_result("S2_taxonomy_agreement",
                        {"final_family_counts": {c: counts.get(c, 0) for c in FAMILIES},
                         "agreement": stats, "fields_not_unanimous": contested,
-                        "author_overrides": overrides},
+                        "manual_overrides": overrides},
                        run_metadata("scripts/05_taxonomy_agreement.py", inputs_sha256=inputs))
-    print(f"[S2] Final families: {dict(counts)}; not unanimous: {len(contested)}; author decisions: {len(overrides)}")
+    print(f"[S2] Final families: {dict(counts)}; not unanimous: {len(contested)}; manual overrides: {len(overrides)}")
     for name, s in stats.items():
         print(f"  {name:<24} n={s['n_fields']:>3} Fleiss={s['fleiss_kappa']} unanimous={s['percent_unanimous']}% "
               f"pairs={s['cohen_kappa']}")

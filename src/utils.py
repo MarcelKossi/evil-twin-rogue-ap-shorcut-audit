@@ -31,10 +31,10 @@ def git_commit() -> str | None:
         commit = subprocess.run(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True
         ).stdout.strip()
-        # Only tracked code and docs count; result files and the journal change on every run.
+        # Only tracked code and docs count; results, the journal and the generated taxonomy change on runs.
         dirty = subprocess.run(
             ["git", "status", "--porcelain", "--untracked-files=no", "--", ".",
-             ":(exclude)results", ":(exclude)docs/journal.md"],
+             ":(exclude)results", ":(exclude)docs/journal.md", ":(exclude)docs/taxonomy.csv"],
             cwd=ROOT, capture_output=True, text=True, check=True,
         ).stdout.strip()
         return commit + ("-dirty" if dirty else "")
@@ -43,11 +43,11 @@ def git_commit() -> str | None:
 
 
 def uncommitted_files() -> list[str] | None:
-    """Tracked files (outside results/ and the journal) that differ from the last commit."""
+    """Tracked files (outside results/, the journal and the taxonomy) that differ from the last commit."""
     try:
         out = subprocess.run(
             ["git", "status", "--porcelain", "--untracked-files=no", "--", ".",
-             ":(exclude)results", ":(exclude)docs/journal.md"],
+             ":(exclude)results", ":(exclude)docs/journal.md", ":(exclude)docs/taxonomy.csv"],
             cwd=ROOT, capture_output=True, text=True, check=True,
         ).stdout
         return [line[3:] for line in out.splitlines() if line.strip()]

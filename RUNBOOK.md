@@ -82,3 +82,17 @@ git commit -m "S1c: label diagnostics"
 git add figures results/S1d_figure_data.json docs/journal.md RESULTS.md
 git commit -m "S1d: label structure figures and preliminary results"
 ```
+
+## 7. Stage S2 - feature taxonomy
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/05_taxonomy_agreement.py` | `docs/taxonomy.csv`, `results/S2_taxonomy_agreement.json` | < 1 min |
+
+Inputs: the three annotations in `docs/annotation/` and the manual changes in
+`docs/annotation/manual_overrides.csv`.
+
+```cmd
+git add docs scripts src results
+git commit -m "S2: feature taxonomy"
+```

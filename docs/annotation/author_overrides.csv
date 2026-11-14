@@ -1,3 +1,0 @@
-field,family,reason,justification
-ip.src,A,author wording,source IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)
-ip.dst,A,author wording,destination IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)

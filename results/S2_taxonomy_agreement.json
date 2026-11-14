@@ -1,11 +1,15 @@
 {
   "meta": {
     "script": "scripts/05_taxonomy_agreement.py",
-    "git_commit": "4fc94d28bfb7fb6cec88723406fe19704d7a8019-dirty",
+    "git_commit": "b18781907608268f41748437cb7fa70791dfafd3-dirty",
     "uncommitted_files": [
-      "docs/taxonomy.csv"
+      "RUNBOOK.md",
+      "docs/annotation/README.md",
+      "docs/annotation/author_overrides.csv -> docs/annotation/manual_overrides.csv",
+      "scripts/05_taxonomy_agreement.py",
+      "src/utils.py"
     ],
-    "timestamp_utc": "2026-11-14T21:26:15+00:00",
+    "timestamp_utc": "2026-11-14T21:35:23+00:00",
     "python": "3.11.5",
     "platform": "Windows-10-10.0.26100-SP0",
     "inputs_sha256": {
@@ -91,17 +95,17 @@
     "ssh.packet_length_encrypted": "votes A:A B:U C:U",
     "ssh.protocol": "votes A:A B:U C:A"
   },
-  "author_overrides": {
+  "manual_overrides": {
     "ip.src": {
       "majority": "A",
-      "author": "A",
-      "reason": "author wording",
+      "final": "A",
+      "reason": "reworded",
       "justification": "source IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)"
     },
     "ip.dst": {
       "majority": "A",
-      "author": "A",
-      "reason": "author wording",
+      "final": "A",
+      "reason": "reworded",
       "justification": "destination IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)"
     }
   }
