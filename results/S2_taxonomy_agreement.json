@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "script": "scripts/05_taxonomy_agreement.py",
+    "git_commit": "4fc94d28bfb7fb6cec88723406fe19704d7a8019-dirty",
+    "uncommitted_files": [
+      "docs/taxonomy.csv"
+    ],
+    "timestamp_utc": "2026-11-14T21:26:15+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "inputs_sha256": {
+      "annotator_A.csv": "5f3220bd8a8428aa3f6534072a66e8f7571df43aaf8538731c27dff28e030fa9",
+      "annotator_B.csv": "70d1a1b8d392a712f78c70db3e7402b036cd947c18fa2410511a446bc868d934",
+      "annotator_C.csv": "039d80d34232229b8249ff04d8f1abe28f6b19e2cb44eedf1e9b026a7d3b0930"
+    }
+  },
+  "final_family_counts": {
+    "S": 11,
+    "A": 112,
+    "C": 8,
+    "U": 122
+  },
+  "agreement": {
+    "all_fields": {
+      "n_fields": 253,
+      "fleiss_kappa": 0.876,
+      "cohen_kappa": {
+        "A-B": 0.924,
+        "A-C": 0.868,
+        "B-C": 0.836
+      },
+      "percent_unanimous": 89.3
+    },
+    "not_named_in_guidelines": {
+      "n_fields": 217,
+      "fleiss_kappa": 0.881,
+      "cohen_kappa": {
+        "A-B": 0.928,
+        "A-C": 0.867,
+        "B-C": 0.849
+      },
+      "percent_unanimous": 90.8
+    },
+    "link_layer": {
+      "n_fields": 76,
+      "fleiss_kappa": 0.813,
+      "cohen_kappa": {
+        "A-B": 0.902,
+        "A-C": 0.796,
+        "B-C": 0.74
+      },
+      "percent_unanimous": 81.6
+    },
+    "link_layer_not_named": {
+      "n_fields": 40,
+      "fleiss_kappa": 0.802,
+      "cohen_kappa": {
+        "A-B": 0.914,
+        "A-C": 0.748,
+        "B-C": 0.747
+      },
+      "percent_unanimous": 82.5
+    }
+  },
+  "fields_not_unanimous": {
+    "radiotap.channel.freq": "votes A:A B:S C:A",
+    "radiotap.datarate": "votes A:U B:U C:A",
+    "radiotap.dbm_antsignal": "votes A:C B:C C:A",
+    "wlan.fc.pwrmgt": "votes A:U B:U C:S",
+    "wlan.tag": "votes A:U B:C C:U",
+    "wlan_radio.channel": "votes A:A B:S C:A",
+    "wlan_radio.data_rate": "votes A:U B:U C:A",
+    "wlan_radio.frequency": "votes A:A B:S C:A",
+    "wlan_radio.signal_dbm": "votes A:C B:C C:A",
+    "wlan_radio.phy": "votes A:U B:A C:A",
+    "wlan_rsna_eapol.keydes.data_len": "votes A:U B:U C:C",
+    "wlan_rsna_eapol.keydes.key_info.key_mic": "votes A:S B:S C:A",
+    "eapol.keydes.key_len": "votes A:U B:U C:C",
+    "eapol.len": "votes A:U B:U C:C",
+    "tcp.ack_raw": "votes A:A B:A C:U",
+    "tcp.checksum": "votes A:A B:A C:U",
+    "tcp.dstport": "votes A:A B:U C:A",
+    "tcp.seq_raw": "votes A:A B:A C:U",
+    "udp.dstport": "votes A:A B:U C:A",
+    "dhcp.option.broadcast_address": "votes A:A B:A C:U",
+    "dns.retransmit_request": "votes A:U B:U C:A",
+    "dns.retransmit_response": "votes A:U B:U C:A",
+    "http.response.line": "votes A:A B:U C:U",
+    "http.server": "votes A:A B:A C:U",
+    "json.key": "votes A:A B:U C:A",
+    "ssh.packet_length_encrypted": "votes A:A B:U C:U",
+    "ssh.protocol": "votes A:A B:U C:A"
+  },
+  "author_overrides": {
+    "ip.src": {
+      "majority": "A",
+      "author": "A",
+      "reason": "author wording",
+      "justification": "source IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)"
+    },
+    "ip.dst": {
+      "majority": "A",
+      "author": "A",
+      "reason": "author wording",
+      "justification": "destination IP address value; identifies a lab host or subnet (e.g. the rogue AP's DHCP subnet)"
+    }
+  }
+}

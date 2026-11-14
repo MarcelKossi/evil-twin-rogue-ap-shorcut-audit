@@ -1,0 +1,254 @@
+field,family,justification,confidence
+frame.encap_type,A,"Wrapper naming the capture encapsulation (radiotap or 802.11) chosen by the capture tool, not by the transmitter",high
+frame.len,C,"Length of the captured frame follows the management body the attacker builds, so the guideline beacon-length example applies; it also includes capture-added radiotap bytes",medium
+frame.number,A,"Position of the frame in the capture file depends on the recording only",high
+frame.time,A,"Capture-host wall-clock time of reception is a recording artefact",high
+frame.time_delta,A,"Interval between captured frames is a timing artefact of the capture",high
+frame.time_delta_displayed,A,"Display-dependent delta computed by Wireshark from capture timestamps",high
+frame.time_epoch,A,"Capture-host epoch timestamp is a recording artefact",high
+frame.time_relative,A,"Offset from the first captured frame depends on when the capture started",high
+radiotap.channel.flags.cck,A,"Radiotap flag describing the PHY modulation decoded by the capture hardware is added by the receiver",medium
+radiotap.channel.flags.ofdm,A,"Radiotap flag describing the PHY modulation decoded by the capture hardware is added by the receiver",medium
+radiotap.channel.freq,A,"Centre frequency reported by the capture radio is receiver-added (the 802.11 channel itself is carried by the DS Parameter Set element)",medium
+radiotap.datarate,A,"Receive data rate measured by the capture hardware is receiver-added metadata under rule 3",medium
+radiotap.dbm_antsignal,A,"Antenna signal measured by the capture hardware is receiver-added under rule 3, although the guideline example lists signal strength as C",low
+radiotap.length,A,"Length of the radiotap header is added by the capture tool",high
+radiotap.mactime,A,"MAC timestamp latched by the capture hardware is a recording clock",high
+radiotap.present.tsft,A,"Bitmask stating which radiotap fields the capture tool supplied is a property of the capture setup",high
+radiotap.rxflags,A,"Receive flags such as FCS status are set by the capture hardware",high
+radiotap.timestamp.ts,A,"Timestamp field of the radiotap header is a recording clock",high
+radiotap.vendor_oui,A,"OUI of the capture hardware vendor identifies the lab device",high
+wlan.duration,U,"Duration/ID value set by the transmitter for NAV is a raw protocol value, usually 0 in beacons and unrelated to impersonation",medium
+wlan.analysis.kck,A,"EAPOL key confirmation key derived by the analyser is key material",high
+wlan.analysis.kek,A,"EAPOL key encryption key derived by the analyser is key material",high
+wlan.bssid,A,"Raw BSSID identifier of the AP is always A under rule 1, even when it is the attacker's address",high
+wlan.country_info.fnm,C,"First channel number in a Country element triplet is a value the rogue AP can copy from the legitimate AP",medium
+wlan.country_info.code,C,"Country code in the Country element is listed by the guidelines as attacker-controllable and can be copied by a rogue AP",high
+wlan.da,A,"Raw destination MAC address is a raw identifier",high
+wlan.fc.ds,S,"To DS and From DS bits define the 802.11 addressing role of the frame, which bears on AP-side impersonation and is not free to set without breaking addressing semantics",high
+wlan.fc.frag,U,"More Fragments bit is a frame control flag with no link to impersonation, and the attacker can set it freely",medium
+wlan.fc.order,U,"Order bit signals strictly ordered service with no link to impersonation, and the attacker can set it freely",medium
+wlan.fc.moredata,U,"More Data bit is a power-save buffering hint with weak link to impersonation that the attacker can set freely",low
+wlan.fc.protected,S,"Protected bit signals whether the frame is protected under 802.11 security, which an open rogue AP cannot match against a protected network",high
+wlan.fc.pwrmgt,S,"Power Management bit reports a station's power-save state, and an AP must clear it, so a rogue AP that sets it breaks the protocol",low
+wlan.fc.type,S,"Frame type is the core 802.11 classification (management, control, data) used to recognise beacons and probe responses",high
+wlan.fc.retry,U,"Retry bit is a link-layer retransmission flag that depends on channel loss rather than impersonation",high
+wlan.fc.subtype,S,"Frame subtype such as beacon, probe response or deauthentication is the protocol semantic that separates impersonation traffic from normal traffic",high
+wlan.fcs.bad_checksum,A,"Checksum validity is computed by the receiver or capture software from the frame bytes, so it is receiver-added",medium
+wlan.fixed.beacon,C,"Beacon Interval is a fixed beacon field that a rogue AP sets to copy the legitimate AP",high
+wlan.fixed.capabilities.ess,S,"ESS bit in Capability Information marks the AP role, a protocol semantic a rogue AP must set correctly to be accepted",high
+wlan.fixed.capabilities.ibss,S,"IBSS bit in Capability Information marks the network mode, a protocol semantic tied to the AP role",medium
+wlan.fixed.reason_code,S,"Reason code in deauthentication or disassociation frames is a protocol semantic used by deauth-based Evil Twin attacks",high
+wlan.fixed.timestamp,U,"Raw TSF timestamp is a raw clock whose per-transmitter consistency, not its value, is the derived feature",medium
+wlan.ra,A,"Raw receiver MAC address is a raw identifier",high
+wlan_radio.duration,A,"Airtime of the frame computed by the capture software from radio timing is a recording artefact",high
+wlan.rsn.ie.gtk.key,A,"Encrypted GTK key data in the RSN element is key material",high
+wlan.rsn.ie.igtk.key,A,"Encrypted IGTK key data in the RSN element is key material",high
+wlan.rsn.ie.pmkid,A,"PMKID is a session-specific key-derived identifier, so it is a raw identifier tied to one session",medium
+wlan.sa,A,"Raw source MAC address is a raw identifier",high
+wlan.seq,U,"Raw sequence number is a counter, and only its per-transmitter consistency over time is a derived S feature",high
+wlan.ssid,C,"SSID is the network name a rogue AP copies from the legitimate AP, which the guidelines list as attacker-controllable",high
+wlan.ta,A,"Raw transmitter MAC address is a raw identifier",high
+wlan.tag,U,"Container name for information elements, so its status depends on which element is present rather than on a value of its own",low
+wlan.tag.length,C,"Length of an information element value is set by the attacker to match the legitimate AP's element",medium
+wlan_radio.channel,A,"Channel reported by the capture radio is a receiver-added value",medium
+wlan_radio.data_rate,A,"Rate reported by the capture radio is receiver-added metadata",medium
+wlan_radio.end_tsf,A,"End TSF time of reception set by the capture hardware is a recording clock",high
+wlan_radio.frequency,A,"Frequency reported by the capture radio is a receiver-added value",medium
+wlan_radio.signal_dbm,A,"Signal written by the capture radio is receiver-added under rule 3, although the guideline example lists signal strength as C",low
+wlan_radio.start_tsf,A,"Start TSF time of reception set by the capture hardware is a recording clock",high
+wlan_radio.phy,A,"PHY type of reception recorded by the capture radio is a receiver-added value",medium
+wlan_radio.timestamp,A,"Reception timestamp set by the capture software is a recording clock",high
+wlan.rsn.capabilities.mfpc,S,"Management Frame Protection Capable bit is an RSN capability that determines whether deauthentication forgery can work against the network",high
+wlan_rsna_eapol.keydes.msgnr,S,"EAPOL-Key message number is the 4-way handshake step, a protocol semantic whose order a rogue AP must follow",low
+wlan_rsna_eapol.keydes.data,A,"Key data field carries encrypted handshake payload, which counts as payload",high
+wlan_rsna_eapol.keydes.data_len,C,"Length of the key data depends on which elements the AP includes, which an attacker can set",low
+wlan_rsna_eapol.keydes.key_info.key_mic,A,"MIC is a cryptographic value computed from keys and nonces, so it is key material",high
+wlan_rsna_eapol.keydes.nonce,A,"Handshake nonce is a session nonce, which the guidelines place in A",high
+eapol.keydes.key_len,C,"Key Length field states the cipher key size, which a rogue AP sets to match the legitimate network cipher",medium
+eapol.keydes.replay_counter,U,"Replay counter is a raw counter whose per-transmitter consistency, not its value, carries the derived signal",medium
+eapol.len,C,"EAPOL body length follows message content the rogue AP builds, so it behaves like the frame-length case",low
+eapol.type,S,"EAPOL packet type selects the key frame class of the handshake, a protocol semantic a rogue AP must use correctly",low
+llc,U,"LLC/SNAP wrapper identifies the upper-layer protocol and has no direct link to impersonation",medium
+arp,U,"Container for ARP, an upper-layer protocol with no direct link to impersonation under rule 4",medium
+arp.hw.type,U,"ARP hardware type (Ethernet) is an upper-layer constant",high
+arp.proto.type,U,"Protocol type of the ARP payload is an upper-layer constant",high
+arp.hw.size,U,"Hardware address length in ARP is an upper-layer constant",high
+arp.proto.size,U,"Protocol address length in ARP is an upper-layer constant",high
+arp.opcode,U,"ARP opcode is an upper-layer message type, which rule 4 keeps as U even though ARP spoofing is a later effect",medium
+arp.src.hw_mac,A,"Raw MAC address identifier in ARP",high
+arp.src.proto_ipv4,A,"Raw IP address identifier in ARP",high
+arp.dst.hw_mac,A,"Raw MAC address identifier in ARP",high
+arp.dst.proto_ipv4,A,"Raw IP address identifier in ARP",high
+ip.dst,A,"Raw IP destination address is a raw identifier",high
+ip.proto,U,"Protocol number of the upper-layer payload is not an identifier, so rule 4 gives U",medium
+ip.src,A,"Raw IP source address is a raw identifier",high
+ip.ttl,U,"TTL is an upper-layer value set by the sending stack and is not an identifier under rule 4",medium
+ip.version,U,"IP version is an upper-layer constant",high
+data.data,A,"Raw data payload bytes count as payload",high
+data.len,U,"Length of the upper-layer data is neither an identifier nor a payload, so rule 4 gives U",medium
+icmpv6.mldr.nb_mcast_records,U,"Number of multicast records in an MLD report is an upper-layer count",medium
+icmpv6.ni.nonce,A,"ICMPv6 Node Information nonce is a random nonce",high
+tcp.ack,U,"Relative acknowledgment number is a derived upper-layer counter",medium
+tcp.ack_raw,U,"Raw acknowledgment number is a raw counter under rule 2",medium
+tcp.analysis,U,"Container for Wireshark TCP analysis results, which are upper-layer derived flags",medium
+tcp.analysis.flags,U,"TCP analysis flags summarise upper-layer state and have no link to impersonation",medium
+tcp.analysis.retransmission,U,"Retransmission flag reflects upper-layer loss rather than a field an attacker sets to impersonate",medium
+tcp.analysis.reused_ports,U,"Port reuse flag is an upper-layer analysis result with weak link to impersonation",low
+tcp.analysis.rto_frame,A,"Frame reference to the original transmission, and rule 4 places frame references in A",high
+tcp.checksum,U,"TCP checksum is an upper-layer value derived from the payload, and is neither an identifier nor a payload itself",medium
+tcp.checksum.status,A,"Checksum validation status is computed by the analyser, so the capture software adds it",medium
+tcp.flags.syn,U,"SYN flag is an upper-layer control bit",high
+tcp.dstport,A,"Destination port identifies the service endpoint, which rule 4 treats as an identifier",medium
+tcp.flags.ack,U,"ACK flag is an upper-layer control bit",high
+tcp.flags.fin,U,"FIN flag is an upper-layer control bit",high
+tcp.flags.push,U,"PSH flag is an upper-layer control bit",high
+tcp.flags.reset,U,"RST flag is an upper-layer control bit",high
+tcp.option_len,U,"TCP options length is an upper-layer header length",high
+tcp.payload,A,"TCP payload bytes count as payload",high
+tcp.seq,U,"Relative sequence number is a derived upper-layer counter",medium
+tcp.seq_raw,U,"Raw sequence number is a raw counter under rule 2",medium
+tcp.srcport,A,"Source port identifies the service endpoint, an identifier under rule 4",medium
+tcp.time_delta,A,"Time delta between segments is a time reference, which rule 4 places in A",high
+tcp.time_relative,A,"Relative time reference, which rule 4 places in A",high
+udp.dstport,A,"Destination port identifies the service endpoint, an identifier under rule 4",medium
+udp.srcport,A,"Source port identifies the service endpoint, an identifier under rule 4",medium
+udp.length,U,"UDP length is an upper-layer header length",high
+udp.payload,A,"UDP payload bytes count as payload",high
+udp.time_relative,A,"Relative time reference, which rule 4 places in A",high
+udp.time_delta,A,"Time delta reference, which rule 4 places in A",high
+nbns,U,"Container for NetBIOS Name Service, an upper-layer protocol",medium
+nbss.continuation_data,A,"NetBIOS session continuation bytes count as payload",high
+nbss.type,U,"NetBIOS session message type is an upper-layer control value",high
+nbss.length,U,"NetBIOS session length is an upper-layer header field",high
+ldap,U,"Container for LDAP, an upper-layer protocol",medium
+smb.access.generic_execute,U,"SMB access-right bit is an upper-layer permission flag",high
+smb.access.generic_read,U,"SMB access-right bit is an upper-layer permission flag",high
+smb.access.generic_write,U,"SMB access-right bit is an upper-layer permission flag",high
+smb.flags.notify,U,"SMB flag is an upper-layer control bit",high
+smb.flags.response,U,"SMB response flag is an upper-layer direction bit",high
+smb.flags2.nt_error,U,"SMB error-code flag is an upper-layer status bit",high
+smb.flags2.sec_sig,U,"SMB security-signature flag is an upper-layer option bit",high
+smb.mid,A,"Multiplex ID identifies a request and response exchange, which rule 4 places among identifiers",medium
+smb.nt_status,U,"NT status is an upper-layer result code",high
+smb.server_component,U,"SMB server component flag is an upper-layer protocol constant",high
+smb.pid.high,A,"High bits of the process ID identify the client process, an identifier",medium
+smb.tid,A,"Tree ID identifies the session share connection, an identifier",high
+smb2.acct,A,"Account name identifies a host user, an identifier",high
+smb2.auth_frame,A,"Frame reference to the authentication exchange, which rule 4 places in A",high
+smb2.buffer_code,U,"SMB2 structure size code is an upper-layer constant",high
+smb2.cmd,U,"SMB2 command code is an upper-layer message type",high
+smb2.data_offset,U,"Offset within an SMB2 message is an upper-layer structural value",high
+smb2.domain,A,"Domain name identifies a host network, an identifier",high
+smb2.fid,A,"File ID identifies an open file handle, an identifier",high
+smb2.filename,A,"File name identifies a host resource, an identifier",high
+smb2.header_len,U,"SMB2 header length is an upper-layer constant",high
+smb2.host,A,"Host name identifies a machine, an identifier",high
+smb2.msg_id,A,"Message ID identifies a request and response within a session, an identifier that is borderline with the raw counter in rule 2",low
+smb2.pid,A,"Process ID identifies the client process, an identifier",high
+smb2.previous_sesid,A,"Session ID identifies an SMB session, an identifier",high
+smb2.protocol_id,U,"Protocol magic value is an upper-layer constant",high
+smb2.sesid,A,"Session ID identifies an SMB session, an identifier",high
+smb2.session_flags,U,"Session flags are upper-layer status bits",high
+smb2.tid,A,"Tree ID identifies a share connection, an identifier",high
+smb2.write_length,U,"Length of an SMB write is an upper-layer size value",medium
+dhcp,U,"Container for DHCP, an upper-layer protocol",medium
+dhcp.client_id.duid_ll_hw_type,U,"Hardware type inside a DUID is an upper-layer enumeration that forms part of a client identifier",low
+dhcp.cookie,U,"DHCP magic cookie is an upper-layer constant",high
+dhcp.hw.addr_padding,U,"Padding in the DHCP hardware address field is an upper-layer structural value with no content",low
+dhcp.hw.mac_addr,A,"Client hardware MAC address is a raw identifier",high
+dhcp.id,A,"DHCP transaction ID identifies an exchange, an identifier under rule 1",medium
+dhcp.ip.client,A,"Client IP address is a raw identifier",high
+dhcp.ip.relay,A,"Relay agent IP address is a raw identifier",high
+dhcp.ip.server,A,"Server IP address identifies a DHCP server host, a raw identifier",high
+dhcp.option.broadcast_address,U,"Broadcast address option is a configuration value set by the DHCP server, not an identifier, so rule 4 gives U",medium
+dhcp.option.dhcp_server_id,A,"DHCP server identifier is a raw server address, an identifier",high
+dhcp.option.router,A,"Default-router address is a raw IP address identifier of a host",medium
+dhcp.option.vendor.bsdp.message_type,U,"BSDP message type is an upper-layer control value",high
+mdns,U,"Container for mDNS, an upper-layer protocol",medium
+dns,U,"Container for DNS, an upper-layer protocol",medium
+dns.a,A,"IPv4 address in a DNS answer is a raw address identifier",high
+dns.count.add_rr,U,"Count of additional records is an upper-layer structural count",high
+dns.count.answers,U,"Count of answers is an upper-layer structural count",high
+dns.count.auth_rr,U,"Count of authority records is an upper-layer structural count",high
+dns.count.labels,U,"Count of name labels is an upper-layer structural count",high
+dns.count.queries,U,"Count of queries is an upper-layer structural count",high
+dns.flags.authoritative,U,"Authoritative answer flag is an upper-layer flag with no direct link to impersonation",medium
+dns.flags.checkdisable,U,"Checking-disabled flag is an upper-layer DNSSEC flag",high
+dns.flags.opcode,U,"Opcode is an upper-layer operation type",high
+dns.flags.response,U,"Response flag is an upper-layer direction bit",high
+dns.id,A,"Transaction ID identifies a DNS exchange, a raw identifier",medium
+dns.ptr.domain_name,A,"Domain name in a PTR record identifies a host, an identifier",high
+dns.qry.name,A,"Queried name identifies a host or service, an identifier",high
+dns.qry.name.len,U,"Length of the queried name is an upper-layer size value derived from an identifier",low
+dns.resp.len,U,"Length of the response is an upper-layer size value",high
+dns.resp.name,A,"Response name identifies a host or service, an identifier",high
+dns.resp.ttl,U,"TTL of a DNS record is an upper-layer value set by the name server, not an identifier",low
+dns.resp.len.1,U,"Length of a response record is an upper-layer size value",high
+dns.retransmit_request,A,"Frame reference to the original request, which rule 4 places in A",high
+dns.retransmit_response,A,"Frame reference to the original response, which rule 4 places in A",high
+dns.time,A,"Time delta reference, which rule 4 places in A",high
+ssdp,U,"Container for SSDP, an upper-layer protocol",medium
+http.connection,U,"Connection header value is an upper-layer option",high
+http.content_length,U,"Content length is an upper-layer size value",high
+http.content_type,U,"Content type is an upper-layer media type",high
+http.date,A,"Date header carries a time reference, which rule 4 places in A",low
+http.file_data,A,"HTTP file data is payload",high
+http.host,A,"Host header identifies a server, an identifier",high
+http.last_modified,A,"Last-Modified header carries a time reference, which rule 4 places in A",low
+http.location,A,"Location header is a URI reference that identifies a resource, an identifier",medium
+http.next_request_in,A,"Frame reference to the next request, which rule 4 places in A",high
+http.next_response_in,A,"Frame reference to the next response, which rule 4 places in A",high
+http.request.full_uri,A,"Full URI identifies a resource, an identifier",high
+http.request.line,A,"Request line carries the URI payload that rule 4 places in A",medium
+http.request.method,U,"HTTP method is an upper-layer verb with no link to impersonation",high
+http.request.uri.path,A,"URI path identifies a resource, an identifier",low
+http.request.uri.query,A,"Query string is payload carried by the request",high
+http.request.uri.query.parameter,A,"Query parameter is payload carried by the request",high
+http.request.version,U,"HTTP version is an upper-layer protocol version",high
+http.request_in,A,"Frame reference to the request, which rule 4 places in A",high
+http.response.code,U,"Status code is an upper-layer result value",high
+http.response.code.desc,U,"Textual description of the status code is an upper-layer result value",high
+http.response.line,U,"Status line is an upper-layer result value that does not identify a host",low
+http.response.phrase,U,"Reason phrase is an upper-layer text value",high
+http.response.version,U,"HTTP version is an upper-layer protocol version",high
+http.response_for.uri,A,"URI of the matched request identifies a resource and carries a frame reference",medium
+http.response_in,A,"Frame reference to the response, which rule 4 places in A",high
+http.referer,A,"Referer header identifies a source URL, an identifier",medium
+http.time,A,"Time delta reference, which rule 4 places in A",high
+http.server,U,"Server header names the server software, a value the server sets that rule 4 keeps as U",low
+json.value.string,A,"JSON string value is payload",high
+json.key,A,"JSON key is payload content",low
+ssh.cookie,A,"SSH KEXINIT cookie is a random nonce",high
+ssh.compression_algorithms_client_to_server_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.compression_algorithms_server_to_client_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.direction,U,"Direction of the SSH message is an upper-layer flag",high
+ssh.dh_gex.max,U,"Maximum group size is an upper-layer protocol parameter",high
+ssh.dh_gex.min,U,"Minimum group size is an upper-layer protocol parameter",high
+ssh.dh_gex.nbits,U,"Requested group bit size is an upper-layer protocol parameter",high
+ssh.encryption_algorithms_client_to_server_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.encryption_algorithms_server_to_client_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.host_key.length,U,"Host key length is an upper-layer size value, while the key itself would be an identifier",low
+ssh.host_key.type_length,U,"Host key type string length is an upper-layer size value",high
+ssh.kex_algorithms_length,U,"Length of the key-exchange list is an upper-layer size value",high
+ssh.mac_algorithms_client_to_server_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.mac_algorithms_server_to_client_length,U,"Length of an algorithm list is an upper-layer size value",high
+ssh.message_code,U,"SSH message code is an upper-layer message type",high
+ssh.mpint_length,U,"Length of a multi-precision integer is an upper-layer size value",high
+ssh.packet_length,U,"SSH packet length is an upper-layer size value",high
+ssh.packet_length_encrypted,U,"Encrypted packet length is an upper-layer size value",high
+ssh.padding_length,U,"Padding length is an upper-layer structural value",high
+ssh.padding_string,A,"Random padding bytes are payload-like content",low
+ssh.protocol,A,"Protocol banner names the server software and version, a host identifier",low
+ssh.server_host_key_algorithms_length,U,"Length of the host-key algorithm list is an upper-layer size value",high
+tls.alert_message.desc,U,"Alert description is an upper-layer status code",high
+tls.alert_message.level,U,"Alert level is an upper-layer status code",high
+tls.app_data_proto,U,"Negotiated application protocol name is an upper-layer label, not an identifier of a host",low
+tls.compress_certificate.compressed_certificate_message.length,U,"Length of a compressed certificate message is an upper-layer size value",high
+tls.connection_id,A,"DTLS connection ID identifies a session, an identifier",high
+tls.handshake.extension.type,U,"Extension type code is an upper-layer protocol enumeration",high
+tls.handshake.extensions_key_share_group,U,"Key-share group is an upper-layer parameter, not key material itself",low
+tls.handshake.session_ticket_length,U,"Session ticket length is an upper-layer size value",high
+tls.handshake.version,U,"Negotiated TLS version is an upper-layer protocol version",medium
+tls.record.content_type,U,"Record content type is an upper-layer enumeration",high
+tls.record.version,U,"Record-layer TLS version is an upper-layer constant",high

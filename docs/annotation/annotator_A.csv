@@ -1,0 +1,254 @@
+field,family,justification,confidence
+frame.encap_type,A,"Link-layer encapsulation type recorded by the capture software (e.g. 802.11 with radiotap), not a property of the transmitted frame.",high
+frame.len,C,"Total frame length reflects the frame body (SSID, elements) that an attacker can copy from the legitimate AP, plus a capture-dependent radiotap header.",medium
+frame.number,A,Ordinal position of the frame in the capture file.,high
+frame.time,A,Absolute capture timestamp assigned by the capturing host clock.,high
+frame.time_delta,A,"Time since the previous captured frame, which depends on the capture clock and on what else was recorded.",high
+frame.time_delta_displayed,A,"Time since the previous displayed frame, which depends on capture timing and on the display filter applied.",high
+frame.time_epoch,A,Capture timestamp in epoch seconds from the capturing host clock.,high
+frame.time_relative,A,"Time since the first frame of the capture file, i.e. a position in the recording.",high
+radiotap.channel.flags.cck,A,"Radiotap channel flag describing the channel configuration reported by the capture card driver, added by the receiver.",medium
+radiotap.channel.flags.ofdm,A,"Radiotap channel flag describing the channel configuration reported by the capture card driver, added by the receiver.",medium
+radiotap.channel.freq,A,"Frequency the capture card was tuned to when receiving, written into the radiotap header by the receiver; the AP-announced operating channel would be the semantic counterpart.",low
+radiotap.datarate,U,PHY data rate of the received frame as reported by the receiver; rates depend on rate control and link conditions and are not tied to impersonation.,medium
+radiotap.dbm_antsignal,C,Received signal strength carries real signal (attacker position and power) but a competent attacker can tune transmit power and placement to match the legitimate AP.,medium
+radiotap.length,A,"Length of the radiotap header, which depends on the capture driver and the fields it chose to include.",high
+radiotap.mactime,A,"TSF value of the capturing card at frame reception (receiver clock), not the transmitter's clock.",high
+radiotap.present.tsft,A,Presence bit indicating that the capture driver included a TSFT field in the radiotap header.,high
+radiotap.rxflags,A,Receive flags (e.g. bad PLCP) set by the capture card on reception.,high
+radiotap.timestamp.ts,A,Radiotap timestamp field produced by the capture hardware clock.,high
+radiotap.vendor_oui,A,"OUI of a vendor-specific radiotap namespace, identifying the capture driver/chipset.",high
+wlan.duration,U,Duration/ID (NAV) value computed by the transmitter from rate and frame exchange; it relates to medium reservation rather than AP impersonation.,medium
+wlan.analysis.kck,A,Key Confirmation Key derived by Wireshark from a supplied passphrase; a session-specific key.,high
+wlan.analysis.kek,A,Key Encryption Key derived by Wireshark for this session; a session-specific key.,high
+wlan.bssid,A,"Raw BSSID value, an identifier of a specific (lab or attacker) device.",high
+wlan.country_info.fnm,C,"First channel number in the Country element, which the attacker can copy from the legitimate AP's beacons.",high
+wlan.country_info.code,C,"Country string in the Country element, which a competent attacker sets to the legitimate AP's value.",high
+wlan.da,A,"Raw destination MAC address, an identifier of a specific device.",high
+wlan.fc.ds,S,"To DS / From DS bits define the frame's distribution-system direction (AP-to-STA vs STA-to-AP), which the standard fixes for an AP role.",high
+wlan.fc.frag,U,"More Fragments bit reflects MSDU fragmentation, which has no direct relation to AP impersonation.",medium
+wlan.fc.order,U,Order/+HTC bit depends on QoS/HT control usage by the device rather than on AP impersonation.,medium
+wlan.fc.moredata,U,"More Data bit signals buffered frames for power-saving stations; it depends on client power-save behaviour, not directly on impersonation.",medium
+wlan.fc.protected,S,"Protected Frame bit indicates whether the frame body is encrypted, which a rogue AP without the key or an open twin cannot reproduce correctly.",high
+wlan.fc.pwrmgt,U,"Power Management bit reflects a station's power-save state, driven by client behaviour rather than AP impersonation.",medium
+wlan.fc.type,S,"Frame type (management/control/data) defines the frame's role in the protocol, e.g. management frames used by rogue APs and deauthentication.",high
+wlan.fc.retry,U,Retry bit reflects retransmissions caused by link conditions (listed as a typical U field).,high
+wlan.fc.subtype,S,"Frame subtype (beacon, probe response, deauthentication, association, etc.) carries protocol meaning central to Evil Twin attacks.",high
+wlan.fcs.bad_checksum,A,FCS validity as computed on the received bytes depends on reception quality at the capture card and on driver FCS handling.,medium
+wlan.fixed.beacon,C,Beacon interval is advertised freely by the AP and an attacker copies the legitimate value.,high
+wlan.fixed.capabilities.ess,S,ESS capability bit declares an infrastructure BSS; an AP impersonator must set it to be joined as an AP.,medium
+wlan.fixed.capabilities.ibss,S,IBSS capability bit declares an ad hoc BSS and must be clear for an AP being impersonated.,medium
+wlan.fixed.reason_code,S,"Reason code in deauthentication/disassociation frames states why a station is disconnected, tied to the deauthentication step of Evil Twin attacks.",high
+wlan.fixed.timestamp,U,Raw beacon TSF value is a transmitter clock; only its consistency over time per BSSID would be semantic (rule 2).,high
+wlan.ra,A,"Raw receiver MAC address, an identifier of a specific device.",high
+wlan_radio.duration,A,"Airtime duration computed by Wireshark from frame length and the receiver-reported rate, i.e. added by the capture software.",medium
+wlan.rsn.ie.gtk.key,A,"Group temporal key value, a session-specific secret.",high
+wlan.rsn.ie.igtk.key,A,"Integrity group temporal key value, a session-specific secret.",high
+wlan.rsn.ie.pmkid,A,"PMKID is a hash of the PMK and specific MAC addresses, so its value identifies a particular key and device pair.",high
+wlan.sa,A,"Raw source MAC address, an identifier of a specific device.",high
+wlan.seq,U,Raw sequence number is a counter; only its consistency per transmitter would be a semantic feature (rule 2).,high
+wlan.ssid,C,SSID carries the network name that an Evil Twin copies verbatim from the legitimate AP.,high
+wlan.ta,A,"Raw transmitter MAC address, an identifier of a specific device.",high
+wlan.tag,U,"Generic container for all tagged information elements, whose status depends on which element and how it is used.",low
+wlan.tag.length,C,"Information element lengths follow element contents (SSID, rates, vendor elements) that an attacker can replicate from the legitimate AP.",medium
+wlan_radio.channel,A,Channel derived by Wireshark from the radiotap frequency the capture card was tuned to; the AP-announced channel would be the semantic counterpart.,low
+wlan_radio.data_rate,U,Data rate derived from radiotap; rates depend on rate control and link conditions and are listed as typical U fields.,medium
+wlan_radio.end_tsf,A,End-of-frame TSF computed by Wireshark from the capture card's MAC timestamp.,high
+wlan_radio.frequency,A,"Frequency derived by Wireshark from the radiotap header, i.e. the capture card's tuning; the AP-announced channel would be the semantic counterpart.",low
+wlan_radio.signal_dbm,C,"Received signal strength reflects attacker power and position, which a competent attacker can tune to resemble the legitimate AP.",medium
+wlan_radio.start_tsf,A,Start-of-frame TSF computed by Wireshark from the capture card's MAC timestamp.,high
+wlan_radio.phy,U,PHY type (e.g. 802.11b/g/n) inferred by Wireshark from radiotap; it depends on the device and rate selection and could be read as artefact or attacker-chosen.,low
+wlan_radio.timestamp,A,Timestamp taken from the capture card clock.,high
+wlan.rsn.capabilities.mfpc,S,"RSN capability bit for Management Frame Protection, which determines whether forged deauthentication and rogue management frames are possible.",high
+wlan_rsna_eapol.keydes.msgnr,S,"Number of the 4-way handshake message (inferred from key info bits), which reflects handshake progress and failures with a rogue AP.",medium
+wlan_rsna_eapol.keydes.data,A,"Key Data payload (encrypted GTK, RSN element) specific to the session.",high
+wlan_rsna_eapol.keydes.data_len,U,Key Data length depends on the handshake message and cipher configuration rather than directly on impersonation.,medium
+wlan_rsna_eapol.keydes.key_info.key_mic,S,"Key MIC flag in Key Information marks handshake messages 2-4 that require knowledge of the PTK, which a rogue AP without the PSK cannot complete.",medium
+wlan_rsna_eapol.keydes.nonce,A,"ANonce/SNonce random value, unique to the session.",high
+eapol.keydes.key_len,U,Key length is fixed by the negotiated pairwise cipher and has no direct relation to impersonation.,medium
+eapol.keydes.replay_counter,U,Raw replay counter value; only its consistency would be semantic (rule 2).,high
+eapol.len,U,EAPOL body length depends on handshake message and key data contents rather than on impersonation itself.,medium
+eapol.type,S,"EAPOL packet type (Key, Start, EAP-Packet, Logoff) indicates the 802.1X/RSNA authentication phase that clients go through with an AP.",medium
+llc,U,"LLC/SNAP encapsulation header present on all data frames, unrelated to impersonation.",medium
+arp,U,ARP protocol presence is upper-layer traffic with no direct relation to AP impersonation.,high
+arp.hw.type,U,ARP hardware type is an upper-layer constant unrelated to impersonation.,high
+arp.proto.type,U,ARP protocol type is an upper-layer constant unrelated to impersonation.,high
+arp.hw.size,U,ARP hardware address size is an upper-layer constant unrelated to impersonation.,high
+arp.proto.size,U,ARP protocol address size is an upper-layer constant unrelated to impersonation.,high
+arp.opcode,U,ARP request/reply opcode is upper-layer traffic semantics unrelated to impersonation.,high
+arp.src.hw_mac,A,Sender MAC address in ARP is an identifier of a specific host.,high
+arp.src.proto_ipv4,A,Sender IPv4 address in ARP is an identifier of a specific host.,high
+arp.dst.hw_mac,A,Target MAC address in ARP is an identifier of a specific host.,high
+arp.dst.proto_ipv4,A,Target IPv4 address in ARP is an identifier of a specific host.,high
+ip.dst,A,Destination IP address is an identifier of a specific host.,high
+ip.proto,U,"IP payload protocol number describes upper-layer traffic mix, unrelated to impersonation.",high
+ip.src,A,Source IP address is an identifier of a specific host.,high
+ip.ttl,U,"IP TTL reflects the sender OS default and hop count, an upper-layer property unrelated to impersonation.",medium
+ip.version,U,IP version is an upper-layer protocol property unrelated to impersonation.,high
+data.data,A,Raw undissected payload bytes.,high
+data.len,U,"Length of undissected payload, an upper-layer property unrelated to impersonation.",medium
+icmpv6.mldr.nb_mcast_records,U,"Number of multicast address records in an MLD report, upper-layer host behaviour.",high
+icmpv6.ni.nonce,A,ICMPv6 Node Information nonce is a random per-query value.,high
+tcp.ack,U,Relative TCP acknowledgement number is an upper-layer counter.,medium
+tcp.ack_raw,A,"Raw TCP acknowledgement number is offset from a random initial sequence number, so its value is session-specific.",medium
+tcp.analysis,U,"Wireshark TCP analysis tree describing upper-layer transport behaviour, unrelated to impersonation.",medium
+tcp.analysis.flags,U,"Expert flags mixing transport behaviour (retransmissions, window issues) with capture-loss indications; upper-layer and not about impersonation.",low
+tcp.analysis.retransmission,U,TCP retransmission flag reflects upper-layer transport conditions.,medium
+tcp.analysis.reused_ports,U,Port reuse flag reflects upper-layer connection behaviour.,medium
+tcp.analysis.rto_frame,A,"Reference to the frame number of the original transmission, i.e. a position in the capture file.",high
+tcp.checksum,A,Raw checksum value is a function of addresses and payload for that specific segment.,medium
+tcp.checksum.status,A,Checksum validation status depends on Wireshark settings and on checksum offloading of the capture host.,medium
+tcp.flags.syn,U,TCP SYN flag is upper-layer connection semantics.,high
+tcp.dstport,A,TCP port is an endpoint identifier (ephemeral ports are session-specific).,medium
+tcp.flags.ack,U,TCP ACK flag is upper-layer connection semantics.,high
+tcp.flags.fin,U,TCP FIN flag is upper-layer connection semantics.,high
+tcp.flags.push,U,TCP PSH flag is upper-layer connection semantics.,high
+tcp.flags.reset,U,TCP RST flag is upper-layer connection semantics.,high
+tcp.option_len,U,"Length of a TCP option, an upper-layer property.",high
+tcp.payload,A,TCP payload bytes.,high
+tcp.seq,U,Relative TCP sequence number is an upper-layer counter.,medium
+tcp.seq_raw,A,"Raw TCP sequence number is offset from a random initial sequence number, so its value is session-specific.",medium
+tcp.srcport,A,TCP port is an endpoint identifier (ephemeral ports are session-specific).,medium
+tcp.time_delta,A,"Time since the previous frame in the TCP stream, computed from capture timestamps.",high
+tcp.time_relative,A,"Time since the first frame of the TCP stream, computed from capture timestamps.",high
+udp.dstport,A,UDP port is an endpoint identifier (ephemeral ports are session-specific).,medium
+udp.srcport,A,UDP port is an endpoint identifier (ephemeral ports are session-specific).,medium
+udp.length,U,UDP datagram length is an upper-layer property.,high
+udp.payload,A,UDP payload bytes.,high
+udp.time_relative,A,"Time since the first frame of the UDP stream, computed from capture timestamps.",high
+udp.time_delta,A,"Time since the previous frame in the UDP stream, computed from capture timestamps.",high
+nbns,U,NetBIOS Name Service presence is upper-layer traffic unrelated to impersonation.,high
+nbss.continuation_data,A,Continuation payload bytes of a NetBIOS session message.,high
+nbss.type,U,NetBIOS session message type is upper-layer semantics.,high
+nbss.length,U,NetBIOS session message length is an upper-layer property.,high
+ldap,U,LDAP protocol presence is upper-layer traffic unrelated to impersonation.,high
+smb.access.generic_execute,U,SMB access mask bit is upper-layer file-sharing semantics.,high
+smb.access.generic_read,U,SMB access mask bit is upper-layer file-sharing semantics.,high
+smb.access.generic_write,U,SMB access mask bit is upper-layer file-sharing semantics.,high
+smb.flags.notify,U,SMB header flag is upper-layer file-sharing semantics.,high
+smb.flags.response,U,SMB request/response flag is upper-layer semantics.,high
+smb.flags2.nt_error,U,SMB flags2 error-code format bit is upper-layer semantics.,high
+smb.flags2.sec_sig,U,SMB security signature flag is upper-layer semantics.,high
+smb.mid,A,SMB multiplex ID identifies a specific request within a session.,high
+smb.nt_status,U,SMB NT status code is upper-layer semantics.,high
+smb.server_component,U,"SMB protocol magic constant, upper-layer.",high
+smb.pid.high,A,"High part of the SMB process ID, an identifier of a client process.",high
+smb.tid,A,SMB tree ID identifies a specific share connection.,high
+smb2.acct,A,Account name used in SMB2 authentication identifies a specific user.,high
+smb2.auth_frame,A,"Reference to the frame number where the session was authenticated, a position in the capture.",high
+smb2.buffer_code,U,SMB2 structure size/buffer code is upper-layer semantics.,high
+smb2.cmd,U,SMB2 command code is upper-layer semantics.,high
+smb2.data_offset,U,SMB2 data offset is an upper-layer structural property.,high
+smb2.domain,A,Domain name used in SMB2 authentication identifies a specific lab environment.,high
+smb2.fid,A,SMB2 file ID is a session-specific handle.,high
+smb2.filename,A,Filename accessed over SMB2 is session payload content.,high
+smb2.header_len,U,SMB2 header length is an upper-layer constant.,high
+smb2.host,A,Host name in SMB2 authentication identifies a specific machine.,high
+smb2.msg_id,A,SMB2 message ID identifies a specific request within a session.,medium
+smb2.pid,A,SMB2 process ID identifies a client process.,high
+smb2.previous_sesid,A,Previous SMB2 session ID is a session identifier.,high
+smb2.protocol_id,U,"SMB2 protocol magic constant, upper-layer.",high
+smb2.sesid,A,SMB2 session ID is a session identifier.,high
+smb2.session_flags,U,SMB2 session flags (guest/null/encrypt) are upper-layer semantics.,high
+smb2.tid,A,SMB2 tree ID identifies a specific share connection.,high
+smb2.write_length,U,SMB2 write length is an upper-layer property.,high
+dhcp,U,DHCP presence is upper-layer traffic; a rogue AP may serve DHCP but the field itself is not 802.11 semantics.,medium
+dhcp.client_id.duid_ll_hw_type,U,Hardware type inside the DHCP client DUID is an upper-layer property.,high
+dhcp.cookie,U,DHCP magic cookie is a protocol constant.,high
+dhcp.hw.addr_padding,U,"Padding of the DHCP client hardware address field, an upper-layer structural property.",high
+dhcp.hw.mac_addr,A,Client MAC address in DHCP is an identifier of a specific host.,high
+dhcp.id,A,DHCP transaction ID is a random per-exchange identifier.,high
+dhcp.ip.client,A,Client IP address in DHCP is a host identifier.,high
+dhcp.ip.relay,A,Relay agent IP address is a host identifier.,high
+dhcp.ip.server,A,Server IP address in DHCP is a host identifier.,high
+dhcp.option.broadcast_address,A,Broadcast address option is a network-specific address value.,high
+dhcp.option.dhcp_server_id,A,DHCP server identifier option is a host IP address.,high
+dhcp.option.router,A,Router option is a specific gateway IP address.,high
+dhcp.option.vendor.bsdp.message_type,U,Apple BSDP vendor message type is upper-layer semantics.,high
+mdns,U,mDNS presence is upper-layer traffic unrelated to impersonation.,high
+dns,U,DNS presence is upper-layer traffic unrelated to impersonation.,high
+dns.a,A,IPv4 address returned in a DNS answer is a specific host identifier.,high
+dns.count.add_rr,U,Count of additional records is an upper-layer property.,high
+dns.count.answers,U,Count of answers is an upper-layer property.,high
+dns.count.auth_rr,U,Count of authority records is an upper-layer property.,high
+dns.count.labels,U,Number of labels in a DNS name is an upper-layer property.,high
+dns.count.queries,U,Count of questions is an upper-layer property.,high
+dns.flags.authoritative,U,Authoritative answer flag is upper-layer semantics.,high
+dns.flags.checkdisable,U,Checking-disabled flag is upper-layer semantics.,high
+dns.flags.opcode,U,DNS opcode is upper-layer semantics.,high
+dns.flags.response,U,DNS query/response flag is upper-layer semantics.,high
+dns.id,A,DNS transaction ID is a random per-query identifier.,high
+dns.ptr.domain_name,A,Domain name in a PTR record identifies a specific host.,high
+dns.qry.name,A,Queried domain name is an identifier/payload specific to the hosts and session.,high
+dns.qry.name.len,U,Length of the queried name is an upper-layer property.,medium
+dns.resp.len,U,Resource record data length is an upper-layer property.,high
+dns.resp.name,A,Name in a DNS resource record is a specific host identifier.,high
+dns.resp.ttl,U,Record TTL is an upper-layer property set by DNS servers.,medium
+dns.resp.len.1,U,"Additional instance of the resource record data length, an upper-layer property.",medium
+dns.retransmit_request,U,"Wireshark flag for a retransmitted DNS query, upper-layer behaviour.",medium
+dns.retransmit_response,U,"Wireshark flag for a retransmitted DNS response, upper-layer behaviour.",medium
+dns.time,A,Time between DNS query and response computed from capture timestamps.,high
+ssdp,U,SSDP presence is upper-layer traffic unrelated to impersonation.,high
+http.connection,U,HTTP Connection header (keep-alive/close) is upper-layer semantics.,high
+http.content_length,U,HTTP Content-Length is an upper-layer property.,medium
+http.content_type,U,HTTP Content-Type is upper-layer semantics.,high
+http.date,A,HTTP Date header is a server clock timestamp.,high
+http.file_data,A,HTTP body payload.,high
+http.host,A,HTTP Host header names a specific server.,high
+http.last_modified,A,Last-Modified header is a timestamp of specific content.,high
+http.location,A,"Location header is a specific redirect URL, an identifier of a host/resource.",medium
+http.next_request_in,A,"Reference to the frame number of the next request, a position in the capture.",high
+http.next_response_in,A,"Reference to the frame number of the next response, a position in the capture.",high
+http.request.full_uri,A,Full request URI identifies a specific host and resource.,high
+http.request.line,A,"Raw HTTP request header line, payload content.",high
+http.request.method,U,HTTP method is upper-layer semantics.,high
+http.request.uri.path,A,Request URI path identifies a specific resource.,high
+http.request.uri.query,A,Request query string is session-specific payload.,high
+http.request.uri.query.parameter,A,Request query parameter is session-specific payload.,high
+http.request.version,U,HTTP version is upper-layer semantics.,high
+http.request_in,A,"Reference to the frame number of the matching request, a position in the capture.",high
+http.response.code,U,HTTP status code is upper-layer semantics.,high
+http.response.code.desc,U,Description of the HTTP status code is upper-layer semantics.,high
+http.response.line,A,"Raw HTTP response header line, payload content.",medium
+http.response.phrase,U,HTTP reason phrase is upper-layer semantics.,high
+http.response.version,U,HTTP version is upper-layer semantics.,high
+http.response_for.uri,A,"URI of the request this response answers, a specific resource identifier.",high
+http.response_in,A,"Reference to the frame number of the matching response, a position in the capture.",high
+http.referer,A,Referer header is a specific URL from the session.,high
+http.time,A,Time between request and response computed from capture timestamps.,high
+http.server,A,Server header names the software of a specific host.,medium
+json.value.string,A,"String value inside a JSON body, payload content.",high
+json.key,A,Key names inside a JSON body are application payload.,medium
+ssh.cookie,A,SSH KEXINIT cookie is a random per-session value.,high
+ssh.compression_algorithms_client_to_server_length,U,"Length of an SSH algorithm list depends on the client/server software, an upper-layer property.",high
+ssh.compression_algorithms_server_to_client_length,U,"Length of an SSH algorithm list depends on the client/server software, an upper-layer property.",high
+ssh.direction,U,Direction of the SSH message (client or server) is upper-layer semantics.,high
+ssh.dh_gex.max,U,Maximum DH group size requested is an upper-layer parameter.,high
+ssh.dh_gex.min,U,Minimum DH group size requested is an upper-layer parameter.,high
+ssh.dh_gex.nbits,U,Preferred DH group size is an upper-layer parameter.,high
+ssh.encryption_algorithms_client_to_server_length,U,Length of an SSH algorithm list is an upper-layer property.,high
+ssh.encryption_algorithms_server_to_client_length,U,Length of an SSH algorithm list is an upper-layer property.,high
+ssh.host_key.length,U,"Length of the server host key depends on its key type, an upper-layer property.",medium
+ssh.host_key.type_length,U,Length of the host key type string is an upper-layer property.,high
+ssh.kex_algorithms_length,U,Length of the key exchange algorithm list is an upper-layer property.,high
+ssh.mac_algorithms_client_to_server_length,U,Length of an SSH algorithm list is an upper-layer property.,high
+ssh.mac_algorithms_server_to_client_length,U,Length of an SSH algorithm list is an upper-layer property.,high
+ssh.message_code,U,SSH message code is upper-layer semantics.,high
+ssh.mpint_length,U,Length of an SSH multiple-precision integer is an upper-layer property.,high
+ssh.packet_length,U,SSH packet length is an upper-layer property.,high
+ssh.packet_length_encrypted,A,"Encrypted bytes of the SSH length field, session-specific ciphertext.",high
+ssh.padding_length,U,SSH padding length is an upper-layer property.,high
+ssh.padding_string,A,"Random SSH padding bytes, session-specific content.",high
+ssh.protocol,A,SSH identification string names the software build of a specific host.,medium
+ssh.server_host_key_algorithms_length,U,Length of the host key algorithm list is an upper-layer property.,high
+tls.alert_message.desc,U,TLS alert description is upper-layer semantics.,high
+tls.alert_message.level,U,TLS alert level is upper-layer semantics.,high
+tls.app_data_proto,U,Application protocol carried over TLS is upper-layer semantics.,high
+tls.compress_certificate.compressed_certificate_message.length,U,Length of a compressed certificate message is an upper-layer property.,high
+tls.connection_id,A,TLS/DTLS connection ID is a session identifier.,high
+tls.handshake.extension.type,U,TLS extension type is upper-layer semantics.,high
+tls.handshake.extensions_key_share_group,U,Key share group in TLS is an upper-layer parameter.,high
+tls.handshake.session_ticket_length,U,Session ticket length is an upper-layer property.,high
+tls.handshake.version,U,TLS handshake version is upper-layer semantics.,high
+tls.record.content_type,U,TLS record content type is upper-layer semantics.,high
+tls.record.version,U,TLS record version is upper-layer semantics.,high

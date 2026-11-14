@@ -1,0 +1,254 @@
+field,family,justification,confidence
+frame.encap_type,A,"Link-layer encapsulation type is set by the capture tool and interface configuration, not by the transmitter.",high
+frame.len,C,Frame length of management frames can be matched by an attacker that clones the legitimate AP IEs.,medium
+frame.number,A,Position of the packet in the capture file.,high
+frame.time,A,Capture timestamp or inter-packet delta that depends on the recording clock and file.,high
+frame.time_delta,A,Capture timestamp or inter-packet delta that depends on the recording clock and file.,high
+frame.time_delta_displayed,A,Capture timestamp or inter-packet delta that depends on the recording clock and file.,high
+frame.time_epoch,A,Capture timestamp or inter-packet delta that depends on the recording clock and file.,high
+frame.time_relative,A,Capture timestamp or inter-packet delta that depends on the recording clock and file.,high
+radiotap.channel.flags.cck,A,Radiotap channel flag is metadata added by the receiving capture card.,medium
+radiotap.channel.flags.ofdm,A,Radiotap channel flag is metadata added by the receiving capture card.,medium
+radiotap.channel.freq,S,Operating channel/frequency of the transmitter is a protocol parameter an impersonating AP cannot freely change without affecting reachability (though read via receiver radiotap).,low
+radiotap.datarate,U,Legacy data rate of the frame depends on rate adaptation and is neither identity nor protocol-fixed.,medium
+radiotap.dbm_antsignal,C,Received signal strength depends on position but is a signal an attacker can tune with transmit power.,medium
+radiotap.length,A,Length of the radiotap header depends on the capture driver and which fields it provides.,high
+radiotap.mactime,A,Receiver MAC clock timestamp inserted by the capture card.,high
+radiotap.present.tsft,A,Radiotap presence bitmap flag describing capture card capabilities.,high
+radiotap.rxflags,A,Receiver flags added by the capture driver (e.g. bad PLCP).,high
+radiotap.timestamp.ts,A,Receiver-side timestamp added by the capture hardware.,high
+radiotap.vendor_oui,A,Vendor namespace identifier of the capture driver radiotap extension.,high
+wlan.duration,U,Duration/ID is a raw NAV value that depends on frame type and rate; usable only via derived relations.,medium
+wlan.analysis.kck,A,"Derived key confirmation key, secret session key material.",high
+wlan.analysis.kek,A,"Derived key encryption key, secret session key material.",high
+wlan.bssid,A,BSSID is a raw MAC address identifying a specific device.,high
+wlan.country_info.fnm,C,"First channel number in the country element, copyable from the legitimate AP.",high
+wlan.country_info.code,C,"Country code string in the country element, copyable from the legitimate AP.",high
+wlan.da,A,Destination MAC address value identifies a specific device.,high
+wlan.fc.ds,S,To DS/From DS bits define frame direction and must be consistent with the BSS role of the sender.,high
+wlan.fc.frag,U,More Fragments bit reflects fragmentation use with no clear link to impersonation.,low
+wlan.fc.order,U,"Order/+HTC bit reflects QoS/HT features, weakly related to impersonation.",low
+wlan.fc.moredata,U,"More Data bit reflects buffered power-save traffic, not impersonation.",medium
+wlan.fc.protected,S,"Protected Frame bit shows whether the frame is encrypted, tied to the security state of the BSS.",high
+wlan.fc.pwrmgt,U,"Power management bit reflects station sleep behaviour, unrelated to AP impersonation.",medium
+wlan.fc.type,S,"Frame type is fixed by the protocol and defines which exchanges occur (beacon, deauth, data).",high
+wlan.fc.retry,U,Retry bit depends on channel conditions and is a retransmission artefact.,high
+wlan.fc.subtype,S,Frame subtype defines the management/control/data function and is constrained by the protocol.,high
+wlan.fcs.bad_checksum,A,Validity of FCS is computed by the receiver/dissector and depends on reception conditions.,medium
+wlan.fixed.beacon,C,Beacon interval is a configurable AP parameter easily copied from the legitimate AP.,high
+wlan.fixed.capabilities.ess,S,ESS capability bit defines BSS type and must match the infrastructure role.,high
+wlan.fixed.capabilities.ibss,S,IBSS capability bit defines BSS type and must be consistent with an infrastructure AP.,high
+wlan.fixed.reason_code,S,Reason code in deauth/disassoc frames states why the link ends and is central to deauthentication attacks.,high
+wlan.fixed.timestamp,U,Raw beacon TSF is a clock value; only its consistency over time per transmitter is informative.,high
+wlan.ra,A,Receiver address is a raw MAC value.,high
+wlan_radio.duration,A,Air-time duration computed by the dissector from length and rate.,medium
+wlan.rsn.ie.gtk.key,A,Group temporal key is secret key material.,high
+wlan.rsn.ie.igtk.key,A,Integrity group temporal key is secret key material.,high
+wlan.rsn.ie.pmkid,A,PMKID is a session-specific identifier derived from keys and addresses.,high
+wlan.sa,A,Source MAC address value identifies a specific device.,high
+wlan.seq,U,Raw sequence number is a counter; its consistency per transmitter is a derived feature.,high
+wlan.ssid,C,SSID is freely set by an attacker to match the legitimate AP.,high
+wlan.ta,A,Transmitter address is a raw MAC value.,high
+wlan.tag,C,Tagged parameter content (IEs) can be cloned by an attacker from the legitimate AP.,low
+wlan.tag.length,C,"IE lengths follow from IE content, which an attacker can replicate.",medium
+wlan_radio.channel,S,Channel of the transmitter is a protocol parameter relevant to rogue AP placement.,medium
+wlan_radio.data_rate,U,"Data rate depends on rate adaptation, not on identity.",high
+wlan_radio.end_tsf,A,Receiver-side end-of-frame TSF timestamp.,high
+wlan_radio.frequency,S,Frequency identifies the operating channel of the transmitter.,medium
+wlan_radio.signal_dbm,C,Signal strength is tunable by the attacker via transmit power.,medium
+wlan_radio.start_tsf,A,Receiver-side start-of-frame TSF timestamp.,high
+wlan_radio.phy,A,PHY type is metadata derived from radiotap added by the capture.,medium
+wlan_radio.timestamp,A,Capture timestamp from the receiver.,high
+wlan.rsn.capabilities.mfpc,S,Management Frame Protection Capable bit determines vulnerability to forged deauth and must match the BSS security policy.,high
+wlan_rsna_eapol.keydes.msgnr,S,"Four-way handshake message number reflects handshake progress, which a rogue AP without the PSK cannot complete.",medium
+wlan_rsna_eapol.keydes.data,A,Key data field carries encrypted/key payload.,high
+wlan_rsna_eapol.keydes.data_len,U,Length of key data depends on message and options used.,medium
+wlan_rsna_eapol.keydes.key_info.key_mic,S,"Key MIC flag indicates a MIC-protected handshake message, tied to proof of key possession.",medium
+wlan_rsna_eapol.keydes.nonce,A,Handshake nonce is a random per-session value.,high
+eapol.keydes.key_len,U,Key length depends on the negotiated cipher.,medium
+eapol.keydes.replay_counter,U,Raw replay counter is a counter; its consistency is a derived property.,high
+eapol.len,U,EAPOL body length depends on message type and options.,high
+eapol.type,S,"EAPOL packet type (key, start, logoff) defines the authentication exchange stage.",medium
+llc,U,Presence of the LLC layer is generic data-frame structure.,high
+arp,U,Upper-layer ARP presence has no direct 802.11 relation.,high
+arp.hw.type,U,Upper-layer ARP header field with no direct link to AP impersonation.,high
+arp.proto.type,U,Upper-layer ARP header field with no direct link to AP impersonation.,high
+arp.hw.size,U,Upper-layer ARP header field with no direct link to AP impersonation.,high
+arp.proto.size,U,Upper-layer ARP header field with no direct link to AP impersonation.,high
+arp.opcode,U,Upper-layer ARP header field with no direct link to AP impersonation.,high
+arp.src.hw_mac,A,Sender MAC address value in ARP identifies a host.,high
+arp.src.proto_ipv4,A,Sender IPv4 address value identifies a host.,high
+arp.dst.hw_mac,A,Target MAC address value in ARP identifies a host.,high
+arp.dst.proto_ipv4,A,Target IPv4 address value identifies a host.,high
+ip.dst,A,Destination IP address value identifies a host.,high
+ip.proto,U,IP protocol number is upper-layer and not tied to impersonation.,high
+ip.src,A,Source IP address value identifies a host.,high
+ip.ttl,U,IP TTL depends on host OS and path; upper-layer.,high
+ip.version,U,IP version is upper-layer and unrelated.,high
+data.data,A,Raw payload bytes.,high
+data.len,U,Payload length is an upper-layer property.,high
+icmpv6.mldr.nb_mcast_records,U,MLD report record count is upper-layer traffic.,high
+icmpv6.ni.nonce,A,ICMPv6 node information nonce is a random value.,high
+tcp.ack,U,Relative TCP acknowledgment number is upper-layer.,high
+tcp.ack_raw,A,Raw TCP ack number depends on random initial sequence numbers per session.,high
+tcp.analysis,U,"Wireshark TCP analysis container, upper-layer.",high
+tcp.analysis.flags,U,"Wireshark TCP analysis flags, upper-layer.",high
+tcp.analysis.retransmission,U,"TCP retransmission indicator, upper-layer.",high
+tcp.analysis.reused_ports,U,"TCP reused-port indicator, upper-layer.",high
+tcp.analysis.rto_frame,A,References another frame number in the capture.,high
+tcp.checksum,A,TCP checksum value depends on payload and session.,medium
+tcp.checksum.status,A,Checksum verdict is computed by the dissector/capture (often offload artefacts).,medium
+tcp.flags.syn,U,"TCP flag bit, upper-layer.",high
+tcp.dstport,U,"Destination port identifies a service, upper-layer.",medium
+tcp.flags.ack,U,"TCP flag bit, upper-layer.",high
+tcp.flags.fin,U,"TCP flag bit, upper-layer.",high
+tcp.flags.push,U,"TCP flag bit, upper-layer.",high
+tcp.flags.reset,U,"TCP flag bit, upper-layer.",high
+tcp.option_len,U,"TCP options length, upper-layer.",high
+tcp.payload,A,TCP payload bytes.,high
+tcp.seq,U,"Relative TCP sequence number, upper-layer.",high
+tcp.seq_raw,A,Raw TCP sequence number depends on random initial sequence number per session.,high
+tcp.srcport,A,Ephemeral source port identifies a specific session.,medium
+tcp.time_delta,A,Time reference derived from capture timestamps.,high
+tcp.time_relative,A,Time since first TCP frame derived from capture timestamps.,high
+udp.dstport,U,"Destination port identifies a service, upper-layer.",medium
+udp.srcport,A,Ephemeral source port identifies a specific session.,medium
+udp.length,U,"UDP length, upper-layer.",high
+udp.payload,A,UDP payload bytes.,high
+udp.time_relative,A,Time reference derived from capture timestamps.,high
+udp.time_delta,A,Time reference derived from capture timestamps.,high
+nbns,U,"NetBIOS name service presence, upper-layer.",high
+nbss.continuation_data,A,NetBIOS session payload continuation bytes.,high
+nbss.type,U,"NetBIOS session message type, upper-layer.",high
+nbss.length,U,"NetBIOS session length, upper-layer.",high
+ldap,U,"LDAP presence, upper-layer.",high
+smb.access.generic_execute,U,"SMB flag, upper-layer.",high
+smb.access.generic_read,U,"SMB flag, upper-layer.",high
+smb.access.generic_write,U,"SMB flag, upper-layer.",high
+smb.flags.notify,U,"SMB flag, upper-layer.",high
+smb.flags.response,U,"SMB flag, upper-layer.",high
+smb.flags2.nt_error,U,"SMB flag, upper-layer.",high
+smb.flags2.sec_sig,U,"SMB flag, upper-layer.",high
+smb.mid,A,SMB multiplex ID is a per-exchange identifier.,high
+smb.nt_status,U,"SMB status code, upper-layer.",high
+smb.server_component,U,"SMB server component marker, upper-layer.",high
+smb.pid.high,A,SMB process ID identifies a host process.,high
+smb.tid,A,SMB tree ID is a session identifier.,high
+smb2.acct,A,Account name identifies a user.,high
+smb2.auth_frame,A,Frame reference within the capture.,high
+smb2.buffer_code,U,"SMB2 structure/buffer code, upper-layer.",high
+smb2.cmd,U,"SMB2 command code, upper-layer.",high
+smb2.data_offset,U,"SMB2 data offset, upper-layer.",high
+smb2.domain,A,Domain name identifies a specific lab host/domain.,high
+smb2.fid,A,SMB2 file ID is a session identifier.,high
+smb2.filename,A,File name is payload content.,high
+smb2.header_len,U,"SMB2 header length, upper-layer.",high
+smb2.host,A,Host name identifies a specific device.,high
+smb2.msg_id,A,SMB2 message ID is a per-session counter/identifier.,high
+smb2.pid,A,SMB2 process ID identifies a host process.,high
+smb2.previous_sesid,A,Session identifier.,high
+smb2.protocol_id,U,"SMB2 protocol magic, upper-layer.",high
+smb2.sesid,A,Session identifier.,high
+smb2.session_flags,U,"SMB2 session flags, upper-layer.",high
+smb2.tid,A,SMB2 tree ID is a session identifier.,high
+smb2.write_length,U,"SMB2 write length, upper-layer.",high
+dhcp,U,"DHCP presence, upper-layer.",high
+dhcp.client_id.duid_ll_hw_type,U,"DUID hardware type, upper-layer.",high
+dhcp.cookie,U,"DHCP magic cookie constant, upper-layer.",high
+dhcp.hw.addr_padding,U,"DHCP hardware address padding, upper-layer.",high
+dhcp.hw.mac_addr,A,Client MAC address value.,high
+dhcp.id,A,DHCP transaction ID is a per-exchange random identifier.,high
+dhcp.ip.client,A,Client IP address value.,high
+dhcp.ip.relay,A,Relay IP address value.,high
+dhcp.ip.server,A,Server IP address value.,high
+dhcp.option.broadcast_address,A,IP address value offered by the lab network.,high
+dhcp.option.dhcp_server_id,A,DHCP server identifier is an IP address of a specific host.,high
+dhcp.option.router,A,Router IP address value of the lab network.,high
+dhcp.option.vendor.bsdp.message_type,U,"BSDP message type, upper-layer.",high
+mdns,U,"mDNS presence, upper-layer.",high
+dns,U,"DNS presence, upper-layer.",high
+dns.a,A,Resolved IP address value.,high
+dns.count.add_rr,U,"DNS record count, upper-layer.",high
+dns.count.answers,U,"DNS record count, upper-layer.",high
+dns.count.auth_rr,U,"DNS record count, upper-layer.",high
+dns.count.labels,U,"DNS record count, upper-layer.",high
+dns.count.queries,U,"DNS record count, upper-layer.",high
+dns.flags.authoritative,U,"DNS header flag, upper-layer.",high
+dns.flags.checkdisable,U,"DNS header flag, upper-layer.",high
+dns.flags.opcode,U,"DNS header flag, upper-layer.",high
+dns.flags.response,U,"DNS header flag, upper-layer.",high
+dns.id,A,DNS transaction ID is a per-query random identifier.,high
+dns.ptr.domain_name,A,Domain name content identifies hosts.,high
+dns.qry.name,A,Queried name is payload content that identifies hosts or sites.,medium
+dns.qry.name.len,U,"Length of the query name, upper-layer.",high
+dns.resp.len,U,"DNS response data length, upper-layer.",high
+dns.resp.name,A,Response record name is payload content.,medium
+dns.resp.ttl,U,"DNS TTL, upper-layer.",high
+dns.resp.len.1,U,"DNS response data length, upper-layer.",high
+dns.retransmit_request,U,"DNS retransmission indicator, upper-layer.",high
+dns.retransmit_response,U,"DNS retransmission indicator, upper-layer.",high
+dns.time,A,"Time between query and response, derived from capture timestamps.",high
+ssdp,U,"SSDP presence, upper-layer.",high
+http.connection,U,"HTTP Connection header, upper-layer.",high
+http.content_length,U,"HTTP content length, upper-layer.",high
+http.content_type,U,"HTTP content type, upper-layer.",high
+http.date,A,HTTP date header is a wall-clock timestamp.,high
+http.file_data,A,HTTP body payload.,high
+http.host,A,Host header identifies a specific server.,medium
+http.last_modified,A,Timestamp of resource modification.,high
+http.location,A,Redirect target URL is payload content.,medium
+http.next_request_in,A,Frame reference within the capture.,high
+http.next_response_in,A,Frame reference within the capture.,high
+http.request.full_uri,A,Full URI is payload content identifying a resource.,medium
+http.request.line,A,Raw request header line is payload content.,medium
+http.request.method,U,"HTTP method, upper-layer.",high
+http.request.uri.path,A,URI path is payload content.,medium
+http.request.uri.query,A,URI query string is payload content.,medium
+http.request.uri.query.parameter,A,Query parameter is payload content.,medium
+http.request.version,U,"HTTP version, upper-layer.",high
+http.request_in,A,Frame reference within the capture.,high
+http.response.code,U,"HTTP status code, upper-layer.",high
+http.response.code.desc,U,"HTTP status description, upper-layer.",high
+http.response.line,U,HTTP status line is upper-layer text.,low
+http.response.phrase,U,"HTTP status phrase, upper-layer.",high
+http.response.version,U,"HTTP version, upper-layer.",high
+http.response_for.uri,A,URI of the matched request is payload content.,medium
+http.response_in,A,Frame reference within the capture.,high
+http.referer,A,Referer URL is payload content.,medium
+http.time,A,"Time between request and response, derived from capture timestamps.",high
+http.server,A,Server banner identifies a specific host software instance.,medium
+json.value.string,A,JSON string value is payload content.,high
+json.key,U,"JSON key name, upper-layer.",medium
+ssh.cookie,A,SSH KEXINIT cookie is a random per-session value.,high
+ssh.compression_algorithms_client_to_server_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.compression_algorithms_server_to_client_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.direction,U,"SSH direction indicator, upper-layer.",high
+ssh.dh_gex.max,U,"SSH DH group exchange parameter, upper-layer.",high
+ssh.dh_gex.min,U,"SSH DH group exchange parameter, upper-layer.",high
+ssh.dh_gex.nbits,U,"SSH DH group exchange parameter, upper-layer.",high
+ssh.encryption_algorithms_client_to_server_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.encryption_algorithms_server_to_client_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.host_key.length,U,"SSH host key length, upper-layer.",high
+ssh.host_key.type_length,U,"SSH host key type length, upper-layer.",high
+ssh.kex_algorithms_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.mac_algorithms_client_to_server_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.mac_algorithms_server_to_client_length,U,"SSH algorithm list length, upper-layer.",high
+ssh.message_code,U,"SSH message code, upper-layer.",high
+ssh.mpint_length,U,"SSH mpint length, upper-layer.",high
+ssh.packet_length,U,"SSH packet length, upper-layer.",high
+ssh.packet_length_encrypted,U,"SSH encrypted packet length, upper-layer.",high
+ssh.padding_length,U,"SSH padding length, upper-layer.",high
+ssh.padding_string,A,Random padding bytes.,high
+ssh.protocol,U,"SSH protocol version string, upper-layer.",medium
+ssh.server_host_key_algorithms_length,U,"SSH algorithm list length, upper-layer.",high
+tls.alert_message.desc,U,"TLS alert description, upper-layer.",high
+tls.alert_message.level,U,"TLS alert level, upper-layer.",high
+tls.app_data_proto,U,"TLS application protocol, upper-layer.",high
+tls.compress_certificate.compressed_certificate_message.length,U,"TLS certificate message length, upper-layer.",high
+tls.connection_id,A,TLS connection ID is a session identifier.,high
+tls.handshake.extension.type,U,"TLS extension type, upper-layer.",high
+tls.handshake.extensions_key_share_group,U,"TLS key share group, upper-layer.",high
+tls.handshake.session_ticket_length,U,"TLS session ticket length, upper-layer.",high
+tls.handshake.version,U,"TLS handshake version, upper-layer.",high
+tls.record.content_type,U,"TLS record content type, upper-layer.",high
+tls.record.version,U,"TLS record version, upper-layer.",high
