@@ -96,3 +96,26 @@ Inputs: the three annotations in `docs/annotation/` and the manual changes in
 git add docs scripts src results
 git commit -m "S2: feature taxonomy"
 ```
+
+## 8. Stage S2b - feature matrices
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/06_build_features.py` | `data/interim/awid3_*_X.npy`, `_y.npy`, `_fn.npy`, `_features.json`; `results/S2b_features.json` | about 20-40 min |
+
+Needs about 3 GB free on the data disk.
+
+## 9. Stage S3 - do detectors learn the labelling rule? (H1b, H1c)
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/07_s3_label_rule.py --seeds 0` | first pass, seed 0 only | about 1-2 h |
+| `python scripts/07_s3_label_rule.py` | all seeds (finished runs are skipped) | several hours |
+
+Results: `results/S3_runs.csv` (one row per run) and `results/S3_label_rule.json` (H1b, H1c).
+The script can be stopped and restarted; finished runs are kept.
+
+```cmd
+git add results docs RUNBOOK.md
+git commit -m "S3: label rule (H1b, H1c)"
+```
