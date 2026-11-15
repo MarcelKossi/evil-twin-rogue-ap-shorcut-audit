@@ -55,6 +55,17 @@ def uncommitted_files() -> list[str] | None:
         return None
 
 
+def package_versions() -> dict[str, str | None]:
+    from importlib.metadata import PackageNotFoundError, version
+    out = {}
+    for name in ("numpy", "pandas", "pyarrow", "scikit-learn", "xgboost"):
+        try:
+            out[name] = version(name)
+        except PackageNotFoundError:
+            out[name] = None
+    return out
+
+
 def run_metadata(script: str, **extra: Any) -> dict[str, Any]:
     """Metadata stored with every result file."""
     meta = {
@@ -64,6 +75,7 @@ def run_metadata(script: str, **extra: Any) -> dict[str, Any]:
         "timestamp_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "python": sys.version.split()[0],
         "platform": platform.platform(),
+        "packages": package_versions(),
     }
     meta.update(extra)
     return meta

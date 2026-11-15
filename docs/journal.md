@@ -88,3 +88,4 @@ and any deviation from `docs/protocol_v0.3.md`.
 - All 12 filter variables are kept, so H1b and H1c can use them.
 - Several fields that look numeric are stored as text because some frames hold more than one value (e.g. `radiotap.dbm_antsignal` with one value per antenna, IP and TCP fields of encapsulated packets); they are label-encoded like the other text columns. `frame.time` and a few TCP fields have more than 50,000 distinct values and are hash-encoded.
 - Only 4-5 kept columns are semantic. A semantic-only detector (F-sem, S4-S5) will depend on the derived per-BSSID features.
+- S2b ran outside the virtual environment (system Python; the prompt had no `(.venv)`). S3 then stopped on `No module named 'xgboost'`. Re-running S2b and S3 inside `.venv` so that every result comes from the pinned packages; result files now also record the package versions.
