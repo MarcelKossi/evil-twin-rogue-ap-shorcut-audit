@@ -78,3 +78,13 @@ and any deviation from `docs/protocol_v0.3.md`.
 - **Deviation 3.** Section 9.2 says the pre-attack normal frames go into training in every fold *and* serve as a clean-period false-positive check, which cannot both hold for the same frames. I keep the last 20% of the pre-attack period out of training and use it for the clean-period check; the rest is used for training.
 - **Deviation 4** (memory and run time on my laptop): each training set keeps all attack frames and a random sample of at most 100,000 normal frames (seed = fold number). Evaluation always uses the full held-out block. Hyperparameters are tuned once per fold with seed 0 and reused for the other seeds; logistic regression is deterministic and run once; the depth-3 tree of H1b is not tuned.
 - **Deviation 5.** For H1c the 95% CI of the relative PR-AUC drop is a bootstrap over the 5 folds (seed-averaged), not the block bootstrap of Section 10. It is coarse; the block bootstrap will be added when test predictions are stored in S4.
+
+## 2026-11-16 - S2b feature matrices
+
+- Ran `scripts/06_build_features.py` on `46dd547` (clean tree): 257 s for Rogue_AP, 463 s for Evil_Twin. Output in `results/S2b_features.json`.
+- Rogue_AP: 1,973,185 rows (1,310 attack), 76 columns kept (A 39, U 29, S 5, C 3), 177 dropped (170 more than 99% missing, 7 constant).
+- Evil_Twin: 3,778,679 rows (104,827 attack), 72 columns kept (A 37, U 28, S 4, C 3), 181 dropped (174 missing, 7 constant). `wlan.fixed.reason_code` is kept for Rogue_AP (96.7% missing) and dropped for Evil_Twin.
+- The 7 constant columns are the same in both captures, among them `radiotap.channel.freq`, `wlan_radio.channel` and `wlan_radio.frequency`: the capture stayed on one channel the whole time, which agrees with classing these fields as artefacts in S2.
+- All 12 filter variables are kept, so H1b and H1c can use them.
+- Several fields that look numeric are stored as text because some frames hold more than one value (e.g. `radiotap.dbm_antsignal` with one value per antenna, IP and TCP fields of encapsulated packets); they are label-encoded like the other text columns. `frame.time` and a few TCP fields have more than 50,000 distinct values and are hash-encoded.
+- Only 4-5 kept columns are semantic. A semantic-only detector (F-sem, S4-S5) will depend on the derived per-BSSID features.
