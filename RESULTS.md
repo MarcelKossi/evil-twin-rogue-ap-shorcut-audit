@@ -1,9 +1,9 @@
 # Preliminary results
 
-*Status: 13 November 2026. Stages S0-S1 of the pre-registered protocol
-([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`). No
-detection model has been trained yet; everything below describes the labels
-of the AWID3 dataset, not the behaviour of detectors.*
+*Status: 17 November 2026. Stages S0-S3 of the pre-registered protocol
+([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`). The
+first sections describe the labels of AWID3; the S3 section describes
+detectors trained on them.*
 
 ## Question
 
@@ -79,7 +79,37 @@ Data: AWID3 CSV release (University of the Aegean). Commands in
 [`RUNBOOK.md`](RUNBOOK.md), stages S0-S1d. Every result file records the git
 commit, the input SHA-256 and the run time.
 
+## Do detectors learn the rule? (S3, pre-registered H1b and H1c)
+
+Blocked evaluation: the attack period is cut into 5 consecutive blocks, each
+held out in turn with a 10,000-frame gap; 5 model families, 5 seeds.
+
+| | Rogue_AP | Evil_Twin |
+|---|---|---|
+| Depth-3 tree on the filter fields (mean PR-AUC) | 0.999 | 0.870 |
+| Best model on all fields | 1.000 (RF) | 0.979 (XGB) |
+| H1b: depth-3 tree >= 95% of best | **supported** (99.9%) | not supported (89%) |
+| H1c: removing the filter fields costs >= 20% for >= 3/5 models | not supported (1/5) | not supported (2/5) |
+
+- On Rogue_AP, three questions on the fields of the labelling rule match the
+  best detector.
+- Removing those fields does not stop the strongest models (RF, XGB) from
+  detecting either attack: the information is also present in other fields.
+  Which ones, and whether they are artefacts or real protocol evidence, is the
+  question of S4.
+- On Evil_Twin, removing the filter fields multiplies the false-positive rate
+  on clean traffic (XGB 0.02% -> 1.4%, decision tree 0.007% -> 20%). These
+  rates are provisional: the first S3 run did not purge training frames next
+  to the clean period, so they are optimistic; S3 will be re-run.
+- The filter fields include `frame.number` but not the other fields that
+  encode the position in the capture (relative and absolute times, capture
+  timestamps), which stay in the "without filter fields" models.
+
+Source: [`results/S3_label_rule.json`](results/S3_label_rule.json),
+[`results/S3_runs.csv`](results/S3_runs.csv).
+
 ## Next
 
-S2 feature taxonomy (semantic / artefact / attacker-controllable / ambiguous),
-then S3: do lightweight detectors learn the labelling rule?
+S4: share of each feature family in the models' decisions (artefacts,
+attacker-controllable, semantic), detectors restricted to semantic fields, and
+random vs blocked splitting.

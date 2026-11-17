@@ -51,9 +51,11 @@ class Capture:
     def load(cls, interim: Path, name: str) -> "Capture":
         meta = json.loads((interim / f"awid3_{name}_features.json").read_text(encoding="utf-8"))
         cols = [c["name"] for c in meta["columns"]]
+        fn = np.load(interim / f"awid3_{name}_fn.npy")
+        assert np.all(np.diff(fn) > 0), "rows must be in increasing frame.number order"
+        families = {c["name"]: c["family"] if c["family"] in ("S", "A", "C", "U") else "U" for c in meta["columns"]}
         return cls(name, np.load(interim / meta["matrix"], mmap_mode="r"),
-                   np.load(interim / f"awid3_{name}_y.npy"), np.load(interim / f"awid3_{name}_fn.npy"),
-                   cols, {c["name"]: c["family"] for c in meta["columns"]})
+                   np.load(interim / f"awid3_{name}_y.npy"), fn, cols, families)
 
     def col_index(self, names: list[str]) -> np.ndarray:
         return np.array([self.columns.index(c) for c in names if c in self.columns], dtype=int)
@@ -91,15 +93,30 @@ def make_folds(cap: Capture) -> tuple[list[Fold], np.ndarray, dict]:
     folds = []
     for k in range(K_BLOCKS):
         test = blocks[k]
-        val = blocks[k + 1] if k < K_BLOCKS - 1 else blocks[k - 1]
+        val = _purge(blocks[k + 1] if k < K_BLOCKS - 1 else blocks[k - 1], cap.fn, test)
         others = np.concatenate([blocks[j] for j in range(K_BLOCKS) if j != k])
-        train = np.concatenate([pre_train, _purge(others, cap.fn, test)])
+        train = _purge(_purge(np.concatenate([pre_train, others]), cap.fn, test), cap.fn, clean)
         tune_train = _purge(train[~np.isin(train, val)], cap.fn, val)
         folds.append(Fold(k, test, val, np.sort(train), np.sort(tune_train)))
     info = {"window": [lo, hi], "pre_window_train_rows": int(len(pre_train)), "clean_rows": int(len(clean)),
             "blocks": [{"k": k, "rows": int(len(b)), "attack": int(cap.y[b].sum()),
                         "frame_number": [int(cap.fn[b[0]]), int(cap.fn[b[-1]])]} for k, b in enumerate(blocks)]}
     return folds, clean, info
+
+
+def random_window_fold(cap: Capture, seed: int = 0) -> Fold:
+    """Stratified random 80/20 split of the attack-window frames (same test population as the
+    blocked protocol); training also gets the pre-attack frames, purged around the clean period."""
+    lo, hi = WINDOWS[cap.name]
+    window = np.flatnonzero((cap.fn >= lo) & (cap.fn <= hi))
+    rng = np.random.default_rng(seed)
+    test = np.sort(np.concatenate([rng.choice(r, int(0.2 * len(r)), replace=False)
+                                   for r in (window[cap.y[window] == 1], window[cap.y[window] == 0])]))
+    pre = np.flatnonzero(cap.fn < lo)
+    n_clean = int(len(pre) * CLEAN_SHARE)
+    clean = pre[len(pre) - n_clean:]
+    train = _purge(np.concatenate([pre[:len(pre) - n_clean], np.setdiff1d(window, test)]), cap.fn, clean)
+    return Fold(-1, test, test[:0], np.sort(train), train[:0])
 
 
 def sample_training(rows: np.ndarray, y: np.ndarray, seed: int) -> np.ndarray:
@@ -175,3 +192,16 @@ def metrics(y: np.ndarray, s: np.ndarray, threshold: float) -> dict:
         out["mcc"] = float(matthews_corrcoef(y, pred))
         out["f1"] = float(f1_score(y, pred, zero_division=0))
     return out
+
+
+def tune(cap: Capture, family: str, fold: Fold, cols: np.ndarray) -> tuple[dict, float]:
+    """Best grid configuration by PR-AUC on the validation block (seed 0), and its F1 threshold."""
+    best, best_score, best_thr = GRIDS[family][0], -1.0, 0.5
+    yv = cap.y[fold.val]
+    for params in GRIDS[family]:
+        model, _, _ = fit(cap, family, params, 0, fold.tune_train, cols, sample_seed=fold.k)
+        s = predict(model, cap, fold.val, cols)
+        score = pr_auc(yv, s)
+        if not np.isnan(score) and score > best_score:
+            best, best_score, best_thr = params, score, f1_threshold(yv, s)
+    return best, best_thr

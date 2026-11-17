@@ -1,11 +1,18 @@
 {
   "meta": {
     "script": "scripts/06_build_features.py",
-    "git_commit": "46dd5472674ed7e7b8cb232046d6c3130c7c7bc9",
+    "git_commit": "3e70913f3158af9e8910d8bbf94d05f24741e2c6",
     "uncommitted_files": [],
-    "timestamp_utc": "2026-11-15T17:03:43+00:00",
+    "timestamp_utc": "2026-11-15T19:57:26+00:00",
     "python": "3.11.5",
     "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
     "inputs_sha256": {
       "awid3_rogue_ap.parquet": "f37c101bd7f974de5dab96c38a6ed32831ebda396b17104460ccd706db207a02",
       "awid3_evil_twin.parquet": "b2fa76db40baf0abd7b148104c477e146b9152a5e70d42c169e6c164bb6fa112"
@@ -250,7 +257,7 @@
         "tls.record.version": "label (591 values)"
       },
       "frame_number_monotonic": true,
-      "seconds": 256.8
+      "seconds": 557.3
     },
     "evil_twin": {
       "rows": 3778679,
@@ -492,7 +499,7 @@
         "tls.record.version": "label (1159 values)"
       },
       "frame_number_monotonic": true,
-      "seconds": 463.2
+      "seconds": 1137.9
     }
   }
 }

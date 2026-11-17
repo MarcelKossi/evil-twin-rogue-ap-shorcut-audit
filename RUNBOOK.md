@@ -119,3 +119,26 @@ The script can be stopped and restarted; finished runs are kept.
 git add results docs RUNBOOK.md
 git commit -m "S3: label rule (H1b, H1c)"
 ```
+
+## 10. Stage S4 - reliance on artefacts (H2a, H2b, H2c)
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/08_s4_reliance.py` | `results/S4_runs.csv`, `results/S4_reliance.json` | several hours (overnight) |
+
+Stop and restart at any time; finished runs are kept.
+
+```cmd
+git add results docs RUNBOOK.md
+git commit -m "S4: reliance on artefacts (H2a, H2b, H2c)"
+```
+
+## 11. Re-run of S3 with the corrected folds (after S4)
+
+```cmd
+move results\S3_runs.csv results\S3_runs_v1.csv
+move results\S3_label_rule.json results\S3_label_rule_v1.json
+python scripts/07_s3_label_rule.py
+git add results docs
+git commit -m "S3 re-run with corrected folds"
+```
