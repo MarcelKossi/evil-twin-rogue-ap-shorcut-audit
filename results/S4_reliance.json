@@ -1,0 +1,503 @@
+{
+  "meta": {
+    "script": "scripts/08_s4_reliance.py",
+    "git_commit": "5a856a748aadddf9fee1089a036b203b91199951",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-18T07:26:08+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    }
+  },
+  "results": {
+    "evil_twin": {
+      "pr_auc": {
+        "blocked": {
+          "DT": {
+            "F-all": 0.895,
+            "F-chatz": 0.9354,
+            "F-noA": 0.8841,
+            "F-sem": 0.783
+          },
+          "LR": {
+            "F-all": 0.8921,
+            "F-chatz": 0.7853,
+            "F-noA": 0.7592,
+            "F-sem": 0.7283
+          },
+          "MLP": {
+            "F-all": 0.9224,
+            "F-chatz": 0.9779,
+            "F-noA": 0.9584,
+            "F-sem": 0.776
+          },
+          "RF": {
+            "F-all": 0.9585,
+            "F-chatz": 0.918,
+            "F-noA": 0.9685,
+            "F-sem": 0.786
+          },
+          "XGB": {
+            "F-all": 0.9551,
+            "F-chatz": 0.9843,
+            "F-noA": 0.9599,
+            "F-sem": 0.7851
+          }
+        },
+        "random": {
+          "DT": {
+            "F-all": 0.9953,
+            "F-chatz": 0.996,
+            "F-noA": 0.9948,
+            "F-sem": 0.9958
+          },
+          "LR": {
+            "F-all": 0.999,
+            "F-chatz": 0.9982,
+            "F-noA": 0.9976,
+            "F-sem": 0.9918
+          },
+          "MLP": {
+            "F-all": 0.9996,
+            "F-chatz": 0.9996,
+            "F-noA": 0.9993,
+            "F-sem": 0.9974
+          },
+          "RF": {
+            "F-all": 0.9999,
+            "F-chatz": 0.9956,
+            "F-noA": 0.9999,
+            "F-sem": 0.9967
+          },
+          "XGB": {
+            "F-all": 1.0,
+            "F-chatz": 0.9998,
+            "F-noA": 1.0,
+            "F-sem": 0.9974
+          }
+        }
+      },
+      "clean_fpr_blocked": {
+        "DT": {
+          "F-all": 0.00022,
+          "F-chatz": 0.00015,
+          "F-noA": 0.00026,
+          "F-sem": 0.00122
+        },
+        "LR": {
+          "F-all": 0.00028,
+          "F-chatz": 0.00027,
+          "F-noA": 0.00091,
+          "F-sem": 0.0022
+        },
+        "MLP": {
+          "F-all": 0.0003,
+          "F-chatz": 0.00022,
+          "F-noA": 0.00037,
+          "F-sem": 0.00081
+        },
+        "RF": {
+          "F-all": 0.00014,
+          "F-chatz": 0.00031,
+          "F-noA": 0.00023,
+          "F-sem": 0.0012
+        },
+        "XGB": {
+          "F-all": 0.00018,
+          "F-chatz": 0.00022,
+          "F-noA": 0.00022,
+          "F-sem": 0.00119
+        }
+      },
+      "attribution_shares_blocked_f_all": {
+        "DT": {
+          "share_S": 0.0006,
+          "share_A": 0.9984,
+          "share_C": 0.0003,
+          "share_U": 0.0006,
+          "share_FV": 0.9972
+        },
+        "LR": {
+          "share_S": 0.2309,
+          "share_A": 0.4385,
+          "share_C": 0.0655,
+          "share_U": 0.265,
+          "share_FV": 0.4133
+        },
+        "RF": {
+          "share_S": 0.0802,
+          "share_A": 0.624,
+          "share_C": 0.0827,
+          "share_U": 0.2132,
+          "share_FV": 0.6405
+        },
+        "XGB": {
+          "share_S": 0.0787,
+          "share_A": 0.7495,
+          "share_C": 0.06,
+          "share_U": 0.1117,
+          "share_FV": 0.7406
+        }
+      },
+      "acrs_blocked_f_all": {
+        "DT": 0.9987,
+        "LR": 0.504,
+        "RF": 0.7066,
+        "XGB": 0.8095
+      },
+      "permutation_drop_blocked_f_all_seed0": {
+        "DT": {
+          "perm_S": 0.0794,
+          "perm_A": 0.5801,
+          "perm_C": 0.213,
+          "perm_U": 0.0054
+        },
+        "LR": {
+          "perm_S": 0.4275,
+          "perm_A": 0.3005,
+          "perm_C": 0.0507,
+          "perm_U": 0.2585
+        },
+        "MLP": {
+          "perm_S": 0.3995,
+          "perm_A": 0.3292,
+          "perm_C": 0.0212,
+          "perm_U": 0.1647
+        },
+        "RF": {
+          "perm_S": 0.0007,
+          "perm_A": 0.436,
+          "perm_C": 0.001,
+          "perm_U": 0.0013
+        },
+        "XGB": {
+          "perm_S": 0.0003,
+          "perm_A": 0.4385,
+          "perm_C": 0.0009,
+          "perm_U": 0.0004
+        }
+      },
+      "H2a": {
+        "median_ars": 0.6867,
+        "ars_threshold": 0.25,
+        "ablation_without_A": {
+          "LR": {
+            "mean_relative_drop": 0.1821,
+            "ci95": [
+              -0.0001,
+              0.3717
+            ],
+            "meets": false
+          },
+          "DT": {
+            "mean_relative_drop": 0.0116,
+            "ci95": [
+              -0.0046,
+              0.036
+            ],
+            "meets": false
+          },
+          "RF": {
+            "mean_relative_drop": -0.0134,
+            "ci95": [
+              -0.0483,
+              0.0069
+            ],
+            "meets": false
+          },
+          "XGB": {
+            "mean_relative_drop": -0.0064,
+            "ci95": [
+              -0.0222,
+              0.0027
+            ],
+            "meets": false
+          },
+          "MLP": {
+            "mean_relative_drop": -0.056,
+            "ci95": [
+              -0.1691,
+              0.0008
+            ],
+            "meets": false
+          }
+        },
+        "supported": false
+      },
+      "H2b": {
+        "pr_auc": {
+          "pairs": 84,
+          "mean_random": 0.9979,
+          "mean_blocked": 0.8976,
+          "median_difference": 0.0676,
+          "wilcoxon_p_one_sided": 8.484439492761183e-16
+        },
+        "share_A": {
+          "pairs": 16,
+          "mean_random": 0.7704,
+          "mean_blocked": 0.7686,
+          "median_difference": 0.001,
+          "wilcoxon_p_one_sided": 0.201873779296875
+        },
+        "note": "raw p-values; Holm correction across the confirmatory family at the end"
+      },
+      "H2c": {
+        "mean_kendall_tau_across_seeds": {
+          "DT": 0.84,
+          "LR": null,
+          "RF": 0.8267,
+          "XGB": 1.0
+        },
+        "threshold": 0.6,
+        "supported": true
+      }
+    },
+    "rogue_ap": {
+      "pr_auc": {
+        "blocked": {
+          "DT": {
+            "F-all": 0.9984,
+            "F-chatz": 0.9992,
+            "F-noA": 0.9996,
+            "F-sem": 0.4363
+          },
+          "LR": {
+            "F-all": 0.9738,
+            "F-chatz": 0.2279,
+            "F-noA": 0.7363,
+            "F-sem": 0.4216
+          },
+          "MLP": {
+            "F-all": 0.9978,
+            "F-chatz": 0.9725,
+            "F-noA": 0.9936,
+            "F-sem": 0.4364
+          },
+          "RF": {
+            "F-all": 1.0,
+            "F-chatz": 1.0,
+            "F-noA": 1.0,
+            "F-sem": 0.4363
+          },
+          "XGB": {
+            "F-all": 1.0,
+            "F-chatz": 1.0,
+            "F-noA": 1.0,
+            "F-sem": 0.4363
+          }
+        },
+        "random": {
+          "DT": {
+            "F-all": 0.9955,
+            "F-chatz": 0.9985,
+            "F-noA": 0.9985,
+            "F-sem": 0.4288
+          },
+          "LR": {
+            "F-all": 0.9508,
+            "F-chatz": 0.1971,
+            "F-noA": 0.8028,
+            "F-sem": 0.4126
+          },
+          "MLP": {
+            "F-all": 0.9981,
+            "F-chatz": 1.0,
+            "F-noA": 0.9977,
+            "F-sem": 0.4289
+          },
+          "RF": {
+            "F-all": 1.0,
+            "F-chatz": 1.0,
+            "F-noA": 1.0,
+            "F-sem": 0.4288
+          },
+          "XGB": {
+            "F-all": 1.0,
+            "F-chatz": 1.0,
+            "F-noA": 1.0,
+            "F-sem": 0.4288
+          }
+        }
+      },
+      "clean_fpr_blocked": {
+        "DT": {
+          "F-all": 0.0,
+          "F-chatz": 0.0,
+          "F-noA": 0.0,
+          "F-sem": 0.00146
+        },
+        "LR": {
+          "F-all": 0.0,
+          "F-chatz": 0.00123,
+          "F-noA": 0.00073,
+          "F-sem": 0.00197
+        },
+        "MLP": {
+          "F-all": 0.0,
+          "F-chatz": 0.0,
+          "F-noA": 0.0,
+          "F-sem": 0.00195
+        },
+        "RF": {
+          "F-all": 0.0,
+          "F-chatz": 0.0,
+          "F-noA": 0.0,
+          "F-sem": 0.00146
+        },
+        "XGB": {
+          "F-all": 0.0,
+          "F-chatz": 0.0,
+          "F-noA": 0.0,
+          "F-sem": 0.00146
+        }
+      },
+      "attribution_shares_blocked_f_all": {
+        "DT": {
+          "share_S": 0.0006,
+          "share_A": 0.9965,
+          "share_C": 0.0028,
+          "share_U": 0.0,
+          "share_FV": 0.9956
+        },
+        "LR": {
+          "share_S": 0.3198,
+          "share_A": 0.4571,
+          "share_C": 0.0869,
+          "share_U": 0.1363,
+          "share_FV": 0.4761
+        },
+        "RF": {
+          "share_S": 0.1211,
+          "share_A": 0.6423,
+          "share_C": 0.0776,
+          "share_U": 0.159,
+          "share_FV": 0.4766
+        },
+        "XGB": {
+          "share_S": 0.0069,
+          "share_A": 0.707,
+          "share_C": 0.2673,
+          "share_U": 0.0188,
+          "share_FV": 0.6858
+        }
+      },
+      "acrs_blocked_f_all": {
+        "DT": 0.9994,
+        "LR": 0.544,
+        "RF": 0.7199,
+        "XGB": 0.9743
+      },
+      "permutation_drop_blocked_f_all_seed0": {
+        "DT": {
+          "perm_S": 0.0,
+          "perm_A": 0.9853,
+          "perm_C": 0.5115,
+          "perm_U": 0.0
+        },
+        "LR": {
+          "perm_S": 0.9285,
+          "perm_A": 0.8249,
+          "perm_C": 0.0452,
+          "perm_U": 0.0254
+        },
+        "MLP": {
+          "perm_S": 0.556,
+          "perm_A": 0.9574,
+          "perm_C": 0.0478,
+          "perm_U": 0.3821
+        },
+        "RF": {
+          "perm_S": 0.0,
+          "perm_A": 0.6894,
+          "perm_C": 0.0019,
+          "perm_U": 0.0
+        },
+        "XGB": {
+          "perm_S": 0.0,
+          "perm_A": 0.9383,
+          "perm_C": 0.1674,
+          "perm_U": 0.0
+        }
+      },
+      "H2a": {
+        "median_ars": 0.6746,
+        "ars_threshold": 0.25,
+        "ablation_without_A": {
+          "LR": {
+            "mean_relative_drop": 0.246,
+            "ci95": [
+              0.1418,
+              0.3653
+            ],
+            "meets": true
+          },
+          "DT": {
+            "mean_relative_drop": -0.0012,
+            "ci95": [
+              -0.0037,
+              0.0
+            ],
+            "meets": false
+          },
+          "RF": {
+            "mean_relative_drop": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "meets": false
+          },
+          "XGB": {
+            "mean_relative_drop": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "meets": false
+          },
+          "MLP": {
+            "mean_relative_drop": 0.0042,
+            "ci95": [
+              -0.0002,
+              0.0099
+            ],
+            "meets": false
+          }
+        },
+        "supported": false
+      },
+      "H2b": {
+        "pr_auc": {
+          "pairs": 84,
+          "mean_random": 0.8438,
+          "mean_blocked": 0.844,
+          "median_difference": 0.0,
+          "wilcoxon_p_one_sided": 0.9994423680673837
+        },
+        "share_A": {
+          "pairs": 16,
+          "mean_random": 0.7572,
+          "mean_blocked": 0.7616,
+          "median_difference": -0.0046,
+          "wilcoxon_p_one_sided": 0.9869422317815183
+        },
+        "note": "raw p-values; Holm correction across the confirmatory family at the end"
+      },
+      "H2c": {
+        "mean_kendall_tau_across_seeds": {
+          "DT": 0.8181,
+          "LR": null,
+          "RF": 0.9733,
+          "XGB": 1.0
+        },
+        "threshold": 0.6,
+        "supported": true
+      }
+    }
+  }
+}
