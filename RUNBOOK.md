@@ -158,3 +158,18 @@ beacon frames of each test block only. Stop and restart at any time; finished ru
 git add scripts/09_s4x_field_detail.py results docs RUNBOOK.md
 git commit -m "S4x: field-level detail of S4 (exploratory)"
 ```
+
+## 13. Perturbation test (exploratory)
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/10_perturbation.py --seeds 0` | first pass, seed 0 only | about 1 h |
+| `python scripts/10_perturbation.py` | seeds 0-4 (finished runs are skipped) | about 3-5 h |
+
+Results: `results/S4p_perturbation_runs.csv` (one row per run and variant) and
+`results/S4p_perturbation.json`. Stop and restart at any time; finished runs are kept.
+
+```cmd
+git add scripts/10_perturbation.py results docs RUNBOOK.md RESULTS.md README.md
+git commit -m "Perturbation test (exploratory)"
+```
