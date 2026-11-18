@@ -1,0 +1,1970 @@
+{
+  "meta": {
+    "script": "scripts/09_s4x_field_detail.py",
+    "git_commit": "ded750712492379bf12a02a766f92b1875f5c0d5",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-18T15:53:23+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "inputs_sha256": {
+      "S4_runs.csv": "0c99b2229f1a11428ef04588f39970c096a8a27e3d660062ba446103a5c94f4d",
+      "awid3_rogue_ap_features.json": "d9486cd601dc4028e13e8cac5446345af580c60d23cdebbea65cad3ba0d40149",
+      "awid3_evil_twin_features.json": "6c6d4cf032e481d4e84e782c98d3a930224661a1c59b35855bbcc515cb832809"
+    }
+  },
+  "exploratory": true,
+  "h2b_share_a_f_all_and_f_chatz": {
+    "evil_twin": {
+      "pairs": 32,
+      "mean_random": 0.4236,
+      "mean_blocked": 0.4197,
+      "median_difference": -0.0,
+      "wilcoxon_p_one_sided": 0.35262711555697024
+    },
+    "rogue_ap": {
+      "pairs": 32,
+      "mean_random": 0.3899,
+      "mean_blocked": 0.3906,
+      "median_difference": -0.0001,
+      "wilcoxon_p_one_sided": 0.9472548025127734
+    }
+  },
+  "s4_blocked": {
+    "median_pr_auc_by_block": {
+      "evil_twin": {
+        "0": {
+          "F-all": 0.9996,
+          "F-chatz": 0.9994,
+          "F-noA": 0.9997,
+          "F-sem": 0.9962
+        },
+        "1": {
+          "F-all": 0.9997,
+          "F-chatz": 0.9996,
+          "F-noA": 0.9997,
+          "F-sem": 0.9997
+        },
+        "2": {
+          "F-all": 0.9994,
+          "F-chatz": 0.9976,
+          "F-noA": 0.9977,
+          "F-sem": 0.9953
+        },
+        "3": {
+          "F-all": 0.7761,
+          "F-chatz": 0.8066,
+          "F-noA": 0.8049,
+          "F-sem": 0.4026
+        },
+        "4": {
+          "F-all": 0.9532,
+          "F-chatz": 0.8886,
+          "F-noA": 0.982,
+          "F-sem": 0.5225
+        }
+      },
+      "rogue_ap": {
+        "0": {
+          "F-all": 1.0,
+          "F-chatz": 1.0,
+          "F-noA": 1.0,
+          "F-sem": 0.3228
+        },
+        "1": {
+          "F-all": 1.0,
+          "F-chatz": 1.0,
+          "F-noA": 1.0,
+          "F-sem": 0.4547
+        },
+        "2": {
+          "F-all": 1.0,
+          "F-chatz": 1.0,
+          "F-noA": 1.0,
+          "F-sem": 0.4539
+        },
+        "3": {
+          "F-all": 1.0,
+          "F-chatz": 1.0,
+          "F-noA": 1.0,
+          "F-sem": 0.4776
+        },
+        "4": {
+          "F-all": 1.0,
+          "F-chatz": 1.0,
+          "F-noA": 1.0,
+          "F-sem": 0.4726
+        }
+      }
+    },
+    "s4_compute_hours": 11.7
+  },
+  "results_eval": {
+    "evil_twin": {
+      "F-all": {
+        "DT": {
+          "pr_auc_refit": 0.8975,
+          "pr_auc_s4": 0.8975,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.9985,
+            "C": 0.0004,
+            "S": 0.0006,
+            "U": 0.0005
+          },
+          "top_fields": [
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.9949
+            },
+            {
+              "field": "wlan_radio.end_tsf",
+              "family": "A",
+              "mean_share": 0.0016
+            },
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.0008
+            },
+            {
+              "field": "wlan.da",
+              "family": "A",
+              "mean_share": 0.0006
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0004
+            },
+            {
+              "field": "wlan_radio.data_rate",
+              "family": "U",
+              "mean_share": 0.0003
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0002
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0002
+            },
+            {
+              "field": "wlan.ta",
+              "family": "A",
+              "mean_share": 0.0002
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0001
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9551,
+          "pr_auc_s4": 0.9551,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.7495,
+            "C": 0.06,
+            "S": 0.0787,
+            "U": 0.1117
+          },
+          "top_fields": [
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.5434
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0461
+            },
+            {
+              "field": "wlan.da",
+              "family": "A",
+              "mean_share": 0.0361
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0337
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.0309
+            },
+            {
+              "field": "llc",
+              "family": "U",
+              "mean_share": 0.0307
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0263
+            },
+            {
+              "field": "ip.version",
+              "family": "U",
+              "mean_share": 0.0246
+            },
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.0212
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0196
+            }
+          ]
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "pr_auc_refit": 0.9354,
+          "pr_auc_s4": 0.9354,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.0001,
+            "C": 0.5115,
+            "S": 0.4873,
+            "U": 0.0011
+          },
+          "top_fields": [
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.5057
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.4796
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0058
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0057
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0015
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0011
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.0005
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "wlan.fc.pwrmgt",
+              "family": "U",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "wlan.fc.retry",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9843,
+          "pr_auc_s4": 0.9843,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.1056,
+            "C": 0.397,
+            "S": 0.4406,
+            "U": 0.0568
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.2513
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.2196
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.1774
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0928
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0792
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.065
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0532
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.0451
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0128
+            },
+            {
+              "field": "wlan.fc.pwrmgt",
+              "family": "U",
+              "mean_share": 0.002
+            }
+          ]
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "pr_auc_refit": 0.8806,
+          "pr_auc_s4": 0.8806,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "C": 0.0095,
+            "S": 0.2439,
+            "U": 0.7466
+          },
+          "top_fields": [
+            {
+              "field": "ip.ttl",
+              "family": "U",
+              "mean_share": 0.7286
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.1658
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.0725
+            },
+            {
+              "field": "wlan_radio.data_rate",
+              "family": "U",
+              "mean_share": 0.0083
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0071
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0056
+            },
+            {
+              "field": "wlan.fc.pwrmgt",
+              "family": "U",
+              "mean_share": 0.0032
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0032
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0026
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0016
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9599,
+          "pr_auc_s4": 0.9599,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "C": 0.1266,
+            "S": 0.3164,
+            "U": 0.5569
+          },
+          "top_fields": [
+            {
+              "field": "ip.ttl",
+              "family": "U",
+              "mean_share": 0.3273
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.2368
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0821
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0649
+            },
+            {
+              "field": "wlan_radio.data_rate",
+              "family": "U",
+              "mean_share": 0.0474
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0414
+            },
+            {
+              "field": "radiotap.datarate",
+              "family": "U",
+              "mean_share": 0.0319
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0278
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0253
+            },
+            {
+              "field": "llc",
+              "family": "U",
+              "mean_share": 0.0193
+            }
+          ]
+        }
+      }
+    },
+    "rogue_ap": {
+      "F-all": {
+        "DT": {
+          "pr_auc_refit": 0.998,
+          "pr_auc_s4": 0.998,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.9963,
+            "C": 0.0037,
+            "S": 0.0,
+            "U": 0.0
+          },
+          "top_fields": [
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.9921
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.0041
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0037
+            },
+            {
+              "field": "data.data",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.payload",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.da",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.time_relative",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.time_delta",
+              "family": "A",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.707,
+            "C": 0.2673,
+            "S": 0.0069,
+            "U": 0.0188
+          },
+          "top_fields": [
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.4634
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.2145
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.1786
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0301
+            },
+            {
+              "field": "radiotap.mactime",
+              "family": "A",
+              "mean_share": 0.0269
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0228
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0188
+            },
+            {
+              "field": "wlan_radio.start_tsf",
+              "family": "A",
+              "mean_share": 0.0174
+            },
+            {
+              "field": "frame.time_delta",
+              "family": "A",
+              "mean_share": 0.0155
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.0069
+            }
+          ]
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.0,
+            "C": 0.0049,
+            "S": 0.8425,
+            "U": 0.1526
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.8419
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.1526
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0041
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0007
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0006
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.moredata",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "A": 0.0,
+            "C": 0.3342,
+            "S": 0.3765,
+            "U": 0.2892
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.3765
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.2892
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.2438
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0904
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.moredata",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0
+            }
+          ]
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "C": 0.0049,
+            "S": 0.8425,
+            "U": 0.1526
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.8419
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.1526
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0041
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0007
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0006
+            },
+            {
+              "field": "wlan.fc.order",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "tls.record.version",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.length",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "family_shares": {
+            "C": 0.3222,
+            "S": 0.3697,
+            "U": 0.308
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.3697
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.2813
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.2314
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0626
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0282
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0267
+            },
+            {
+              "field": "wlan.fixed.reason_code",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.retry",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "tls.record.content_type",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "results_beacons": {
+    "evil_twin": {
+      "F-all": {
+        "DT": {
+          "pr_auc_refit": 0.8975,
+          "pr_auc_s4": 0.8975,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 0.8049,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.9985,
+            "C": 0.0007,
+            "S": 0.0002,
+            "U": 0.0006
+          },
+          "top_fields": [
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.9956
+            },
+            {
+              "field": "radiotap.mactime",
+              "family": "A",
+              "mean_share": 0.0011
+            },
+            {
+              "field": "frame.time_relative",
+              "family": "A",
+              "mean_share": 0.0011
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0007
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0005
+            },
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.0004
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "wlan.ta",
+              "family": "A",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "radiotap.timestamp.ts",
+              "family": "A",
+              "mean_share": 0.0001
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9551,
+          "pr_auc_s4": 0.9551,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 0.77,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.7793,
+            "C": 0.0531,
+            "S": 0.05,
+            "U": 0.1176
+          },
+          "top_fields": [
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.5666
+            },
+            {
+              "field": "ip.version",
+              "family": "U",
+              "mean_share": 0.0456
+            },
+            {
+              "field": "wlan.da",
+              "family": "A",
+              "mean_share": 0.0305
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0296
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0277
+            },
+            {
+              "field": "radiotap.mactime",
+              "family": "A",
+              "mean_share": 0.0258
+            },
+            {
+              "field": "llc",
+              "family": "U",
+              "mean_share": 0.0257
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.0254
+            },
+            {
+              "field": "frame.time_epoch",
+              "family": "A",
+              "mean_share": 0.0233
+            },
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.0221
+            }
+          ]
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "pr_auc_refit": 0.9354,
+          "pr_auc_s4": 0.9354,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 0.8049,
+            "4": 0.9984
+          },
+          "family_shares": {
+            "A": 0.0,
+            "C": 0.7233,
+            "S": 0.2766,
+            "U": 0.0
+          },
+          "top_fields": [
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.5243
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.2764
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.1991
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0002
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.moredata",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9843,
+          "pr_auc_s4": 0.9843,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 0.9562,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.0837,
+            "C": 0.542,
+            "S": 0.3434,
+            "U": 0.0309
+          },
+          "top_fields": [
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.4349
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.1455
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.1126
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.107
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0754
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0538
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0315
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0283
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0083
+            },
+            {
+              "field": "wlan.fc.pwrmgt",
+              "family": "U",
+              "mean_share": 0.0015
+            }
+          ]
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "pr_auc_refit": 0.8806,
+          "pr_auc_s4": 0.8806,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 0.9998,
+            "3": 0.8049,
+            "4": 0.9984
+          },
+          "family_shares": {
+            "C": 0.2896,
+            "S": 0.4675,
+            "U": 0.2429
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.4656
+            },
+            {
+              "field": "ip.ttl",
+              "family": "U",
+              "mean_share": 0.2426
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.2293
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0589
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0019
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0015
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0002
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "llc",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 0.9599,
+          "pr_auc_s4": 0.9599,
+          "max_abs_difference": 0.0,
+          "sample_attack": 3568,
+          "sample_normal": 4632,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 0.8047,
+            "4": 0.9998
+          },
+          "family_shares": {
+            "C": 0.2905,
+            "S": 0.2741,
+            "U": 0.4354
+          },
+          "top_fields": [
+            {
+              "field": "ip.ttl",
+              "family": "U",
+              "mean_share": 0.242
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.2119
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.1409
+            },
+            {
+              "field": "wlan_radio.data_rate",
+              "family": "U",
+              "mean_share": 0.113
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0669
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.047
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.0406
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.038
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0363
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0192
+            }
+          ]
+        }
+      }
+    },
+    "rogue_ap": {
+      "F-all": {
+        "DT": {
+          "pr_auc_refit": 0.998,
+          "pr_auc_s4": 0.998,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.6876,
+            "C": 0.3124,
+            "S": 0.0,
+            "U": 0.0
+          },
+          "top_fields": [
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.4696
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.3124
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.218
+            },
+            {
+              "field": "data.data",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.payload",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.da",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.bssid",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.time_relative",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.time_delta",
+              "family": "A",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.5408,
+            "C": 0.4427,
+            "S": 0.003,
+            "U": 0.0135
+          },
+          "top_fields": [
+            {
+              "field": "wlan.ra",
+              "family": "A",
+              "mean_share": 0.3963
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.3531
+            },
+            {
+              "field": "wlan_radio.duration",
+              "family": "A",
+              "mean_share": 0.1009
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0667
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0228
+            },
+            {
+              "field": "radiotap.mactime",
+              "family": "A",
+              "mean_share": 0.0185
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0135
+            },
+            {
+              "field": "wlan_radio.start_tsf",
+              "family": "A",
+              "mean_share": 0.0111
+            },
+            {
+              "field": "frame.time_delta",
+              "family": "A",
+              "mean_share": 0.0085
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.003
+            }
+          ]
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.0,
+            "C": 0.5301,
+            "S": 0.4368,
+            "U": 0.0331
+          },
+          "top_fields": [
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.53
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.4367
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0331
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.moredata",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "A": 0.0,
+            "C": 0.4906,
+            "S": 0.431,
+            "U": 0.0784
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.431
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.3856
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.105
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0784
+            },
+            {
+              "field": "radiotap.length",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "radiotap.present.tsft",
+              "family": "A",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.moredata",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.protected",
+              "family": "S",
+              "mean_share": 0.0
+            }
+          ]
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "C": 0.5301,
+            "S": 0.4368,
+            "U": 0.0331
+          },
+          "top_fields": [
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.53
+            },
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.4367
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0331
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0001
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.order",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "tls.record.version",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "udp.length",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.ds",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.frag",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        },
+        "XGB": {
+          "pr_auc_refit": 1.0,
+          "pr_auc_s4": 1.0,
+          "max_abs_difference": 0.0,
+          "sample_attack": 1310,
+          "sample_normal": 1690,
+          "pr_auc_on_sample_by_fold": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0
+          },
+          "family_shares": {
+            "C": 0.4833,
+            "S": 0.4251,
+            "U": 0.0916
+          },
+          "top_fields": [
+            {
+              "field": "wlan.fc.type",
+              "family": "S",
+              "mean_share": 0.4251
+            },
+            {
+              "field": "frame.len",
+              "family": "C",
+              "mean_share": 0.375
+            },
+            {
+              "field": "wlan.duration",
+              "family": "U",
+              "mean_share": 0.0723
+            },
+            {
+              "field": "wlan_radio.signal_dbm",
+              "family": "C",
+              "mean_share": 0.0646
+            },
+            {
+              "field": "radiotap.dbm_antsignal",
+              "family": "C",
+              "mean_share": 0.0437
+            },
+            {
+              "field": "wlan.seq",
+              "family": "U",
+              "mean_share": 0.0193
+            },
+            {
+              "field": "wlan.fixed.reason_code",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.subtype",
+              "family": "S",
+              "mean_share": 0.0
+            },
+            {
+              "field": "wlan.fc.retry",
+              "family": "U",
+              "mean_share": 0.0
+            },
+            {
+              "field": "tls.record.content_type",
+              "family": "U",
+              "mean_share": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "beacon_values_top_f_noa": {
+    "rogue_ap": {
+      "beacons_attack": 1310,
+      "beacons_normal": 1690,
+      "wlan.fc.type": {
+        "0.0": {
+          "attack": 1.0,
+          "normal": 1.0
+        }
+      },
+      "wlan.duration": {
+        "0.0": {
+          "attack": 1.0,
+          "normal": 1.0
+        }
+      },
+      "frame.len": {
+        "193.0": {
+          "attack": 1.0,
+          "normal": 0.0
+        },
+        "272.0": {
+          "attack": 0.0,
+          "normal": 0.7994
+        },
+        "273.0": {
+          "attack": 0.0,
+          "normal": 0.2006
+        }
+      },
+      "radiotap.dbm_antsignal": {
+        "11.0": {
+          "attack": 0.0,
+          "normal": 0.045
+        },
+        "13.0": {
+          "attack": 0.0,
+          "normal": 0.3053
+        },
+        "14.0": {
+          "attack": 0.0008,
+          "normal": 0.0562
+        },
+        "15.0": {
+          "attack": 0.0008,
+          "normal": 0.1367
+        },
+        "16.0": {
+          "attack": 0.0038,
+          "normal": 0.1615
+        },
+        "23.0": {
+          "attack": 0.4237,
+          "normal": 0.0065
+        },
+        "24.0": {
+          "attack": 0.0763,
+          "normal": 0.0012
+        },
+        "25.0": {
+          "attack": 0.116,
+          "normal": 0.0006
+        },
+        "26.0": {
+          "attack": 0.0824,
+          "normal": 0.0
+        },
+        "27.0": {
+          "attack": 0.0573,
+          "normal": 0.0
+        }
+      },
+      "wlan_radio.signal_dbm": {
+        "47.0": {
+          "attack": 0.0458,
+          "normal": 0.0
+        },
+        "48.0": {
+          "attack": 0.0885,
+          "normal": 0.0
+        },
+        "49.0": {
+          "attack": 0.2099,
+          "normal": 0.0059
+        },
+        "50.0": {
+          "attack": 0.4954,
+          "normal": 0.0237
+        },
+        "51.0": {
+          "attack": 0.1008,
+          "normal": 0.042
+        },
+        "52.0": {
+          "attack": 0.0351,
+          "normal": 0.0568
+        },
+        "53.0": {
+          "attack": 0.0061,
+          "normal": 0.3107
+        },
+        "54.0": {
+          "attack": 0.0,
+          "normal": 0.4254
+        },
+        "55.0": {
+          "attack": 0.0008,
+          "normal": 0.0846
+        }
+      }
+    },
+    "evil_twin": {
+      "beacons_attack": 3568,
+      "beacons_normal": 4632,
+      "ip.ttl": {
+        "-1.0": {
+          "attack": 1.0,
+          "normal": 1.0
+        }
+      },
+      "wlan.fc.protected": {
+        "0.0": {
+          "attack": 1.0,
+          "normal": 1.0
+        }
+      },
+      "wlan_radio.signal_dbm": {
+        "44.0": {
+          "attack": 0.0622,
+          "normal": 0.0
+        },
+        "45.0": {
+          "attack": 0.174,
+          "normal": 0.0
+        },
+        "46.0": {
+          "attack": 0.2416,
+          "normal": 0.0002
+        },
+        "47.0": {
+          "attack": 0.2637,
+          "normal": 0.0013
+        },
+        "48.0": {
+          "attack": 0.1244,
+          "normal": 0.0287
+        },
+        "55.0": {
+          "attack": 0.0,
+          "normal": 0.0019
+        },
+        "56.0": {
+          "attack": 0.0,
+          "normal": 0.3877
+        },
+        "57.0": {
+          "attack": 0.0,
+          "normal": 0.5712
+        },
+        "58.0": {
+          "attack": 0.0,
+          "normal": 0.0041
+        }
+      },
+      "wlan.fc.type": {
+        "0.0": {
+          "attack": 1.0,
+          "normal": 1.0
+        }
+      },
+      "wlan.seq": {
+        "835.0": {
+          "attack": 0.0006,
+          "normal": 0.0002
+        },
+        "837.0": {
+          "attack": 0.0006,
+          "normal": 0.0002
+        },
+        "838.0": {
+          "attack": 0.0006,
+          "normal": 0.0002
+        },
+        "839.0": {
+          "attack": 0.0006,
+          "normal": 0.0002
+        },
+        "1352.0": {
+          "attack": 0.0006,
+          "normal": 0.0004
+        },
+        "2983.0": {
+          "attack": 0.0,
+          "normal": 0.0006
+        },
+        "2994.0": {
+          "attack": 0.0,
+          "normal": 0.0006
+        },
+        "2995.0": {
+          "attack": 0.0,
+          "normal": 0.0006
+        },
+        "2996.0": {
+          "attack": 0.0,
+          "normal": 0.0006
+        },
+        "3026.0": {
+          "attack": 0.0,
+          "normal": 0.0006
+        }
+      }
+    }
+  }
+}
