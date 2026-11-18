@@ -1,9 +1,10 @@
 # Preliminary results
 
-*Status: 17 November 2026. Stages S0-S3 of the pre-registered protocol
-([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`). The
-first sections describe the labels of AWID3; the S3 section describes
-detectors trained on them.*
+*Status: 18 November 2026. Stages S0-S4 of the pre-registered protocol
+([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
+the exploratory stage S4x. The first sections describe the labels of AWID3;
+the S3, S4 and S4x sections describe detectors trained on them. S3 will be
+re-run with corrected folds.*
 
 ## Question
 
@@ -108,8 +109,99 @@ held out in turn with a 10,000-frame gap; 5 model families, 5 seeds.
 Source: [`results/S3_label_rule.json`](results/S3_label_rule.json),
 [`results/S3_runs.csv`](results/S3_runs.csv).
 
+## Do detectors rely on capture artefacts? (S4, pre-registered H2a-H2c)
+
+Five model families (LR, DT, RF, XGB, MLP), 5 seeds, the blocked protocol of
+S3 and, for H2b, a random 80/20 split of the attack window. Four field sets:
+
+- **F-all**: every usable field;
+- **F-noA**: without capture artefacts (family A);
+- **F-sem**: 802.11 semantic fields only (family S);
+- **F-chatz**: the 16 expert features of Chatzoglou et al. (2022), as reused
+  in later work.
+
+Mean PR-AUC, blocked protocol:
+
+| | Rogue_AP | Evil_Twin |
+|---|---|---|
+| F-all (RF / XGB) | 1.000 / 1.000 | 0.958 / 0.955 |
+| F-noA (RF / XGB) | 1.000 / 1.000 | 0.969 / 0.960 |
+| F-chatz (RF / XGB) | 1.000 / 1.000 | 0.918 / 0.984 |
+| F-sem (RF / XGB) | 0.436 / 0.436 | 0.786 / 0.785 |
+
+| Hypothesis | Rogue_AP | Evil_Twin |
+|---|---|---|
+| H2a: median ARS >= 0.25 **and** removing A costs >= 10% for >= 3/5 models | not supported (ARS 0.67; 1/5) | not supported (ARS 0.69; 0/5) |
+| H2b: random split gives higher PR-AUC **and** higher ARS | not supported (PR-AUC 0.844 vs 0.844) | not supported as a whole: PR-AUC 0.998 vs 0.898 (p = 8.5e-16), ARS not higher (p = 0.20) |
+| H2c: ranking of families stable across seeds (tau >= 0.6) | supported (0.82-1.00) | supported (0.83-1.00) |
+
+- **The models use the artefacts, but do not need them.** Most of the
+  attribution goes to family A, yet RF and XGB reach the same PR-AUC without
+  it.
+- **With 802.11 semantics only, a rogue beacon cannot be told from a real
+  one.** On Rogue_AP, F-sem gives 0.32-0.48 in every block, almost the same for
+  all models. On Evil_Twin, F-sem reaches 0.995-1.000 on blocks 0-2, which are
+  mostly the victims' data frames, and drops to 0.40 and 0.52 on blocks 3-4,
+  which are mostly beacons.
+- F-sem also costs false alarms on clean traffic: 0.08-0.22% (Evil_Twin) and
+  0.15-0.20% (Rogue_AP), against at most 0.03% and 0% with F-all.
+- **Random splits inflate the Evil_Twin scores**, from 0.898 to 0.998.
+- p-values are raw; Holm correction across the confirmatory family comes at
+  the end. Permutation importance is computed for seed 0 only and is
+  descriptive. The ARS part of H2b was tested on F-all only by the S4 script;
+  adding F-chatz gives the same conclusion (journal, deviation 8).
+
+Sources: [`results/S4_reliance.json`](results/S4_reliance.json),
+[`results/S4_runs.csv`](results/S4_runs.csv).
+
+## Which fields decide? (S4x, exploratory)
+
+S4 records attribution by feature family only. S4x refits the decision tree
+and XGBoost (seed 0, S4 settings) and keeps the attribution of every field,
+first on the usual evaluation sample, then on beacon frames only.
+
+**What separates a rogue beacon from a real one**, on the beacons of the
+attack window:
+
+| Field (family) | Rogue_AP: rogue / legitimate | Separates them? |
+|---|---|---|
+| `wlan.fc.type` (S) | management / management | no |
+| `wlan.duration` (U) | 0 / 0 | no |
+| `frame.len` (C) | 263 / 342-343 bytes | **yes** |
+| received signal strength (C) | weaker / stronger | **almost** |
+
+On Evil_Twin beacons, signal strength separates them as well. Frame length
+is set by the attacker's software. Signal strength depends on the attacker's
+transmit power and position, and on where the sensor stands.
+
+**Why attribution missed it.** On the usual evaluation sample, mostly normal
+frames, `frame.len` received 0.4% of the decision tree's attribution and
+`wlan.fc.type` 84%. Restricted to beacons, `frame.len` rises to 53%. The
+attribution rewards the fields that sort the bulk of the traffic, such as
+frame type and addresses, not the field that settles the decision between
+two look-alike frames. This is why a high artefact share (H2a) did not mean
+that the models depended on artefacts.
+
+**Evil_Twin data frames.** Without artefacts, the models rely on
+`wlan.fc.protected` and on the presence of an IP header (`ip.ttl`): the rogue
+AP is open, so the victims' data is not encrypted. This is real evidence for
+this attack setup, but it would disappear with a WPA2-protected Evil Twin.
+
+**A labelling error the detectors catch.** On Evil_Twin beacons, every model
+scores 1.000 in every block except block 3 (0.805). Block 3 holds 590 rogue
+beacons labelled attack and the 143 rogue beacons labelled Normal found in
+S1c: 590 / (590 + 143) = 0.805. The models rank the mislabelled beacons with
+the attack frames, so the drop comes from the labels, not from the detectors.
+This still has to be confirmed with the scores of these frames.
+
+Sources: [`results/S4x_field_detail.json`](results/S4x_field_detail.json),
+[`results/S4x_field_runs.csv`](results/S4x_field_runs.csv),
+[`results/S4x_beacon_runs.csv`](results/S4x_beacon_runs.csv).
+
 ## Next
 
-S4: share of each feature family in the models' decisions (artefacts,
-attacker-controllable, semantic), detectors restricted to semantic fields, and
-random vs blocked splitting.
+- **Perturbation test** (exploratory, design fixed in the journal before any
+  result): the trained models receive the real rogue beacons with the
+  legitimate length, the legitimate signal strength, or both.
+- Re-run of S3 with the corrected folds.
+- Reproduction of published AWID3 pipelines, then transfer to AWID2 (S5).

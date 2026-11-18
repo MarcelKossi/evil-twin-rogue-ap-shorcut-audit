@@ -148,9 +148,11 @@ git commit -m "S3 re-run with corrected folds"
 | Command | Output | Time |
 |---|---|---|
 | `python scripts/09_s4x_field_detail.py` | `results/S4x_field_runs.csv`, `results/S4x_field_detail.json` | about 10-20 min |
+| `python scripts/09_s4x_field_detail.py --beacons` | `results/S4x_beacon_runs.csv`, `results/S4x_field_detail.json` | about 10-20 min |
 
 Refits DT and XGB (seed 0, S4 hyperparameters) on F-all, F-noA and F-chatz and keeps the
-attribution of every field. Stop and restart at any time; finished runs are kept.
+attribution of every field, on the S4 evaluation sample or (`--beacons`) on the
+beacon frames of each test block only. Stop and restart at any time; finished runs are kept.
 
 ```cmd
 git add scripts/09_s4x_field_detail.py results docs RUNBOOK.md
