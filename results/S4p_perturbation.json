@@ -1,0 +1,1271 @@
+{
+  "meta": {
+    "script": "scripts/10_perturbation.py",
+    "git_commit": "12cbfdf7a2bab5fa674c1de14628ef97ac5a2c1b",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-18T19:21:37+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "inputs_sha256": {
+      "S4_runs.csv": "0c99b2229f1a11428ef04588f39970c096a8a27e3d660062ba446103a5c94f4d",
+      "awid3_rogue_ap_features.json": "d9486cd601dc4028e13e8cac5446345af580c60d23cdebbea65cad3ba0d40149",
+      "awid3_evil_twin_features.json": "6c6d4cf032e481d4e84e782c98d3a930224661a1c59b35855bbcc515cb832809"
+    }
+  },
+  "exploratory": true,
+  "results": {
+    "evil_twin": {
+      "F-all": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.815,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.815,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.8142,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9995,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.8142,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9995,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.5614,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.3705,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9952,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.1836,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.8717,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0003,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.5919,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 0.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.5835,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.1099,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.8447,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.3764,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9859,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0098,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.5593,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.7343,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.7113,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.5291,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.4112,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.727,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.727,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.7256,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.727,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.3913,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9997,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.3913,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9997,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4415,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4415,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 0.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.5,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.2821,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.6668,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9972,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4418,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9549,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.7321,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9592,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4542,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9832,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.185,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9998,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0003,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9996,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.442,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.7141,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.6931,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9919,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.1841,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9336,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0011,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4409,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9624,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9996,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.792,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.8908,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0017,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4424,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0003,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4415,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.00022
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9529,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9993,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.9283,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9991,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0006,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.6752,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0006,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.6152,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 0.993,
+          "legit_beacons_flagged_rate": 0.06883
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.5275,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.5163,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0008,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4957,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0006,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4317,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 0.979,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9933,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.1909,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.0003,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9988,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4429,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9622,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.8498,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.1839,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.8161,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.514,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": 1.0,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      }
+    },
+    "rogue_ap": {
+      "F-all": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.6756,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.8475,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.4786,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.5239,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.816,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0137,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9005,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.5969,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0107,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.5167,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9448,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.7969,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.6701,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9947,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9296,
+            "fields_changed": [
+              "frame.len",
+              "wlan_radio.duration"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.6374,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.481,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.duration",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      },
+      "F-chatz": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.7809,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.3195,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.9893,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.303,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.9878,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.2977,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4821,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.99941
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9992,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9797,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.874,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4764,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9931,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9575,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.584,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4497,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9695,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9551,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.3275,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4508,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      },
+      "F-noA": {
+        "DT": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 1.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4363,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "LR": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9084,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9226,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.7832,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.7671,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.6893,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.7272,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.5298,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.5227,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.49941
+        },
+        "MLP": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9046,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9904,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.5718,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9501,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.1244,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.7544,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0374,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.4865,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.06391
+        },
+        "RF": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9931,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9356,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.4595,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.449,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        },
+        "XGB": {
+          "max_abs_difference_pr_auc_vs_s4": 0.0,
+          "seeds": [
+            0
+          ],
+          "none": {
+            "detection_rate_mean": 0.9718,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": []
+          },
+          "L": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.9382,
+            "fields_changed": [
+              "frame.len"
+            ]
+          },
+          "P": {
+            "detection_rate_mean": 0.5695,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 1.0,
+            "fields_changed": [
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "L+P": {
+            "detection_rate_mean": 0.0,
+            "detection_rate_std": null,
+            "pr_auc_beacons_mean": 0.487,
+            "fields_changed": [
+              "frame.len",
+              "radiotap.dbm_antsignal",
+              "wlan_radio.signal_dbm"
+            ]
+          },
+          "rogue_labelled_normal_flagged": null,
+          "legit_beacons_flagged_rate": 0.0
+        }
+      }
+    }
+  }
+}
