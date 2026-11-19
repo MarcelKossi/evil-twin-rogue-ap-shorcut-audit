@@ -136,12 +136,16 @@ git commit -m "S4: reliance on artefacts (H2a, H2b, H2c)"
 ## 11. Re-run of S3 with the corrected folds (after S4)
 
 ```cmd
-move results\S3_runs.csv results\S3_runs_v1.csv
-move results\S3_label_rule.json results\S3_label_rule_v1.json
+git mv results\S3_runs.csv results\S3_runs_v1.csv
+git mv results\S3_label_rule.json results\S3_label_rule_v1.json
+git commit -m "Keep S3 v1 results before the re-run"
 python scripts/07_s3_label_rule.py
 git add results docs
 git commit -m "S3 re-run with corrected folds"
 ```
+
+The first results (folds before the code review, commit `3e70913`) stay in the
+`_v1` files; committing the rename first keeps the new results on a clean commit.
 
 ## 12. Stage S4x - field-level detail of S4 (exploratory)
 
