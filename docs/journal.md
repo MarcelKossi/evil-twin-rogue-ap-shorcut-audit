@@ -177,3 +177,10 @@ and any deviation from `docs/protocol_v0.3.md`.
 - While preparing S5 I noticed that the rule of protocol 9.3 (drop columns more than 99% missing) removed the fields that exist only in management frames: `wlan.fixed.capabilities.ess` and `.ibss`, `wlan.rsn.capabilities.mfpc` (family S), `wlan.ssid` and `wlan.fixed.beacon` (family C), all 99.6% missing over each capture (`results/S2b_features.json`). Protocol 7.1 gives RSN and capability information as examples of semantic evidence, so the rule works against the taxonomy for beacons.
 - Consequence for the reading of S4 and S4x: "with 802.11 semantic fields only, a rogue beacon cannot be told from a real one" holds for the semantic fields kept by S2b, not yet for every semantic field of the capture.
 - Check, exploratory, decided before looking at these fields: `scripts/11_beacon_fields.py` compares every field of the Parquet tables, kept or dropped, between rogue and legitimate beacons of the attack window (total variation distance). Whatever it shows, S3-S4 are not re-run with these fields: that would be a new analysis, reported as exploratory if done.
+
+## 2026-11-20 - S3 re-run with the corrected folds
+
+- Ran `scripts/07_s3_label_rule.py` again after the fold corrections of 2026-11-17 (commit `6dd6b22`; the result is marked dirty only because `RUNBOOK.md` had an uncommitted section for S4y, no code change). First results kept as `results/S3_label_rule_v1.json` and `results/S3_runs_v1.csv`. 470 runs, as before.
+- Same conclusions. **H1b** supported for Rogue_AP (depth-3 tree on the filter fields 0.9988 vs RF 1.000, ratio 0.999) and not supported for Evil_Twin (0.874 vs RF 0.959, ratio 0.912; best model now RF instead of XGB). **H1c** not supported for either (1/5 models on Rogue_AP, LR; 2/5 on Evil_Twin, DT and LR).
+- Evil_Twin false-positive rate on the clean period without the filter fields: XGB 0.018% -> 0.81%, RF 0.014% -> 0.31%, DT 0.022% -> 20%. The first run, without the purge around the clean period, gave 1.4% for XGB; I had expected the corrected rates to be higher, they are lower.
+- Check: the F-all PR-AUC of the re-run equals the S4 F-all values (same folds, same seeds).

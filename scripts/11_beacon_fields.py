@@ -8,7 +8,9 @@ beacons of the attack window only, every field of the capture between rogue beac
 attack) and legitimate beacons (label Normal, length different from every rogue beacon length,
 as in the perturbation test). For each field: total variation distance between the two value
 distributions (missing counted as a value; 0 = same distribution, 1 = no value in common),
-whether S2b kept it, its family, and its most frequent values.
+whether S2b kept it, its family, and its most frequent values. Fields where most beacons
+have a value of their own (timestamps, counters) score close to 1 whatever they mean, so a
+field with more distinct values than half the beacons is listed apart, without a TVD reading.
 
 Usage (from the repository root):
     python scripts/11_beacon_fields.py
@@ -41,7 +43,7 @@ def beacons(path: Path, window: tuple[int, int]) -> pd.DataFrame:
     for df in iter_parquet(path, columns, 50_000):   # small batches: all columns are read
         fn = to_int(df["frame.number"])
         keep = fn.between(*window) & (to_int(df["wlan.fc.type"]) == 0) & (to_int(df["wlan.fc.subtype"]) == 8)
-        parts.append(df[keep.to_numpy()])
+        parts.append(df[keep.fillna(False).to_numpy(dtype=bool)])   # rows with a missing number or type are not beacons
     return pd.concat(parts, ignore_index=True)
 
 
@@ -74,18 +76,26 @@ def main() -> None:
             rows.append({"field": c, "family": fams.get(c, "not classified"),
                          "kept_in_s2b": c not in info["dropped"], "s2b_reason": info["dropped"].get(c),
                          "tvd": round(tvd(b.loc[rogue, c], b.loc[legit, c]), 4),
+                         "distinct": int(b.loc[rogue | legit, c].nunique()),
                          "rogue_values": top(b.loc[rogue, c]), "legit_values": top(b.loc[legit, c])})
         rows.sort(key=lambda r: -r["tvd"])
+        n = int((rogue | legit).sum())
+        unique = [r for r in rows if r["distinct"] > n / 2]
+        rows = [r for r in rows if r["distinct"] <= n / 2]
         out[name] = {"rogue_beacons": int(rogue.sum()), "legit_beacons": int(legit.sum()),
                      "left_out_normal_beacons": int((~rogue & ~legit).sum()),
                      "fields_tvd_at_least_0.5": [r for r in rows if r["tvd"] >= 0.5],
                      "fields_tvd_below_0.5": [{k: r[k] for k in ("field", "family", "kept_in_s2b", "tvd")}
-                                              for r in rows if r["tvd"] < 0.5]}
+                                              for r in rows if r["tvd"] < 0.5],
+                     "fields_mostly_unique_values": [{k: r[k] for k in ("field", "family", "kept_in_s2b", "distinct")}
+                                                     for r in unique]}
         sep = out[name]["fields_tvd_at_least_0.5"]
         print(f"[S4y] {name}: {int(rogue.sum())} rogue / {int(legit.sum())} legitimate beacons; "
               f"{len(sep)} fields with TVD >= 0.5", flush=True)
-        for r in sep[:15]:
-            print(f"    {r['tvd']:.3f}  {r['family']:<15} kept={r['kept_in_s2b']!s:<5} {r['field']}")
+        for r in sep[:25]:
+            print(f"    {r['tvd']:.3f}  {r['family']:<15} kept={r['kept_in_s2b']!s:<5} {r['field']:<40} "
+                  f"rogue {r['rogue_values']}  legit {r['legit_values']}")
+        print(f"    set apart (mostly unique values): {[r['field'] for r in out[name]['fields_mostly_unique_values']]}")
     inputs = {p.name: sha256_file(p) for p in [TAXONOMY, S2B]}
     res = write_result("S4y_beacon_fields", {"exploratory": True, "results": out},
                        run_metadata("scripts/11_beacon_fields.py", inputs_sha256=inputs))

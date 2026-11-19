@@ -1,0 +1,354 @@
+{
+  "meta": {
+    "script": "scripts/07_s3_label_rule.py",
+    "git_commit": "6dd6b227cf2a28c06f230714a41f53bc186c4c2e-dirty",
+    "uncommitted_files": [
+      "RUNBOOK.md"
+    ],
+    "timestamp_utc": "2026-11-19T20:12:12+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "results": {
+    "evil_twin": {
+      "design": {
+        "window": [
+          1420038,
+          3778728
+        ],
+        "pre_window_train_rows": 1136015,
+        "clean_rows": 284003,
+        "blocks": [
+          {
+            "k": 0,
+            "rows": 471733,
+            "attack": 22853,
+            "frame_number": [
+              1420038,
+              1891771
+            ]
+          },
+          {
+            "k": 1,
+            "rows": 471732,
+            "attack": 59426,
+            "frame_number": [
+              1891772,
+              2363507
+            ]
+          },
+          {
+            "k": 2,
+            "rows": 471732,
+            "attack": 20717,
+            "frame_number": [
+              2363508,
+              2835245
+            ]
+          },
+          {
+            "k": 3,
+            "rows": 471732,
+            "attack": 688,
+            "frame_number": [
+              2835246,
+              3306990
+            ]
+          },
+          {
+            "k": 4,
+            "rows": 471732,
+            "attack": 1143,
+            "frame_number": [
+              3306991,
+              3778728
+            ]
+          }
+        ],
+        "filter_variables_used": [
+          "frame.number",
+          "frame.len",
+          "wlan.fc.type",
+          "wlan.fc.subtype",
+          "wlan.fc.protected",
+          "ip.src",
+          "ip.dst",
+          "wlan.sa",
+          "wlan.da",
+          "wlan.ta",
+          "wlan.ra",
+          "wlan.bssid"
+        ],
+        "n_columns": {
+          "F-all": 72,
+          "F-noFV": 60,
+          "F-filter": 12
+        }
+      },
+      "mean_pr_auc": {
+        "F-all DT": 0.895,
+        "F-all LR": 0.8921,
+        "F-all MLP": 0.9224,
+        "F-all RF": 0.9585,
+        "F-all XGB": 0.9551,
+        "F-filter DT3": 0.874,
+        "F-noFV DT": 0.6179,
+        "F-noFV LR": 0.4788,
+        "F-noFV MLP": 0.7756,
+        "F-noFV RF": 0.9531,
+        "F-noFV XGB": 0.9346
+      },
+      "mean_clean_fpr": {
+        "F-all DT": 0.000221,
+        "F-all LR": 0.00028,
+        "F-all MLP": 0.000297,
+        "F-all RF": 0.000143,
+        "F-all XGB": 0.000178,
+        "F-filter DT3": 0.00011,
+        "F-noFV DT": 0.200321,
+        "F-noFV LR": 0.024872,
+        "F-noFV MLP": 0.013018,
+        "F-noFV RF": 0.003149,
+        "F-noFV XGB": 0.008127
+      },
+      "H1b": {
+        "dt3_filter_pr_auc": 0.874,
+        "best_f_all_model": "RF",
+        "best_f_all_pr_auc": 0.9585,
+        "ratio": 0.9119,
+        "threshold": 0.95,
+        "supported": false
+      },
+      "H1c": {
+        "per_model": {
+          "DT": {
+            "mean_relative_drop": 0.3117,
+            "ci95_fold_bootstrap": [
+              0.1553,
+              0.465
+            ],
+            "runs": 25,
+            "meets": true
+          },
+          "LR": {
+            "mean_relative_drop": 0.512,
+            "ci95_fold_bootstrap": [
+              0.2101,
+              0.8131
+            ],
+            "runs": 5,
+            "meets": true
+          },
+          "MLP": {
+            "mean_relative_drop": 0.1661,
+            "ci95_fold_bootstrap": [
+              0.0232,
+              0.3525
+            ],
+            "runs": 25,
+            "meets": false
+          },
+          "RF": {
+            "mean_relative_drop": 0.0043,
+            "ci95_fold_bootstrap": [
+              -0.0144,
+              0.0253
+            ],
+            "runs": 25,
+            "meets": false
+          },
+          "XGB": {
+            "mean_relative_drop": 0.0239,
+            "ci95_fold_bootstrap": [
+              0.0019,
+              0.0527
+            ],
+            "runs": 25,
+            "meets": false
+          }
+        },
+        "models_meeting": 2,
+        "threshold_drop": 0.2,
+        "supported": false,
+        "note": "CI from a bootstrap over the 5 folds (seed-averaged); coarse with 5 folds"
+      }
+    },
+    "rogue_ap": {
+      "design": {
+        "window": [
+          1198551,
+          1973111
+        ],
+        "pre_window_train_rows": 958840,
+        "clean_rows": 239709,
+        "blocks": [
+          {
+            "k": 0,
+            "rows": 154911,
+            "attack": 195,
+            "frame_number": [
+              1198551,
+              1353461
+            ]
+          },
+          {
+            "k": 1,
+            "rows": 154911,
+            "attack": 326,
+            "frame_number": [
+              1353462,
+              1508372
+            ]
+          },
+          {
+            "k": 2,
+            "rows": 154911,
+            "attack": 187,
+            "frame_number": [
+              1508373,
+              1663283
+            ]
+          },
+          {
+            "k": 3,
+            "rows": 154911,
+            "attack": 309,
+            "frame_number": [
+              1663284,
+              1818199
+            ]
+          },
+          {
+            "k": 4,
+            "rows": 154910,
+            "attack": 293,
+            "frame_number": [
+              1818200,
+              1973111
+            ]
+          }
+        ],
+        "filter_variables_used": [
+          "frame.number",
+          "frame.len",
+          "wlan.fc.type",
+          "wlan.fc.subtype",
+          "wlan.fc.protected",
+          "ip.src",
+          "ip.dst",
+          "wlan.sa",
+          "wlan.da",
+          "wlan.ta",
+          "wlan.ra",
+          "wlan.bssid"
+        ],
+        "n_columns": {
+          "F-all": 76,
+          "F-noFV": 64,
+          "F-filter": 12
+        }
+      },
+      "mean_pr_auc": {
+        "F-all DT": 0.9984,
+        "F-all LR": 0.9738,
+        "F-all MLP": 0.9978,
+        "F-all RF": 1.0,
+        "F-all XGB": 1.0,
+        "F-filter DT3": 0.9988,
+        "F-noFV DT": 1.0,
+        "F-noFV LR": 0.2379,
+        "F-noFV MLP": 0.9077,
+        "F-noFV RF": 1.0,
+        "F-noFV XGB": 0.9999
+      },
+      "mean_clean_fpr": {
+        "F-all DT": 4e-06,
+        "F-all LR": 1e-06,
+        "F-all MLP": 0.0,
+        "F-all RF": 0.0,
+        "F-all XGB": 0.0,
+        "F-filter DT3": 3e-06,
+        "F-noFV DT": 0.0,
+        "F-noFV LR": 0.000692,
+        "F-noFV MLP": 0.0,
+        "F-noFV RF": 0.0,
+        "F-noFV XGB": 0.0
+      },
+      "H1b": {
+        "dt3_filter_pr_auc": 0.9988,
+        "best_f_all_model": "RF",
+        "best_f_all_pr_auc": 1.0,
+        "ratio": 0.9988,
+        "threshold": 0.95,
+        "supported": true
+      },
+      "H1c": {
+        "per_model": {
+          "DT": {
+            "mean_relative_drop": -0.0016,
+            "ci95_fold_bootstrap": [
+              -0.0049,
+              0.0
+            ],
+            "runs": 25,
+            "meets": false
+          },
+          "LR": {
+            "mean_relative_drop": 0.7566,
+            "ci95_fold_bootstrap": [
+              0.7237,
+              0.793
+            ],
+            "runs": 5,
+            "meets": true
+          },
+          "MLP": {
+            "mean_relative_drop": 0.0903,
+            "ci95_fold_bootstrap": [
+              0.0407,
+              0.1503
+            ],
+            "runs": 25,
+            "meets": false
+          },
+          "RF": {
+            "mean_relative_drop": 0.0,
+            "ci95_fold_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "runs": 25,
+            "meets": false
+          },
+          "XGB": {
+            "mean_relative_drop": 0.0001,
+            "ci95_fold_bootstrap": [
+              0.0,
+              0.0002
+            ],
+            "runs": 25,
+            "meets": false
+          }
+        },
+        "models_meeting": 1,
+        "threshold_drop": 0.2,
+        "supported": false,
+        "note": "CI from a bootstrap over the 5 folds (seed-averaged); coarse with 5 folds"
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 **Kossi Tamplare**, GD Goenka University
 
-_Status (19 November 2026): stages S0-S4 of the pre-registered protocol, the
+_Status (20 November 2026): stages S0-S4 of the pre-registered protocol, the
 exploratory stage S4x and the perturbation test done. All results below are
 **preliminary**._
 
@@ -143,11 +143,10 @@ strength of the real one goes unnoticed by these detectors.
   field values are replaced, not a new capture of a modified attack. Matching
   the signal strength assumes the attacker can reach the legitimate level at the
   sensor, by power or position.
-- **Preliminary numbers**: S3 will be re-run with corrected folds.
+- **Preliminary numbers**: transfer, rule baseline and imbalance probe are not yet run.
 
 ## Next steps
 
-- **Re-run of S3** with the corrected folds.
 - **Transfer** AWID3 <-> AWID2 (S5), rule baseline (S6), SMOTE probe (S7),
   statistics and paper (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
@@ -161,7 +160,7 @@ strength of the real one goes unnoticed by these detectors.
 | S1 | H1a - label provenance | Done |
 | S2 | Feature taxonomy | Done |
 | S2b | Feature matrices | Done |
-| S3 | H1b, H1c - labelling rule | Done; re-run with corrected folds pending |
+| S3 | H1b, H1c - labelling rule | Done (re-run with corrected folds) |
 | S4 | H2a-c - reliance on artefacts | Done |
 | S4x | Which single fields decide (exploratory) | Done |
 | - | Perturbation test (exploratory) | Done |

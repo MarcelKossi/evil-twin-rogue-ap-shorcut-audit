@@ -1,10 +1,10 @@
 # Preliminary results
 
-*Status: 19 November 2026. Stages S0-S4 of the pre-registered protocol
+*Status: 20 November 2026. Stages S0-S4 of the pre-registered protocol
 ([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
-the exploratory stage S4x and the perturbation test. The first sections describe the labels of AWID3;
-the S3, S4, S4x and perturbation sections describe detectors trained on them. S3 will be
-re-run with corrected folds.*
+the exploratory stage S4x and the perturbation test. The first sections
+describe the labels of AWID3; the S3, S4, S4x and perturbation sections
+describe detectors trained on them.*
 
 ## Question
 
@@ -83,13 +83,15 @@ commit, the input SHA-256 and the run time.
 ## Do detectors learn the rule? (S3, pre-registered H1b and H1c)
 
 Blocked evaluation: the attack period is cut into 5 consecutive blocks, each
-held out in turn with a 10,000-frame gap; 5 model families, 5 seeds.
+held out in turn with a 10,000-frame gap; 5 model families, 5 seeds. Results
+of the re-run with the folds corrected after the code review (purge around the
+clean period, validation purged from the test block).
 
 | | Rogue_AP | Evil_Twin |
 |---|---|---|
-| Depth-3 tree on the filter fields (mean PR-AUC) | 0.999 | 0.870 |
-| Best model on all fields | 1.000 (RF) | 0.979 (XGB) |
-| H1b: depth-3 tree >= 95% of best | **supported** (99.9%) | not supported (89%) |
+| Depth-3 tree on the filter fields (mean PR-AUC) | 0.999 | 0.874 |
+| Best model on all fields | 1.000 (RF) | 0.959 (RF) |
+| H1b: depth-3 tree >= 95% of best | **supported** (99.9%) | not supported (91%) |
 | H1c: removing the filter fields costs >= 20% for >= 3/5 models | not supported (1/5) | not supported (2/5) |
 
 - On Rogue_AP, three questions on the fields of the labelling rule match the
@@ -99,9 +101,11 @@ held out in turn with a 10,000-frame gap; 5 model families, 5 seeds.
   Which ones, and whether they are artefacts or real protocol evidence, is the
   question of S4.
 - On Evil_Twin, removing the filter fields multiplies the false-positive rate
-  on clean traffic (XGB 0.02% -> 1.4%, decision tree 0.007% -> 20%). These
-  rates are provisional: the first S3 run did not purge training frames next
-  to the clean period, so they are optimistic; S3 will be re-run.
+  on clean traffic: XGB 0.018% -> 0.81%, RF 0.014% -> 0.31%, decision tree
+  0.022% -> 20%.
+- The first run, before the fold corrections, gave the same conclusions for
+  H1b and H1c (`results/S3_label_rule_v1.json`, `results/S3_runs_v1.csv`).
+  The scores on all fields now equal those of S4, which uses the same folds.
 - The filter fields include `frame.number` but not the other fields that
   encode the position in the capture (relative and absolute times, capture
   timestamps), which stay in the "without filter fields" models.
@@ -243,7 +247,6 @@ Sources: [`results/S4p_perturbation.json`](results/S4p_perturbation.json),
 
 ## Next
 
-- Re-run of S3 with the corrected folds.
 - Transfer to AWID2 (S5), rule baseline (S6) and SMOTE probe (S7).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, then Solpan et al. 2026).
