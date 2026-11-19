@@ -2,9 +2,9 @@
 
 **Kossi Tamplare**, GD Goenka University
 
-_Status (18 November 2026): stages S0-S4 of the pre-registered protocol and the
-exploratory stage S4x done; further exploratory analyses in progress. All
-results below are **preliminary**._
+_Status (19 November 2026): stages S0-S4 of the pre-registered protocol, the
+exploratory stage S4x and the perturbation test done. All results below are
+**preliminary**._
 
 ---
 
@@ -101,6 +101,15 @@ that sort the bulk of the traffic (frame type, addresses), not the field that
 settles the decision: restricted to beacons, the share of beacon length rises
 from 0.4% to 53% (exploratory).
 
+**7. A slightly more careful attacker goes unnoticed** (exploratory). The trained
+models receive the real fake beacons, but with the length and the signal strength
+copied from real beacons. Tree models trained on the 16 features of the
+literature, or on all non-artefact fields, then flag none of them (from 97-100%
+on Rogue_AP and 39-99% on Evil_Twin), and rank them no better than chance. On
+Rogue_AP the length alone is enough. Evil_Twin models that see all fields still
+flag them through the fake AP's hardware address, which the attacker could clone
+as well.
+
 ### Hypotheses: outcome so far
 
 | | Hypothesis | Outcome |
@@ -120,8 +129,8 @@ confirmatory family. Details and every number: [`RESULTS.md`](RESULTS.md).
 
 High scores on AWID3 Evil Twin and Rogue AP can be reached without detecting the
 attack: from the labelling rule, from capture artefacts, or from details the
-attacker controls. The next experiments test whether a slightly more careful
-attacker would go unnoticed.
+attacker controls. A fake access point that copies the length and signal
+strength of the real one goes unnoticed by these detectors.
 
 ## Limitations
 
@@ -130,13 +139,15 @@ attacker would go unnoticed.
   artefact and an attacker's choice (for example the BSSID).
 - **Attribution methods**: path contributions for trees are not exact Shapley
   values (deviation 6 in the journal).
+- **Perturbation in feature space**: the fake beacons are recorded frames whose
+  field values are replaced, not a new capture of a modified attack. Matching
+  the signal strength assumes the attacker can reach the legitimate level at the
+  sensor, by power or position.
 - **Preliminary numbers**: S3 will be re-run with corrected folds.
 
 ## Next steps
 
-- **Perturbation test** (exploratory): give the trained models the real fake
-  beacons with the legitimate length, the legitimate signal strength, or both,
-  and measure how much detection drops.
+- **Re-run of S3** with the corrected folds.
 - **Reproduction** of published AWID3 pipelines (Ahmad et al. 2025, Solpan et al. 2026).
 - **Transfer** AWID3 <-> AWID2 (S5), rule baseline (S6), SMOTE probe (S7),
   statistics and paper (S8).
@@ -152,7 +163,7 @@ attacker would go unnoticed.
 | S3 | H1b, H1c - labelling rule | Done; re-run with corrected folds pending |
 | S4 | H2a-c - reliance on artefacts | Done |
 | S4x | Which single fields decide (exploratory) | Done |
-| - | Perturbation test (exploratory) | Planned |
+| - | Perturbation test (exploratory) | Done |
 | - | Reproduction of published pipelines (exploratory) | Planned |
 | S5 | H3a - transfer AWID3 <-> AWID2 | Planned |
 | S6 | H3b - rule baseline | Planned |

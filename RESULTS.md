@@ -1,9 +1,9 @@
 # Preliminary results
 
-*Status: 18 November 2026. Stages S0-S4 of the pre-registered protocol
+*Status: 19 November 2026. Stages S0-S4 of the pre-registered protocol
 ([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
-the exploratory stage S4x. The first sections describe the labels of AWID3;
-the S3, S4 and S4x sections describe detectors trained on them. S3 will be
+the exploratory stage S4x and the perturbation test. The first sections describe the labels of AWID3;
+the S3, S4, S4x and perturbation sections describe detectors trained on them. S3 will be
 re-run with corrected folds.*
 
 ## Question
@@ -192,16 +192,58 @@ scores 1.000 in every block except block 3 (0.805). Block 3 holds 590 rogue
 beacons labelled attack and the 143 rogue beacons labelled Normal found in
 S1c: 590 / (590 + 143) = 0.805. The models rank the mislabelled beacons with
 the attack frames, so the drop comes from the labels, not from the detectors.
-This still has to be confirmed with the scores of these frames.
+The perturbation test confirms it (below).
 
 Sources: [`results/S4x_field_detail.json`](results/S4x_field_detail.json),
 [`results/S4x_field_runs.csv`](results/S4x_field_runs.csv),
 [`results/S4x_beacon_runs.csv`](results/S4x_beacon_runs.csv).
 
+## Would a careful attacker go unnoticed? (perturbation test, exploratory)
+
+The models of the S4 blocked protocol (same settings, same training rows, same
+alert threshold; 5 seeds) receive the real rogue beacons of each held-out
+block, changed in one of three ways, with values copied from real legitimate
+beacons; nothing is retrained:
+
+- **L**: the legitimate length (and the airtime that follows from it);
+- **P**: the legitimate received signal strength;
+- **L+P**: both.
+
+The design was fixed in the journal before any result.
+
+Share of rogue beacons still flagged, RF / XGB / DT:
+
+| | Unmodified | L | P | L+P |
+|---|---|---|---|---|
+| Rogue_AP, F-noA | 99 / 97 / 100% | **0 / 0 / 0%** | 48 / 57 / 100% | **0 / 0 / 0%** |
+| Rogue_AP, F-chatz | 99 / 97 / 100% | **0 / 0 / 0%** | 55 / 33 / 100% | **0 / 0 / 0%** |
+| Evil_Twin, F-noA | 99 / 96 / 96% | 29 / 85 / 79% | **0 / 18 / 0%** | **0 / 0 / 0%** |
+| Evil_Twin, F-chatz | 98 / 71 / 39% | 19 / 69 / 39% | **0 / 18 / 0%** | **0 / 0 / 0%** |
+
+- **Copying two values from a real beacon is enough.** On Rogue_AP the length
+  alone does it; on Evil_Twin, mostly the signal strength. With both, the tree
+  models trained on the 16 published features or on all non-artefact fields
+  flag no rogue beacon.
+- They also stop ranking rogue beacons above real ones: beacon PR-AUC drops
+  from 1.00 to 0.44-0.51, where 0.44 is what a detector that cannot tell them
+  apart scores.
+- **Evil_Twin with all fields** (F-all): DT and XGB keep flagging 81% and 73%
+  of the rogue beacons in every variant. They recognise the rogue BSSID, which
+  the test does not change and which the Rogue_AP attacker shows can be cloned.
+- On Evil_Twin, the test covers the impersonation only: 96% of the attack
+  frames are the victims' data frames, which stay detected.
+- **The 143 rogue beacons labelled Normal** are flagged at 100% by 11 of the
+  15 model and field-set pairs.
+- Logistic regression is left out: on Rogue_AP beacons it flags 50-100% of the
+  legitimate ones. Results vary little across seeds (DT and XGB identical, RF
+  standard deviation at most 0.09).
+
+Sources: [`results/S4p_perturbation.json`](results/S4p_perturbation.json),
+[`results/S4p_perturbation_runs.csv`](results/S4p_perturbation_runs.csv).
+
 ## Next
 
-- **Perturbation test** (exploratory, design fixed in the journal before any
-  result): the trained models receive the real rogue beacons with the
-  legitimate length, the legitimate signal strength, or both.
 - Re-run of S3 with the corrected folds.
-- Reproduction of published AWID3 pipelines, then transfer to AWID2 (S5).
+- Reproduction of published AWID3 pipelines (Ahmad et al. 2025, then Solpan
+  et al. 2026), then transfer to AWID2 (S5), rule baseline (S6) and SMOTE
+  probe (S7).

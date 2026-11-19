@@ -135,6 +135,9 @@ def summarise(df: pd.DataFrame) -> dict:
         res["legit_beacons_flagged_rate"] = round(float(d.loc[d["variant"] == "none", "legit_flagged"].sum()
                                                         / max(d.loc[d["variant"] == "none", "legit"].sum(), 1)), 5)
         out.setdefault(cap, {}).setdefault(fs, {})[family] = res
+    blocks = df[df["variant"] == "none"].drop_duplicates(["capture", "fold"])
+    for cap, b in blocks.groupby("capture"):   # PR-AUC of a detector that cannot rank: share of rogue among beacons
+        out[cap]["chance_pr_auc_beacons"] = round(float((b["rogue"] / (b["rogue"] + b["legit"])).mean()), 4)
     return out
 
 
