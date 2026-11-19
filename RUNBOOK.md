@@ -191,3 +191,19 @@ the attack window: rogue against legitimate.
 git add scripts/11_beacon_fields.py results RUNBOOK.md
 git commit -m "S4y: fields that separate rogue from legitimate beacons (exploratory)"
 ```
+
+## 15. Stage S5 - transfer AWID3 <-> AWID2
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/12_s5_prepare.py` | `data/interim/s5_*`, `results/S5a_prepare.json` | about 20-40 min |
+
+Reads the two AWID2 archives and the AWID3 Evil_Twin Parquet table, aligns field names
+and writes both datasets with the same encoding. Column names of AWID2 come from
+`configs/awid2_columns.txt`.
+
+```cmd
+git add scripts/12_s5_prepare.py configs/awid2_columns.txt RUNBOOK.md docs/journal.md
+git commit -m "S5 part 1: AWID2 preparation and field alignment"
+python scripts/12_s5_prepare.py
+```

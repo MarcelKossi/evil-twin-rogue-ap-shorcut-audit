@@ -142,8 +142,8 @@ Mean PR-AUC, blocked protocol:
 - **The models use the artefacts, but do not need them.** Most of the
   attribution goes to family A, yet RF and XGB reach the same PR-AUC without
   it.
-- **With 802.11 semantics only, a rogue beacon cannot be told from a real
-  one.** On Rogue_AP, F-sem gives 0.32-0.48 in every block, almost the same for
+- **With the 802.11 semantic fields kept by S2b, a rogue beacon cannot be told
+  from a real one.** (S4y below shows a semantic field that S2b dropped.) On Rogue_AP, F-sem gives 0.32-0.48 in every block, almost the same for
   all models. On Evil_Twin, F-sem reaches 0.995-1.000 on blocks 0-2, which are
   mostly the victims' data frames, and drops to 0.40 and 0.52 on blocks 3-4,
   which are mostly beacons.
@@ -244,6 +244,41 @@ Share of rogue beacons still flagged, RF / XGB / DT:
 
 Sources: [`results/S4p_perturbation.json`](results/S4p_perturbation.json),
 [`results/S4p_perturbation_runs.csv`](results/S4p_perturbation_runs.csv).
+
+## Fields dropped by the cleaning rule (S4y, exploratory)
+
+S2b dropped every column more than 99% empty (protocol 9.3). Fields that exist
+only in management frames are 99.6% empty over a capture and were dropped,
+although the protocol counts RSN and capability information as semantic
+evidence. S4y compares every field of the capture, kept or dropped, between
+rogue and legitimate beacons of the attack window (total variation distance:
+0 = same values, 1 = no value in common). Timestamps and counters, where nearly
+every beacon has a value of its own, are set apart.
+
+Fields that separate them completely (distance 1.00) in both captures:
+
+| Field (family) | Kept by S2b | Rogue_AP: rogue / legitimate |
+|---|---|---|
+| `frame.len` (C) | yes | 263 / 342-343 |
+| `wlan_radio.duration` (A, airtime) | yes | 300 / 408 |
+| `wlan.country_info.code` (C) | no | GR / DE |
+| `wlan.tag.length` (C), `wlan.tag` (U): list of information elements | no | 13 elements / 17 |
+| `wlan.rsn.capabilities.mfpc` (S): management frame protection capable | no | 0 / 1 |
+
+Signal strength separates them almost completely on Rogue_AP (0.89-0.93) and
+completely on Evil_Twin. On Evil_Twin the rogue BSSID differs from the
+legitimate one (`...fe:35` against `...fe:34`), and half of the rogue beacons
+(the 150-byte ones) carry no RSN element at all.
+
+- **The capture holds real 802.11 evidence against the rogue AP**: it does not
+  advertise management frame protection, which the legitimate AP does. The
+  cleaning rule removed it, so the S3-S4 conclusions about semantic fields hold
+  for the fields kept by S2b only.
+- This evidence, like the country code and the element list, comes from the
+  attacker's configuration and could be copied by a better equipped attacker.
+- S3 and S4 are not re-run with these fields: that would be a new analysis.
+
+Source: [`results/S4y_beacon_fields.json`](results/S4y_beacon_fields.json).
 
 ## Next
 

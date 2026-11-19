@@ -184,3 +184,30 @@ and any deviation from `docs/protocol_v0.3.md`.
 - Same conclusions. **H1b** supported for Rogue_AP (depth-3 tree on the filter fields 0.9988 vs RF 1.000, ratio 0.999) and not supported for Evil_Twin (0.874 vs RF 0.959, ratio 0.912; best model now RF instead of XGB). **H1c** not supported for either (1/5 models on Rogue_AP, LR; 2/5 on Evil_Twin, DT and LR).
 - Evil_Twin false-positive rate on the clean period without the filter fields: XGB 0.018% -> 0.81%, RF 0.014% -> 0.31%, DT 0.022% -> 20%. The first run, without the purge around the clean period, gave 1.4% for XGB; I had expected the corrected rates to be higher, they are lower.
 - Check: the F-all PR-AUC of the re-run equals the S4 F-all values (same folds, same seeds).
+
+## 2026-11-20 - S4y results: fields dropped by the missingness rule
+
+- First run of `scripts/11_beacon_fields.py` stopped on Evil_Twin (rows with a missing frame number or type gave a mask with NA). It also showed a flaw in the measure: timestamps and counters, where nearly every beacon has its own value, get a distance of 1 whatever they mean. Fixed both before the full run: such rows are skipped, and fields with more distinct values than half the beacons are set apart. Ran the fixed script on commit `79946b4` (no uncommitted file). Output: `results/S4y_beacon_fields.json`.
+- Beacons compared: Rogue_AP 1,310 rogue / 1,690 legitimate; Evil_Twin 3,568 rogue / 4,489 legitimate (143 rogue beacons labelled Normal left out).
+- Fields with distance 1.00 in both captures: `frame.len` (C, kept), `wlan_radio.duration` (A, kept), `wlan.country_info.code` and `.fnm` (C, dropped; GR against DE), `wlan.tag` (U) and `wlan.tag.length` (C), the list of information elements (dropped; 13 elements against 17 on Rogue_AP), and `wlan.rsn.capabilities.mfpc` (S, dropped): the legitimate AP advertises management frame protection (1), the rogue AP does not (0 on Rogue_AP; 0 or no RSN element on Evil_Twin). Signal strength: 0.89-0.93 on Rogue_AP, 1.00 on Evil_Twin. On Evil_Twin the BSSID, source and transmitter addresses (A) also differ.
+- So the capture holds real 802.11 evidence against the rogue AP, and the 99%-missing rule of protocol 9.3 removed it. The S3-S4 statements about semantic fields hold for the fields kept by S2b only. I updated README and RESULTS accordingly.
+- All of these differences come from the attacker's configuration (country, elements, PMF setting) and could be copied by a better equipped attacker.
+- Next decision, not taken yet: whether to run an exploratory sensitivity analysis with a missingness rule computed on management frames, and whether to amend the protocol (v0.4) for S5-S7 before running them.
+
+## 2026-11-20 - scope frozen until the preprint
+
+- Decided today: until the preprint, I run only the pre-registered stages S5 (transfer), S6 (rule baseline), S7 (imbalance probe) and S8 (statistics, figures), under protocol v0.3 as frozen. No v0.4: the missingness rule of 9.3 stays as it is for S5-S7.
+- One exploratory addition, decided before running it: the S5 script compares, on AWID2 beacons, every field between rogue and legitimate beacons, as S4y did on AWID3, to see whether the security capability evidence found in AWID3 also exists in AWID2. Descriptive only, no training.
+- Postponed to the version sent to a journal: reproduction of Ahmad et al. (2025) and Solpan et al. (2026); a sensitivity analysis with a missingness rule computed on management frames (does a detector that sees `wlan.rsn.capabilities.mfpc` resist the perturbation?). Bugs that affect a result are still fixed when found.
+
+## 2026-11-20 - S5 design choices (before any S5 result)
+
+- AWID2 column names: the AWID2 site gives them only as images I could not use; I took the 155 names from a public list (`github.com/Bee-Mar/AWID-Intrusion-Detection`, `resources/col_names.txt`) and checked them against the data (epoch time in column 4, 2437 MHz channel frequency, beacon interval 100, SSIDs, WEP IVs). Saved as `configs/awid2_columns.txt`. Names 150 and 153 are both `wlan.qos.buf_state_indicated`; the second gets `_2`.
+- Class counts match the AWID2 site: evil_twin 2,633 (Trn) and 611 (Tst).
+- AWID2 names are mapped to AWID3 names with two rules: `wlan_mgt.` -> `wlan.`, `radiotap.channel.type.` -> `radiotap.channel.flags.`. Shared fields are the AWID3 Evil_Twin fields present in AWID2 after mapping.
+- Only evil_twin and normal rows of AWID2 are used; rows of the other AWID2 attack classes are left out and counted.
+- Both datasets are re-encoded together from the raw values (the S2b matrices cannot be reused: their offsets and text codes are AWID3-specific): numeric if numeric in both, offset by the minimum over both; text label-encoded on the union of values, so the same string has the same code in both.
+- In-domain AWID2 (PR-AUC t->t): the official split, train on Trn and test on Tst. AWID2 has no frame numbers and is a reduced sample, so the blocked protocol of 9.2 cannot be applied as written. Hyperparameters are tuned on a stratified random 20% of Trn.
+- In-domain AWID3 (t->t): the blocked protocol of S4, recomputed on the shared fields of each feature set.
+- Sub-tasks: ET-B = beacons and probe responses, ET-D = data frames; ET-M was dropped (deviation 1).
+- Code: `scripts/12_s5_prepare.py` (alignment, matrices, AWID2 beacon comparison) and `scripts/13_s5_transfer.py` (models, transfer gap, H3a, F-sem part of H3b).

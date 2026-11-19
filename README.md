@@ -74,7 +74,8 @@ traffic, and the detectors flag them anyway.
 Removing the filter fields, or all capture artefacts, barely changes the scores
 of the strongest models. The information is present in several redundant fields.
 
-**3. With 802.11 evidence only, a fake beacon cannot be told from a real one.**
+**3. With the 802.11 fields that survive the usual cleaning, a fake beacon cannot
+be told from a real one.**
 
 | PR-AUC, blocked evaluation, mean of 5 models | Rogue_AP | Evil_Twin |
 |---|---|---|
@@ -84,12 +85,23 @@ of the strongest models. The information is present in several redundant fields.
 
 On Evil_Twin, the semantic fields still detect the victims' data traffic (the
 fake AP is open, so their data is not encrypted), but not the fake beacons.
+The cleaning rule matters here: see finding 4.
 
-**4. What separates fake beacons from real ones is length and signal strength**
-(exploratory). Beacon length is set by the attacker's software; received signal
-strength depends on the attacker's transmit power and position, and on where
-the sensor stands. Both describe this particular recording rather than Evil Twins
-in general.
+**4. What separates fake beacons from real ones** (exploratory). Comparing every
+field of the capture on beacons only, rogue and legitimate beacons differ in:
+
+- length (263 against 342-343 bytes on Rogue_AP) and received signal strength;
+- the beacon's content: country code (GR against DE) and the list of
+  information elements;
+- **management frame protection**: the legitimate AP advertises it in its RSN
+  element (`wlan.rsn.capabilities.mfpc` = 1), the rogue AP does not (0, or no
+  RSN element at all).
+
+The last one is real 802.11 security evidence. But fields that exist only in
+management frames are empty in 99.6% of the rows, and the usual rule that
+drops columns more than 99% empty, which this study also applied, removes them.
+All of these differences are set by the attacker's configuration: a better
+equipped attacker could copy them.
 
 **5. Random splits inflate the scores.** On Evil_Twin, PR-AUC rises from 0.90
 (blocked) to 0.998 (random split).
@@ -130,7 +142,9 @@ confirmatory family. Details and every number: [`RESULTS.md`](RESULTS.md).
 High scores on AWID3 Evil Twin and Rogue AP can be reached without detecting the
 attack: from the labelling rule, from capture artefacts, or from details the
 attacker controls. A fake access point that copies the length and signal
-strength of the real one goes unnoticed by these detectors.
+strength of the real one goes unnoticed by these detectors. Meanwhile, the one
+802.11 field that does separate fake from real beacons in these captures is
+discarded by a common cleaning step.
 
 ## Limitations
 
@@ -139,6 +153,8 @@ strength of the real one goes unnoticed by these detectors.
   artefact and an attacker's choice (for example the BSSID).
 - **Attribution methods**: path contributions for trees are not exact Shapley
   values (deviation 6 in the journal).
+- **One attack configuration per capture**: the differences in beacon content
+  and protection capability come from how this attacker set up the fake AP.
 - **Perturbation in feature space**: the fake beacons are recorded frames whose
   field values are replaced, not a new capture of a modified attack. Matching
   the signal strength assumes the attacker can reach the legitimate level at the

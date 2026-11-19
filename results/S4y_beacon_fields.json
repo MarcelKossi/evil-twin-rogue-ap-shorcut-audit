@@ -1,0 +1,3325 @@
+{
+  "meta": {
+    "script": "scripts/11_beacon_fields.py",
+    "git_commit": "79946b4daabca3eadfd10177653166f8c76fb402",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-19T20:21:07+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "inputs_sha256": {
+      "taxonomy.csv": "cc9c180051114c553985dd6a04e49e87da852cfb3ae8c12f25d75776dd64e0c9",
+      "S2b_features.json": "ff87e7a0442cc7022beb400a1159111bb49cdd8a738c4ba782c25e9b9d866f0f"
+    }
+  },
+  "exploratory": true,
+  "results": {
+    "rogue_ap": {
+      "rogue_beacons": 1310,
+      "legit_beacons": 1690,
+      "left_out_normal_beacons": 0,
+      "fields_tvd_at_least_0.5": [
+        {
+          "field": "frame.len",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 3,
+          "rogue_values": {
+            "263": 1.0
+          },
+          "legit_values": {
+            "342": 0.7994,
+            "343": 0.2006
+          }
+        },
+        {
+          "field": "wlan.country_info.fnm",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9960",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "1": 1.0
+          },
+          "legit_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1": 1.0
+          }
+        },
+        {
+          "field": "wlan.country_info.code",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9960",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "GR": 1.0
+          },
+          "legit_values": {
+            "DE": 1.0
+          }
+        },
+        {
+          "field": "wlan_radio.duration",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "300": 1.0
+          },
+          "legit_values": {
+            "408": 1.0
+          }
+        },
+        {
+          "field": "wlan.tag",
+          "family": "U",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9956",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1-1": 1.0
+          },
+          "legit_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1": 1.0
+          }
+        },
+        {
+          "field": "wlan.tag.length",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9956",
+          "tvd": 1.0,
+          "distinct": 3,
+          "rogue_values": {
+            "7-8-1-4-6-20-26-22-4-12-5-2-24": 1.0
+          },
+          "legit_values": {
+            "7-8-4-52-1-2-20-5-26-22-8-12-5-2-9-24-5": 0.7994,
+            "7-8-5-52-1-2-20-5-26-22-8-12-5-2-9-24-5": 0.2006
+          }
+        },
+        {
+          "field": "wlan.rsn.capabilities.mfpc",
+          "family": "S",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9960",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "0": 1.0
+          },
+          "legit_values": {
+            "1": 1.0
+          }
+        },
+        {
+          "field": "radiotap.dbm_antsignal",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.9297,
+          "distinct": 37,
+          "rogue_values": {
+            "-123": 0.4237,
+            "-125": 0.116,
+            "-126": 0.0824,
+            "-124": 0.0763
+          },
+          "legit_values": {
+            "-113": 0.3053,
+            "-116": 0.1615,
+            "-115": 0.1367,
+            "-114": 0.0562
+          }
+        },
+        {
+          "field": "wlan_radio.signal_dbm",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.8857,
+          "distinct": 16,
+          "rogue_values": {
+            "-40": 0.4954,
+            "-41": 0.2099,
+            "-39": 0.1008,
+            "-42": 0.0885
+          },
+          "legit_values": {
+            "-36": 0.4254,
+            "-37": 0.3107,
+            "-35": 0.0846,
+            "-38": 0.0568
+          }
+        }
+      ],
+      "fields_tvd_below_0.5": [
+        {
+          "field": "frame.time_epoch",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.1576
+        },
+        {
+          "field": "source_file",
+          "family": "not classified",
+          "kept_in_s2b": true,
+          "tvd": 0.1108
+        },
+        {
+          "field": "frame.encap_type",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.flags.cck",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.flags.ofdm",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.freq",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.datarate",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.length",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.present.tsft",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.rxflags",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.vendor_oui",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.duration",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.analysis.kck",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.analysis.kek",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.bssid",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.da",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.ds",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.frag",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.order",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.moredata",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.protected",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.pwrmgt",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.type",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.retry",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.subtype",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fcs.bad_checksum",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.beacon",
+          "family": "C",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.capabilities.ess",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.capabilities.ibss",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.reason_code",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.ra",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.gtk.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.igtk.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.pmkid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.sa",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.ssid",
+          "family": "C",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.ta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.channel",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.data_rate",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.frequency",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.phy",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.msgnr",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.data_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.key_info.key_mic",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.nonce",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.keydes.key_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.keydes.replay_counter",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.type",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "llc",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.hw.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.proto.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.hw.size",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.proto.size",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.opcode",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.src.hw_mac",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.src.proto_ipv4",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.dst.hw_mac",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.dst.proto_ipv4",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.dst",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.proto",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.src",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.ttl",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.version",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "data.data",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "data.len",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "icmpv6.mldr.nb_mcast_records",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "icmpv6.ni.nonce",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.ack",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.ack_raw",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.flags",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.retransmission",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.reused_ports",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.rto_frame",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.checksum",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.checksum.status",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.syn",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.dstport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.ack",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.fin",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.push",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.reset",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.option_len",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.payload",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.seq",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.seq_raw",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.srcport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.dstport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.srcport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.length",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.payload",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.continuation_data",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ldap",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_execute",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_read",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_write",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags.notify",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags.response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags2.nt_error",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags2.sec_sig",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.mid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.nt_status",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.server_component",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.pid.high",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.tid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.acct",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.auth_frame",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.buffer_code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.cmd",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.data_offset",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.domain",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.fid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.filename",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.header_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.host",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.msg_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.pid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.previous_sesid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.protocol_id",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.sesid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.session_flags",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.tid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.write_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.client_id.duid_ll_hw_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.cookie",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.hw.addr_padding",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.hw.mac_addr",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.client",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.relay",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.server",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.broadcast_address",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.dhcp_server_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.router",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.vendor.bsdp.message_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "mdns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.a",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.add_rr",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.answers",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.auth_rr",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.labels",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.queries",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.authoritative",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.checkdisable",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.opcode",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.ptr.domain_name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.qry.name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.qry.name.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.ttl",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.len.1",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.retransmit_request",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.retransmit_response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.time",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssdp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.connection",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.content_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.content_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.date",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.file_data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.host",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.last_modified",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.location",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.next_request_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.next_response_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.full_uri",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.line",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.method",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.path",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.query",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.query.parameter",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.code.desc",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.line",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.phrase",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response_for.uri",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.referer",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.time",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.server",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "json.value.string",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "json.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.cookie",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.compression_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.compression_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.direction",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.max",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.min",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.nbits",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.encryption_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.encryption_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.host_key.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.host_key.type_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.kex_algorithms_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mac_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mac_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.message_code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mpint_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.packet_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.packet_length_encrypted",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.padding_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.padding_string",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.protocol",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.server_host_key_algorithms_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.alert_message.desc",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.alert_message.level",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.app_data_proto",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.compress_certificate.compressed_certificate_message.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.connection_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.extension.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.extensions_key_share_group",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.session_ticket_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.record.content_type",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.record.version",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        }
+      ],
+      "fields_mostly_unique_values": [
+        {
+          "field": "frame.time",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "frame.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "radiotap.mactime",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "radiotap.timestamp.ts",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "wlan.fixed.timestamp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "distinct": 3000
+        },
+        {
+          "field": "wlan_radio.end_tsf",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "wlan_radio.start_tsf",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "wlan_radio.timestamp",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 3000
+        },
+        {
+          "field": "row_in_file",
+          "family": "not classified",
+          "kept_in_s2b": true,
+          "distinct": 2935
+        },
+        {
+          "field": "frame.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 1592
+        },
+        {
+          "field": "frame.time_delta_displayed",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 1592
+        },
+        {
+          "field": "wlan.seq",
+          "family": "U",
+          "kept_in_s2b": true,
+          "distinct": 2194
+        }
+      ]
+    },
+    "evil_twin": {
+      "rogue_beacons": 3568,
+      "legit_beacons": 4489,
+      "left_out_normal_beacons": 143,
+      "fields_tvd_at_least_0.5": [
+        {
+          "field": "frame.len",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 4,
+          "rogue_values": {
+            "241": 0.5,
+            "150": 0.5
+          },
+          "legit_values": {
+            "342": 0.9336,
+            "343": 0.0664
+          }
+        },
+        {
+          "field": "wlan.bssid",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "0c:9d:92:54:fe:35": 1.0
+          },
+          "legit_values": {
+            "0c:9d:92:54:fe:34": 1.0
+          }
+        },
+        {
+          "field": "wlan.country_info.fnm",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9971",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "1": 0.5,
+            "<missing>": 0.5
+          },
+          "legit_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1": 1.0
+          }
+        },
+        {
+          "field": "wlan.country_info.code",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9971",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "GR": 0.5,
+            "<missing>": 0.5
+          },
+          "legit_values": {
+            "DE": 1.0
+          }
+        },
+        {
+          "field": "wlan_radio.duration",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 3,
+          "rogue_values": {
+            "272": 0.5,
+            "152": 0.5
+          },
+          "legit_values": {
+            "408": 1.0
+          }
+        },
+        {
+          "field": "wlan.sa",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "0c:9d:92:54:fe:35": 1.0
+          },
+          "legit_values": {
+            "0c:9d:92:54:fe:34": 1.0
+          }
+        },
+        {
+          "field": "wlan.ta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "0c:9d:92:54:fe:35": 1.0
+          },
+          "legit_values": {
+            "0c:9d:92:54:fe:34": 1.0
+          }
+        },
+        {
+          "field": "wlan.tag",
+          "family": "U",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9961",
+          "tvd": 1.0,
+          "distinct": 3,
+          "rogue_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1": 0.5,
+            "1-1-1-1-1": 0.5
+          },
+          "legit_values": {
+            "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1": 1.0
+          }
+        },
+        {
+          "field": "wlan.tag.length",
+          "family": "C",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9961",
+          "tvd": 1.0,
+          "distinct": 4,
+          "rogue_values": {
+            "7-8-1-4-6-26-22-4-12-5-2-24": 0.5,
+            "7-8-1-4-24": 0.5
+          },
+          "legit_values": {
+            "7-8-4-52-1-2-20-5-26-22-8-12-5-2-9-24-5": 0.9336,
+            "7-8-5-52-1-2-20-5-26-22-8-12-5-2-9-24-5": 0.0664
+          }
+        },
+        {
+          "field": "wlan.rsn.capabilities.mfpc",
+          "family": "S",
+          "kept_in_s2b": false,
+          "s2b_reason": "missing 0.9969",
+          "tvd": 1.0,
+          "distinct": 2,
+          "rogue_values": {
+            "<missing>": 0.5,
+            "0": 0.5
+          },
+          "legit_values": {
+            "1": 1.0
+          }
+        },
+        {
+          "field": "radiotap.dbm_antsignal",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.9998,
+          "distinct": 49,
+          "rogue_values": {
+            "-133": 0.1541,
+            "-132": 0.1166,
+            "-134": 0.1158,
+            "-136": 0.0869
+          },
+          "legit_values": {
+            "-103": 0.5097,
+            "-105": 0.225,
+            "-106": 0.1753,
+            "-104": 0.0748
+          }
+        },
+        {
+          "field": "wlan_radio.signal_dbm",
+          "family": "C",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.9998,
+          "distinct": 24,
+          "rogue_values": {
+            "-43": 0.2637,
+            "-44": 0.2416,
+            "-45": 0.174,
+            "-42": 0.1244
+          },
+          "legit_values": {
+            "-33": 0.5894,
+            "-34": 0.4001,
+            "-32": 0.0042,
+            "-35": 0.002
+          }
+        },
+        {
+          "field": "frame.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.857,
+          "distinct": 3468,
+          "rogue_values": {
+            "0.000285": 0.009,
+            "0.00028": 0.0081,
+            "0.000279": 0.0076,
+            "0.000278": 0.007
+          },
+          "legit_values": {
+            "0.000453": 0.0134,
+            "0.000452": 0.0125,
+            "0.000444": 0.0116,
+            "0.000451": 0.0114
+          }
+        },
+        {
+          "field": "frame.time_delta_displayed",
+          "family": "A",
+          "kept_in_s2b": true,
+          "s2b_reason": null,
+          "tvd": 0.857,
+          "distinct": 3468,
+          "rogue_values": {
+            "0.000285": 0.009,
+            "0.00028": 0.0081,
+            "0.000279": 0.0076,
+            "0.000278": 0.007
+          },
+          "legit_values": {
+            "0.000453": 0.0134,
+            "0.000452": 0.0125,
+            "0.000444": 0.0116,
+            "0.000451": 0.0114
+          }
+        }
+      ],
+      "fields_tvd_below_0.5": [
+        {
+          "field": "wlan.seq",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.4131
+        },
+        {
+          "field": "frame.time_epoch",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.1068
+        },
+        {
+          "field": "source_file",
+          "family": "not classified",
+          "kept_in_s2b": true,
+          "tvd": 0.0657
+        },
+        {
+          "field": "frame.encap_type",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.flags.cck",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.flags.ofdm",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.channel.freq",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.datarate",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.length",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.present.tsft",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.rxflags",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "radiotap.vendor_oui",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.duration",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.analysis.kck",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.analysis.kek",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.da",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.ds",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.frag",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.order",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.moredata",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.protected",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.pwrmgt",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.type",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.retry",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fc.subtype",
+          "family": "S",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fcs.bad_checksum",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.beacon",
+          "family": "C",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.capabilities.ess",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.capabilities.ibss",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.fixed.reason_code",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.ra",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.gtk.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.igtk.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.rsn.ie.pmkid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan.ssid",
+          "family": "C",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.channel",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.data_rate",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.frequency",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_radio.phy",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.msgnr",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.data_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.key_info.key_mic",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "wlan_rsna_eapol.keydes.nonce",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.keydes.key_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.keydes.replay_counter",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "eapol.type",
+          "family": "S",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "llc",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.hw.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.proto.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.hw.size",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.proto.size",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.opcode",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.src.hw_mac",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.src.proto_ipv4",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.dst.hw_mac",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "arp.dst.proto_ipv4",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.dst",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.proto",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.src",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.ttl",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "ip.version",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "data.data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "data.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "icmpv6.mldr.nb_mcast_records",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "icmpv6.ni.nonce",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.ack",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.ack_raw",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.flags",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.retransmission",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.reused_ports",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.analysis.rto_frame",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.checksum",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.checksum.status",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.syn",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.dstport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.ack",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.fin",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.push",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.flags.reset",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.option_len",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.payload",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.seq",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.seq_raw",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.srcport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tcp.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.dstport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.srcport",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.length",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.payload",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "udp.time_delta",
+          "family": "A",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.continuation_data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "nbss.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ldap",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_execute",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_read",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.access.generic_write",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags.notify",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags.response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags2.nt_error",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.flags2.sec_sig",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.mid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.nt_status",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.server_component",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.pid.high",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb.tid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.acct",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.auth_frame",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.buffer_code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.cmd",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.data_offset",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.domain",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.fid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.filename",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.header_len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.host",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.msg_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.pid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.previous_sesid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.protocol_id",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.sesid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.session_flags",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.tid",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "smb2.write_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.client_id.duid_ll_hw_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.cookie",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.hw.addr_padding",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.hw.mac_addr",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.client",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.relay",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.ip.server",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.broadcast_address",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.dhcp_server_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.router",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dhcp.option.vendor.bsdp.message_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "mdns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.a",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.add_rr",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.answers",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.auth_rr",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.labels",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.count.queries",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.authoritative",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.checkdisable",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.opcode",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.flags.response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.ptr.domain_name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.qry.name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.qry.name.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.len",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.name",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.ttl",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.resp.len.1",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.retransmit_request",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.retransmit_response",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "dns.time",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssdp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.connection",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.content_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.content_type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.date",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.file_data",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.host",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.last_modified",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.location",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.next_request_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.next_response_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.full_uri",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.line",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.method",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.path",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.query",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.uri.query.parameter",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.request_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.code.desc",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.line",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.phrase",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response_for.uri",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.response_in",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.referer",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.time",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "http.server",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "json.value.string",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "json.key",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.cookie",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.compression_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.compression_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.direction",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.max",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.min",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.dh_gex.nbits",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.encryption_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.encryption_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.host_key.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.host_key.type_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.kex_algorithms_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mac_algorithms_client_to_server_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mac_algorithms_server_to_client_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.message_code",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.mpint_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.packet_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.packet_length_encrypted",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.padding_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.padding_string",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.protocol",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "ssh.server_host_key_algorithms_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.alert_message.desc",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.alert_message.level",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.app_data_proto",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.compress_certificate.compressed_certificate_message.length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.connection_id",
+          "family": "A",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.extension.type",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.extensions_key_share_group",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.session_ticket_length",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.handshake.version",
+          "family": "U",
+          "kept_in_s2b": false,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.record.content_type",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        },
+        {
+          "field": "tls.record.version",
+          "family": "U",
+          "kept_in_s2b": true,
+          "tvd": 0.0
+        }
+      ],
+      "fields_mostly_unique_values": [
+        {
+          "field": "frame.time",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "frame.time_relative",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "radiotap.mactime",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "radiotap.timestamp.ts",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "wlan.fixed.timestamp",
+          "family": "U",
+          "kept_in_s2b": false,
+          "distinct": 7339
+        },
+        {
+          "field": "wlan_radio.end_tsf",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "wlan_radio.start_tsf",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "wlan_radio.timestamp",
+          "family": "A",
+          "kept_in_s2b": true,
+          "distinct": 8057
+        },
+        {
+          "field": "row_in_file",
+          "family": "not classified",
+          "kept_in_s2b": true,
+          "distinct": 7406
+        }
+      ]
+    }
+  }
+}
