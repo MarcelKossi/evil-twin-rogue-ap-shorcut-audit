@@ -177,3 +177,17 @@ Results: `results/S4p_perturbation_runs.csv` (one row per run and variant) and
 git add scripts/10_perturbation.py results docs RUNBOOK.md RESULTS.md README.md
 git commit -m "Perturbation test (exploratory)"
 ```
+
+## 14. Fields that separate rogue from legitimate beacons (exploratory)
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/11_beacon_fields.py` | `results/S4y_beacon_fields.json` | about 15-30 min (reads every column of both Parquet tables) |
+
+Compares every field of the capture, including those dropped by S2b, on the beacons of
+the attack window: rogue against legitimate.
+
+```cmd
+git add scripts/11_beacon_fields.py results RUNBOOK.md
+git commit -m "S4y: fields that separate rogue from legitimate beacons (exploratory)"
+```

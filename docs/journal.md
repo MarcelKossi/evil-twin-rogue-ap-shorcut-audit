@@ -171,3 +171,9 @@ and any deviation from `docs/protocol_v0.3.md`.
 - Checked from the paper and its repository (`github.com/RayedSuhail/dl-wnids-journal`): Ahmad et al. use the same 16 features as F-chatz, in the same order; 20% of the normal traffic of seven merged AWID3 attacks; a stratified random 70/30 split (seed 42); no result per attack. The label column is dropped from the inputs. Their models are CNNs, not RF, ExtraTrees, XGB or LightGBM as I had noted: those appear only in their comparison with other studies.
 - In the preprint this is a conditional limitation: the mechanisms are shown on my models trained with the published practices (the 16 features, random splitting, and SMOTE before the split in S7), not on the published detectors themselves.
 - The pre-registered stages S5-S7 are unchanged.
+
+## 2026-11-19 - beacon-only fields dropped by the missingness rule (before any result)
+
+- While preparing S5 I noticed that the rule of protocol 9.3 (drop columns more than 99% missing) removed the fields that exist only in management frames: `wlan.fixed.capabilities.ess` and `.ibss`, `wlan.rsn.capabilities.mfpc` (family S), `wlan.ssid` and `wlan.fixed.beacon` (family C), all 99.6% missing over each capture (`results/S2b_features.json`). Protocol 7.1 gives RSN and capability information as examples of semantic evidence, so the rule works against the taxonomy for beacons.
+- Consequence for the reading of S4 and S4x: "with 802.11 semantic fields only, a rogue beacon cannot be told from a real one" holds for the semantic fields kept by S2b, not yet for every semantic field of the capture.
+- Check, exploratory, decided before looking at these fields: `scripts/11_beacon_fields.py` compares every field of the Parquet tables, kept or dropped, between rogue and legitimate beacons of the attack window (total variation distance). Whatever it shows, S3-S4 are not re-run with these fields: that would be a new analysis, reported as exploratory if done.
