@@ -244,6 +244,6 @@ Sources: [`results/S4p_perturbation.json`](results/S4p_perturbation.json),
 ## Next
 
 - Re-run of S3 with the corrected folds.
-- Reproduction of published AWID3 pipelines (Ahmad et al. 2025, then Solpan
-  et al. 2026), then transfer to AWID2 (S5), rule baseline (S6) and SMOTE
-  probe (S7).
+- Transfer to AWID2 (S5), rule baseline (S6) and SMOTE probe (S7).
+- After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
+  2025, then Solpan et al. 2026).

@@ -148,9 +148,10 @@ strength of the real one goes unnoticed by these detectors.
 ## Next steps
 
 - **Re-run of S3** with the corrected folds.
-- **Reproduction** of published AWID3 pipelines (Ahmad et al. 2025, Solpan et al. 2026).
 - **Transfer** AWID3 <-> AWID2 (S5), rule baseline (S6), SMOTE probe (S7),
   statistics and paper (S8).
+- After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
+  2025, Solpan et al. 2026) on their own code.
 
 ## Progress
 
@@ -164,7 +165,7 @@ strength of the real one goes unnoticed by these detectors.
 | S4 | H2a-c - reliance on artefacts | Done |
 | S4x | Which single fields decide (exploratory) | Done |
 | - | Perturbation test (exploratory) | Done |
-| - | Reproduction of published pipelines (exploratory) | Planned |
+| - | Reproduction of published pipelines (exploratory) | After the preprint |
 | S5 | H3a - transfer AWID3 <-> AWID2 | Planned |
 | S6 | H3b - rule baseline | Planned |
 | S7 | H4 - imbalance probe | Planned |

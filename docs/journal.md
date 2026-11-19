@@ -163,3 +163,11 @@ and any deviation from `docs/protocol_v0.3.md`.
 - LR is unreliable on beacons here: on Rogue_AP it flags 50% (F-noA) and 99.9% (F-chatz) of legitimate beacons, so its detection rates say nothing. I leave it out of the conclusions.
 - Seed-to-seed variation is small: DT and XGB give the same result for every seed, RF varies by at most 0.09 (standard deviation), MLP by up to 0.25.
 - What I take from it: on these captures, giving each rogue beacon two values copied from a real beacon - its length (Rogue_AP) and its received signal strength (Evil_Twin) - is enough for the tree models trained on the 16 published features, or on all non-artefact fields, to stop flagging the rogue beacons and to rank them no better than chance.
+
+## 2026-11-19 - reproduction of published pipelines postponed
+
+- Decided today, before running any reproduction: the reproduction of Ahmad et al. (2025) and Solpan et al. (2026), planned on 2026-11-18 as exploratory (item 2 above), is postponed until after the arXiv preprint and will go into the version sent to a journal. Both reproductions will still be reported whatever their outcome.
+- Reason: Ahmad et al. train small CNNs on 2D images of each frame (TensorFlow, millions of frames), which needs more memory than my laptop and the university GPU server, to which I have to request access again. Solpan et al.'s paper and code could not be obtained yet.
+- Checked from the paper and its repository (`github.com/RayedSuhail/dl-wnids-journal`): Ahmad et al. use the same 16 features as F-chatz, in the same order; 20% of the normal traffic of seven merged AWID3 attacks; a stratified random 70/30 split (seed 42); no result per attack. The label column is dropped from the inputs. Their models are CNNs, not RF, ExtraTrees, XGB or LightGBM as I had noted: those appear only in their comparison with other studies.
+- In the preprint this is a conditional limitation: the mechanisms are shown on my models trained with the published practices (the 16 features, random splitting, and SMOTE before the split in S7), not on the published detectors themselves.
+- The pre-registered stages S5-S7 are unchanged.
