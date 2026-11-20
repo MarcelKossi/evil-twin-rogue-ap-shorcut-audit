@@ -222,3 +222,12 @@ and any deviation from `docs/protocol_v0.3.md`.
 
 - Title decided: "Intrusion Detection in Wi-Fi Networks: What Do Evil Twin Detectors Learn from Public 802.11 Datasets – the Attack, the Capture, or the Labelling Rule?" (spaced en dash). Not a protocol change: the research questions are the same.
 - IoT stays out of the title: AWID3 emulates an enterprise network and AWID2 a small office network, with laptops and phones only, and the audited works put "Wi-Fi" or "802.11" in their titles, citing IoT only as context. IoT opens the abstract instead. Both are kept in `docs/paper_notes.md`, with the claims of the paper and their evidence.
+
+## 2026-11-21 - S5 results (H3a, F-sem part of H3b)
+
+- Ran `scripts/13_s5_transfer.py`: seed 0 on commit `166dbda`, seeds 1-4 on commit `14d7ae4` (no uncommitted file). 672 runs, no duplicate. Outputs: `results/S5_runs.csv`, `results/S5_transfer.json`.
+- Transfer fails: on F-all, F-noA and F-chatz, every model with an in-domain PR-AUC above 0.5 has G = 0.91-1.00; transfer PR-AUC 0.02-0.09 (AWID2 -> AWID3, chance 0.028) and 0.002-0.063 (AWID3 -> AWID2, chance 0.002). Seed-to-seed variation is small (largest standard deviation 0.11, MLP).
+- **H3a not supported**: Spearman rho = 0.31, 95% CI clustered by model family [-0.03, 0.67], 32 configurations.
+- **H3b, F-sem part**: median G 0.63 (F-sem) against 0.97 (F-all), one-sided Wilcoxon p = 0.053, 10 pairs. F-sem is near chance in-domain on AWID2 (0.011-0.012), so its smaller gap means little; I will say so. Rule baseline part in S6; Holm in S8.
+- One semantic rule transfers: XGB trained on AWID2 with F-sem reaches PR-AUC 0.995 on the Evil_Twin data frames of AWID3, same value for all seeds (unprotected frames among protected normal traffic).
+- In-domain AWID2 with all fields: the decision tree scores 0.001 on Tst; timestamps of Tst lie outside the training range.

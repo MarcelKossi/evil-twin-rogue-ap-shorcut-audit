@@ -31,7 +31,9 @@ warn their users.
 | Copying length and signal from a real beacon defeats tree models trained on the 16 published features | `S4p_perturbation.json` | exploratory |
 | A common cleaning rule (drop columns >99% missing) removes the one 802.11 field that separates rogue from real beacons in AWID3 (`mfpc`) | `S4y_beacon_fields.json`, `S2b_features.json` | exploratory |
 | In both datasets the rogue AP announces weaker security in part or all of its beacons, and its beacons are shorter; the fields differ between datasets and the attacker can copy them | `S4y_beacon_fields.json`, `S5a_prepare.json` | exploratory |
-| Detectors do not transfer between AWID3 and AWID2 | `S5_transfer.json` | pre-registered (H3a, H3b); seed 0 only so far |
+| Detectors do not transfer between AWID3 and AWID2 (G 0.91-1.00 for models above 0.5 in-domain) | `S5_transfer.json` | pre-registered; H3a not supported (rho 0.31, CI includes 0) |
+| One semantic rule transfers: unprotected frames among protected normal traffic (XGB, F-sem, AWID2 -> AWID3 data frames, 0.995) | `S5_transfer.json` | pre-registered stage, result not hypothesised |
+| G is uninformative when the in-domain score is near chance (F-sem on AWID2) | `S5_transfer.json` | to state with H3b |
 
 ## To say in the limitations
 

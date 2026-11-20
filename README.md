@@ -2,8 +2,8 @@
 
 **Kossi Tamplare**, GD Goenka University
 
-_Status (20 November 2026): stages S0-S4 of the pre-registered protocol, the
-exploratory stage S4x and the perturbation test done. All results below are
+_Status (21 November 2026): stages S0-S5 of the pre-registered protocol, the
+exploratory stages S4x and S4y and the perturbation test done. All results below are
 **preliminary**._
 
 ---
@@ -122,6 +122,12 @@ Rogue_AP the length alone is enough. Evil_Twin models that see all fields still
 flag them through the fake AP's hardware address, which the attacker could clone
 as well.
 
+**8. Detectors do not transfer between datasets.** Trained on AWID3 and tested
+on AWID2, or the reverse, detectors that score 0.93-1.00 within a dataset drop
+to near chance, for every field set including the 16 published features. The
+beacon-length shortcut takes different values in each dataset. One semantic
+rule does carry over: unencrypted frames among encrypted normal traffic.
+
 ### Hypotheses: outcome so far
 
 | | Hypothesis | Outcome |
@@ -132,7 +138,8 @@ as well.
 | H2a | Detectors rely on artefacts | **Not supported**: high attribution, but small ablation cost |
 | H2b | Random splits inflate scores and artefact reliance | **Partly**: scores inflated on Evil_Twin, artefact share not |
 | H2c | The ranking of field families is stable | **Supported** |
-| H3a-b, H4 | Transfer, rule baseline, SMOTE | Not yet tested |
+| H3a | The more a detector relies on artefacts, the worse it transfers | **Not supported**: nearly every detector fails to transfer |
+| H3b, H4 | Rule baseline, SMOTE | Not yet tested |
 
 Multiple-testing correction (Holm) is applied at the end, across the
 confirmatory family. Details and every number: [`RESULTS.md`](RESULTS.md).
@@ -163,8 +170,7 @@ discarded by a common cleaning step.
 
 ## Next steps
 
-- **Transfer** AWID3 <-> AWID2 (S5), rule baseline (S6), SMOTE probe (S7),
-  statistics and paper (S8).
+- Rule baseline (S6), SMOTE probe (S7), statistics and paper (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, Solpan et al. 2026) on their own code.
 
@@ -181,7 +187,7 @@ discarded by a common cleaning step.
 | S4x | Which single fields decide (exploratory) | Done |
 | - | Perturbation test (exploratory) | Done |
 | - | Reproduction of published pipelines (exploratory) | After the preprint |
-| S5 | H3a - transfer AWID3 <-> AWID2 | Planned |
+| S5 | H3a - transfer AWID3 <-> AWID2 | Done |
 | S6 | H3b - rule baseline | Planned |
 | S7 | H4 - imbalance probe | Planned |
 | S8 | Statistics, figures, paper | Planned |

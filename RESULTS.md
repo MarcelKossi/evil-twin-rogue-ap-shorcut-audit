@@ -1,9 +1,9 @@
 # Preliminary results
 
-*Status: 20 November 2026. Stages S0-S4 of the pre-registered protocol
+*Status: 21 November 2026. Stages S0-S5 of the pre-registered protocol
 ([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
-the exploratory stage S4x and the perturbation test. The first sections
-describe the labels of AWID3; the S3, S4, S4x and perturbation sections
+the exploratory stages S4x, S4y and the perturbation test, and the transfer
+stage S5. The first sections describe the labels of AWID3; the later sections
 describe detectors trained on them.*
 
 ## Question
@@ -280,8 +280,51 @@ legitimate one (`...fe:35` against `...fe:34`), and half of the rogue beacons
 
 Source: [`results/S4y_beacon_fields.json`](results/S4y_beacon_fields.json).
 
+## Do detectors transfer between AWID3 and AWID2? (S5, pre-registered H3a, F-sem part of H3b)
+
+Train on all of one dataset, test on all of the other, on the 37 fields the
+two datasets share (only 4-5 of them semantic), compared with the in-domain
+score of the same model and field set. Transfer gap G = 1 - PR-AUC(transfer) /
+PR-AUC(in-domain): 0 = no loss, 1 = everything lost. Five model families,
+5 seeds; AWID3 Evil_Twin against AWID2 evil_twin frames.
+
+| Field set | AWID2 -> AWID3: in-domain / transfer | AWID3 -> AWID2: in-domain / transfer |
+|---|---|---|
+| F-all | 0.94-0.96 / 0.03-0.09 | 0.00-1.00 / 0.002-0.017 |
+| F-noA | 0.83-0.96 / 0.02-0.08 | 0.24-1.00 / 0.002-0.063 |
+| F-chatz (16 published features) | 0.79-0.98 / 0.03-0.04 | 0.17-1.00 / 0.002-0.043 |
+| F-sem | 0.73-0.79 / 0.03-0.12 | 0.01 / 0.007-0.013 |
+
+PR-AUC ranges over the five models. Chance level (the share of attack frames)
+is 0.028 in AWID3 and 0.002 in AWID2.
+
+- **Detectors that score 0.93-1.00 within a dataset are close to chance on
+  the other one**, for every field set, including the 16 published features:
+  on F-all, F-noA and F-chatz, every model with an in-domain PR-AUC above 0.5
+  loses 91-100% of it (G = 0.91-1.00).
+- The main shortcut does not carry over: rogue beacons are 263, 241 or 150
+  bytes in AWID3 and 99 bytes in AWID2.
+- **One rule does transfer**: XGB trained on AWID2 with semantic fields only
+  detects the Evil_Twin data frames of AWID3 (PR-AUC 0.995 on data frames, all
+  seeds). In both datasets the normal traffic is encrypted and the suspect
+  frames are not (`wlan.fc.protected`).
+- **H3a not supported**: Spearman rho between artefact share and G = 0.31, 95%
+  CI [-0.03, 0.67]. Nearly every model fails to transfer, whatever its
+  artefact share.
+- **H3b, F-sem part**: median G 0.63 (F-sem) against 0.97 (F-all), one-sided
+  Wilcoxon p = 0.053 before Holm. Not significant, and partly trivial: in
+  AWID2, F-sem models are near chance even in-domain (0.01), so they have
+  little to lose. The rule-baseline part comes in S6.
+- Time fields break even the in-domain AWID2 score: a decision tree on all
+  fields, trained on the AWID2 training file, detects nothing in its test
+  file (0.001), whose timestamps lie outside the training range.
+
+Sources: [`results/S5_transfer.json`](results/S5_transfer.json),
+[`results/S5_runs.csv`](results/S5_runs.csv),
+[`results/S5a_prepare.json`](results/S5a_prepare.json).
+
 ## Next
 
-- Transfer to AWID2 (S5), rule baseline (S6) and SMOTE probe (S7).
+- Rule baseline (S6), SMOTE probe (S7), statistics and figures (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, then Solpan et al. 2026).
