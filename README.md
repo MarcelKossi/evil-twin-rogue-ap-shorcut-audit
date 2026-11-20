@@ -1,4 +1,4 @@
-# Attack, Capture, or Labelling Rule? Auditing What Evil Twin Detectors Learn on Public 802.11 Datasets
+# Intrusion Detection in Wi-Fi Networks: What Do Evil Twin Detectors Learn from Public 802.11 Datasets – the Attack, the Capture, or the Labelling Rule?
 
 **Kossi Tamplare**, GD Goenka University
 
