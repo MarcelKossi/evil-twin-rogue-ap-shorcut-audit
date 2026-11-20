@@ -197,6 +197,8 @@ git commit -m "S4y: fields that separate rogue from legitimate beacons (explorat
 | Command | Output | Time |
 |---|---|---|
 | `python scripts/12_s5_prepare.py` | `data/interim/s5_*`, `results/S5a_prepare.json` | about 20-40 min |
+| `python scripts/13_s5_transfer.py --seeds 0` | first pass, seed 0 only | about 2-3 h |
+| `python scripts/13_s5_transfer.py` | seeds 0-4 (finished runs are skipped) | about 4-7 h in total |
 
 Reads the two AWID2 archives and the AWID3 Evil_Twin Parquet table, aligns field names
 and writes both datasets with the same encoding. Column names of AWID2 come from
@@ -206,4 +208,15 @@ and writes both datasets with the same encoding. Column names of AWID2 come from
 git add scripts/12_s5_prepare.py configs/awid2_columns.txt RUNBOOK.md docs/journal.md
 git commit -m "S5 part 1: AWID2 preparation and field alignment"
 python scripts/12_s5_prepare.py
+```
+
+Then the transfer itself (stop and restart at any time; finished runs are kept):
+
+```cmd
+git add scripts/13_s5_transfer.py RUNBOOK.md
+git commit -m "S5 part 2: transfer script"
+python scripts/13_s5_transfer.py --seeds 0
+python scripts/13_s5_transfer.py
+git add results
+git commit -m "S5 transfer results"
 ```

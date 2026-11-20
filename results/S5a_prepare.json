@@ -1,0 +1,1441 @@
+{
+  "meta": {
+    "script": "scripts/12_s5_prepare.py",
+    "git_commit": "837bfc7bb2a36324082458adf5ac0a5c2152e6bb",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-19T21:03:48+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "inputs_sha256": {
+      "awid2_columns.txt": "ee49eea95dc853bb09e248cb167965ce6d898aad1f8d8be972d9dde902f319e9",
+      "taxonomy.csv": "cc9c180051114c553985dd6a04e49e87da852cfb3ae8c12f25d75776dd64e0c9",
+      "AWID-ATK-R-Trn.tar.gz": "c71ec68fe6ffdf9ebeef1dfedbee339b3ae24ffd2068494ed859276b41c8cb65",
+      "AWID-ATK-R-Tst.tar.gz": "e9c6331a37e94a3ddd8f32bb3ebdb440b802a9065330654a6fd06f99b842d06d"
+    }
+  },
+  "awid2_class_counts": {
+    "Trn": {
+      "normal": 1633190,
+      "amok": 31180,
+      "beacon": 1799,
+      "deauthentication": 10447,
+      "fragmentation": 770,
+      "arp": 64609,
+      "cafe_latte": 45889,
+      "authentication_request": 3500,
+      "evil_twin": 2633,
+      "probe_response": 1558
+    },
+    "Tst": {
+      "normal": 530785,
+      "arp": 13644,
+      "fragmentation": 167,
+      "chop_chop": 2871,
+      "deauthentication": 4445,
+      "beacon": 599,
+      "amok": 477,
+      "probe_request": 369,
+      "rts": 199,
+      "evil_twin": 611,
+      "cafe_latte": 379,
+      "hirte": 19089,
+      "cts": 1759,
+      "power_saving": 165,
+      "disassociation": 84
+    }
+  },
+  "rows": {
+    "awid2": {
+      "rows": 2167219,
+      "attack": 3244
+    },
+    "awid3": {
+      "rows": 3778679,
+      "attack": 104827
+    }
+  },
+  "rename_rules": [
+    [
+      "wlan_mgt.",
+      "wlan."
+    ],
+    [
+      "radiotap.channel.type.",
+      "radiotap.channel.flags."
+    ]
+  ],
+  "shared_fields": [
+    {
+      "name": "frame.len",
+      "family": "C",
+      "kind": "numeric",
+      "offset": 40.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "frame.time_delta",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "frame.time_delta_displayed",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "frame.time_epoch",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 1393661302.645757,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "frame.time_relative",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "radiotap.channel.flags.cck",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.00048
+    },
+    {
+      "name": "radiotap.channel.flags.ofdm",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.00048
+    },
+    {
+      "name": "radiotap.channel.freq",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 2412.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.00048
+    },
+    {
+      "name": "radiotap.datarate",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 1.0,
+      "missing_awid3": 0.41856,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "radiotap.dbm_antsignal",
+      "family": "C",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.00048
+    },
+    {
+      "name": "radiotap.length",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 13.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "radiotap.mactime",
+      "family": "A",
+      "kind": "numeric",
+      "offset": 2101598203.0,
+      "missing_awid3": 0.418628,
+      "missing_awid2": 0.00048
+    },
+    {
+      "name": "radiotap.present.tsft",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.duration",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.000581
+    },
+    {
+      "name": "wlan.bssid",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.573746,
+      "missing_awid2": 0.294557
+    },
+    {
+      "name": "wlan.da",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.573941,
+      "missing_awid2": 0.295138
+    },
+    {
+      "name": "wlan.fc.ds",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.frag",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.order",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.moredata",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.protected",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.pwrmgt",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.type",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.retry",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fc.subtype",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.0
+    },
+    {
+      "name": "wlan.fixed.beacon",
+      "family": "C",
+      "kind": "numeric",
+      "offset": 100.0,
+      "missing_awid3": 0.996424,
+      "missing_awid2": 0.904926
+    },
+    {
+      "name": "wlan.fixed.capabilities.ess",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 1.0,
+      "missing_awid3": 0.996399,
+      "missing_awid2": 0.893075
+    },
+    {
+      "name": "wlan.fixed.capabilities.ibss",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.996399,
+      "missing_awid2": 0.893075
+    },
+    {
+      "name": "wlan.fixed.reason_code",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 1.0,
+      "missing_awid3": 0.999973,
+      "missing_awid2": 0.916311
+    },
+    {
+      "name": "wlan.fixed.timestamp",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.996424,
+      "missing_awid2": 0.904926
+    },
+    {
+      "name": "wlan.ra",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.0,
+      "missing_awid2": 0.000581
+    },
+    {
+      "name": "wlan.sa",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.573727,
+      "missing_awid2": 0.295138
+    },
+    {
+      "name": "wlan.seq",
+      "family": "U",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.573725,
+      "missing_awid2": 0.295138
+    },
+    {
+      "name": "wlan.ssid",
+      "family": "C",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.996338,
+      "missing_awid2": 0.900409
+    },
+    {
+      "name": "wlan.ta",
+      "family": "A",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.199099,
+      "missing_awid2": 0.293917
+    },
+    {
+      "name": "wlan.rsn.capabilities.mfpc",
+      "family": "S",
+      "kind": "numeric",
+      "offset": 0.0,
+      "missing_awid3": 0.996912,
+      "missing_awid2": 0.949183
+    },
+    {
+      "name": "data.len",
+      "family": "U",
+      "kind": "text",
+      "offset": 0.0,
+      "missing_awid3": 0.993698,
+      "missing_awid2": 0.510464
+    }
+  ],
+  "awid3_fields_not_in_awid2": [
+    "frame.encap_type",
+    "frame.time",
+    "radiotap.rxflags",
+    "radiotap.timestamp.ts",
+    "radiotap.vendor_oui",
+    "wlan.analysis.kck",
+    "wlan.analysis.kek",
+    "wlan.country_info.fnm",
+    "wlan.country_info.code",
+    "wlan.fcs.bad_checksum",
+    "wlan_radio.duration",
+    "wlan.rsn.ie.gtk.key",
+    "wlan.rsn.ie.igtk.key",
+    "wlan.rsn.ie.pmkid",
+    "wlan.tag",
+    "wlan.tag.length",
+    "wlan_radio.channel",
+    "wlan_radio.data_rate",
+    "wlan_radio.end_tsf",
+    "wlan_radio.frequency",
+    "wlan_radio.signal_dbm",
+    "wlan_radio.start_tsf",
+    "wlan_radio.phy",
+    "wlan_radio.timestamp",
+    "wlan_rsna_eapol.keydes.msgnr",
+    "wlan_rsna_eapol.keydes.data",
+    "wlan_rsna_eapol.keydes.data_len",
+    "wlan_rsna_eapol.keydes.key_info.key_mic",
+    "wlan_rsna_eapol.keydes.nonce",
+    "eapol.keydes.key_len",
+    "eapol.keydes.replay_counter",
+    "eapol.len",
+    "eapol.type",
+    "llc",
+    "arp",
+    "arp.hw.type",
+    "arp.proto.type",
+    "arp.hw.size",
+    "arp.proto.size",
+    "arp.opcode",
+    "arp.src.hw_mac",
+    "arp.src.proto_ipv4",
+    "arp.dst.hw_mac",
+    "arp.dst.proto_ipv4",
+    "ip.dst",
+    "ip.proto",
+    "ip.src",
+    "ip.ttl",
+    "ip.version",
+    "data.data",
+    "icmpv6.mldr.nb_mcast_records",
+    "icmpv6.ni.nonce",
+    "tcp.ack",
+    "tcp.ack_raw",
+    "tcp.analysis",
+    "tcp.analysis.flags",
+    "tcp.analysis.retransmission",
+    "tcp.analysis.reused_ports",
+    "tcp.analysis.rto_frame",
+    "tcp.checksum",
+    "tcp.checksum.status",
+    "tcp.flags.syn",
+    "tcp.dstport",
+    "tcp.flags.ack",
+    "tcp.flags.fin",
+    "tcp.flags.push",
+    "tcp.flags.reset",
+    "tcp.option_len",
+    "tcp.payload",
+    "tcp.seq",
+    "tcp.seq_raw",
+    "tcp.srcport",
+    "tcp.time_delta",
+    "tcp.time_relative",
+    "udp.dstport",
+    "udp.srcport",
+    "udp.length",
+    "udp.payload",
+    "udp.time_relative",
+    "udp.time_delta",
+    "nbns",
+    "nbss.continuation_data",
+    "nbss.type",
+    "nbss.length",
+    "ldap",
+    "smb.access.generic_execute",
+    "smb.access.generic_read",
+    "smb.access.generic_write",
+    "smb.flags.notify",
+    "smb.flags.response",
+    "smb.flags2.nt_error",
+    "smb.flags2.sec_sig",
+    "smb.mid",
+    "smb.nt_status",
+    "smb.server_component",
+    "smb.pid.high",
+    "smb.tid",
+    "smb2.acct",
+    "smb2.auth_frame",
+    "smb2.buffer_code",
+    "smb2.cmd",
+    "smb2.data_offset",
+    "smb2.domain",
+    "smb2.fid",
+    "smb2.filename",
+    "smb2.header_len",
+    "smb2.host",
+    "smb2.msg_id",
+    "smb2.pid",
+    "smb2.previous_sesid",
+    "smb2.protocol_id",
+    "smb2.sesid",
+    "smb2.session_flags",
+    "smb2.tid",
+    "smb2.write_length",
+    "dhcp",
+    "dhcp.client_id.duid_ll_hw_type",
+    "dhcp.cookie",
+    "dhcp.hw.addr_padding",
+    "dhcp.hw.mac_addr",
+    "dhcp.id",
+    "dhcp.ip.client",
+    "dhcp.ip.relay",
+    "dhcp.ip.server",
+    "dhcp.option.broadcast_address",
+    "dhcp.option.dhcp_server_id",
+    "dhcp.option.router",
+    "dhcp.option.vendor.bsdp.message_type",
+    "mdns",
+    "dns",
+    "dns.a",
+    "dns.count.add_rr",
+    "dns.count.answers",
+    "dns.count.auth_rr",
+    "dns.count.labels",
+    "dns.count.queries",
+    "dns.flags.authoritative",
+    "dns.flags.checkdisable",
+    "dns.flags.opcode",
+    "dns.flags.response",
+    "dns.id",
+    "dns.ptr.domain_name",
+    "dns.qry.name",
+    "dns.qry.name.len",
+    "dns.resp.len",
+    "dns.resp.name",
+    "dns.resp.ttl",
+    "dns.resp.len.1",
+    "dns.retransmit_request",
+    "dns.retransmit_response",
+    "dns.time",
+    "ssdp",
+    "http.connection",
+    "http.content_length",
+    "http.content_type",
+    "http.date",
+    "http.file_data",
+    "http.host",
+    "http.last_modified",
+    "http.location",
+    "http.next_request_in",
+    "http.next_response_in",
+    "http.request.full_uri",
+    "http.request.line",
+    "http.request.method",
+    "http.request.uri.path",
+    "http.request.uri.query",
+    "http.request.uri.query.parameter",
+    "http.request.version",
+    "http.request_in",
+    "http.response.code",
+    "http.response.code.desc",
+    "http.response.line",
+    "http.response.phrase",
+    "http.response.version",
+    "http.response_for.uri",
+    "http.response_in",
+    "http.referer",
+    "http.time",
+    "http.server",
+    "json.value.string",
+    "json.key",
+    "ssh.cookie",
+    "ssh.compression_algorithms_client_to_server_length",
+    "ssh.compression_algorithms_server_to_client_length",
+    "ssh.direction",
+    "ssh.dh_gex.max",
+    "ssh.dh_gex.min",
+    "ssh.dh_gex.nbits",
+    "ssh.encryption_algorithms_client_to_server_length",
+    "ssh.encryption_algorithms_server_to_client_length",
+    "ssh.host_key.length",
+    "ssh.host_key.type_length",
+    "ssh.kex_algorithms_length",
+    "ssh.mac_algorithms_client_to_server_length",
+    "ssh.mac_algorithms_server_to_client_length",
+    "ssh.message_code",
+    "ssh.mpint_length",
+    "ssh.packet_length",
+    "ssh.packet_length_encrypted",
+    "ssh.padding_length",
+    "ssh.padding_string",
+    "ssh.protocol",
+    "ssh.server_host_key_algorithms_length",
+    "tls.alert_message.desc",
+    "tls.alert_message.level",
+    "tls.app_data_proto",
+    "tls.compress_certificate.compressed_certificate_message.length",
+    "tls.connection_id",
+    "tls.handshake.extension.type",
+    "tls.handshake.extensions_key_share_group",
+    "tls.handshake.session_ticket_length",
+    "tls.handshake.version",
+    "tls.record.content_type",
+    "tls.record.version"
+  ],
+  "awid2_beacons_exploratory": {
+    "impersonated_bssid": "28:c6:8e:86:d3:d6",
+    "rogue_beacons": 2634,
+    "legit_beacons": 39744,
+    "fields_tvd_at_least_0.5": [
+      {
+        "field": "frame.len",
+        "family": "C",
+        "shared_with_awid3": true,
+        "missing_awid2": 0.0,
+        "tvd": 1.0,
+        "distinct": 3,
+        "rogue_values": {
+          "99": 1.0
+        },
+        "legit_values": {
+          "148": 0.9999,
+          "87": 0.0001
+        }
+      },
+      {
+        "field": "frame.cap_len",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 1.0,
+        "distinct": 3,
+        "rogue_values": {
+          "99": 1.0
+        },
+        "legit_values": {
+          "148": 0.9999,
+          "87": 0.0001
+        }
+      },
+      {
+        "field": "wlan.tim.dtim_count",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 0.9999,
+        "distinct": 2,
+        "rogue_values": {
+          "<missing>": 1.0
+        },
+        "legit_values": {
+          "0": 0.5002,
+          "1": 0.4997,
+          "<missing>": 0.0001
+        }
+      },
+      {
+        "field": "wlan.tim.dtim_period",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 0.9999,
+        "distinct": 1,
+        "rogue_values": {
+          "<missing>": 1.0
+        },
+        "legit_values": {
+          "2": 0.9999,
+          "<missing>": 0.0001
+        }
+      },
+      {
+        "field": "wlan.tim.bmapctl.multicast",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 0.9999,
+        "distinct": 2,
+        "rogue_values": {
+          "<missing>": 1.0
+        },
+        "legit_values": {
+          "0": 0.9551,
+          "1": 0.0448,
+          "<missing>": 0.0001
+        }
+      },
+      {
+        "field": "wlan.tim.bmapctl.offset",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 0.9999,
+        "distinct": 1,
+        "rogue_values": {
+          "<missing>": 1.0
+        },
+        "legit_values": {
+          "0x00": 0.9999,
+          "<missing>": 0.0001
+        }
+      },
+      {
+        "field": "radiotap.dbm_antsignal",
+        "family": "C",
+        "shared_with_awid3": true,
+        "missing_awid2": 0.0005,
+        "tvd": 0.7807,
+        "distinct": 47,
+        "rogue_values": {
+          "-25": 0.5197,
+          "-24": 0.1492,
+          "-22": 0.1109,
+          "-26": 0.0812
+        },
+        "legit_values": {
+          "-30": 0.2294,
+          "-27": 0.1944,
+          "-28": 0.1663,
+          "-26": 0.1561
+        }
+      },
+      {
+        "field": "wlan.seq",
+        "family": "U",
+        "shared_with_awid3": true,
+        "missing_awid2": 0.2951,
+        "tvd": 0.6165,
+        "distinct": 4096,
+        "rogue_values": {
+          "1": 0.0011,
+          "390": 0.0011,
+          "410": 0.0011,
+          "408": 0.0011
+        },
+        "legit_values": {
+          "2041": 0.0004,
+          "3933": 0.0004,
+          "1280": 0.0004,
+          "1944": 0.0004
+        }
+      },
+      {
+        "field": "wlan.fixed.capabilities.privacy",
+        "family": "not classified",
+        "shared_with_awid3": false,
+        "missing_awid2": null,
+        "tvd": 0.5501,
+        "distinct": 2,
+        "rogue_values": {
+          "0": 0.5501,
+          "1": 0.4499
+        },
+        "legit_values": {
+          "1": 1.0,
+          "0": 0.0
+        }
+      }
+    ],
+    "fields_tvd_below_0.5": [
+      {
+        "field": "radiotap.channel.freq",
+        "family": "A",
+        "tvd": 0.0041
+      },
+      {
+        "field": "wlan.ssid",
+        "family": "C",
+        "tvd": 0.0001
+      },
+      {
+        "field": "frame.interface_id",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "frame.dlt",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "frame.offset_shift",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "frame.marked",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "frame.ignored",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.version",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.pad",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.length",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.tsft",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.flags",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.rate",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.channel",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.fhss",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.dbm_antsignal",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.dbm_antnoise",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.lock_quality",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.tx_attenuation",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.db_tx_attenuation",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.dbm_tx_power",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.antenna",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.db_antsignal",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.db_antnoise",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.rxflags",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.xchannel",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.mcs",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.ampdu",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.vht",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.reserved",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.rtap_ns",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.vendor_ns",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.present.ext",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.cfp",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.preamble",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.wep",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.frag",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.fcs",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.datapad",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.badfcs",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.flags.shortgi",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.datarate",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.turbo",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.cck",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.ofdm",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.2ghz",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.5ghz",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.passive",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.dynamic",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.gfsk",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.gsm",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.sturbo",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.half",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.channel.flags.quarter",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.antenna",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "radiotap.rxflags.badplcp",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.type_subtype",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.version",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.type",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.subtype",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.ds",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.frag",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.retry",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.pwrmgt",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.moredata",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.protected",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fc.order",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.duration",
+        "family": "U",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ra",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.da",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ta",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.sa",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.bssid",
+        "family": "A",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.frag",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.bar.type",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ba.control.ackpolicy",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ba.control.multitid",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ba.control.cbitmap",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.bar.compressed.tidinfo",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ba.bm",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fcs_good",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.ess",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.ibss",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.cfpoll.ap",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.preamble",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.pbcc",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.agility",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.spec_man",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.short_slot_time",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.apsd",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.radio_measurement",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.dsss_ofdm",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.del_blk_ack",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.capabilities.imm_blk_ack",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.listen_ival",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.current_ap",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.status_code",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.beacon",
+        "family": "C",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.aid",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.reason_code",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.auth.alg",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.auth_seq",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.category_code",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.htact",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.chanwidth",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.fragment",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.fixed.sequence",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.tagged.all",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ds.current_channel",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.country_info.environment",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.version",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.gcs.type",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.pcs.count",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.akms.count",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.akms.type",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.preauth",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.no_pairwise",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.ptksa_replay_counter",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.gtksa_replay_counter",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.mfpr",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.mfpc",
+        "family": "S",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.rsn.capabilities.peerkey",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.tcprep.trsmt_pow",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.tcprep.link_mrg",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.wep.iv",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.wep.key",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.wep.icv",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.tkip.extiv",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.ccmp.extiv",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.tid",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.priority",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.eosp",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.ack",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.amsdupresent",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.buf_state_indicated",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.bit4",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.txop_dur_req",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "wlan.qos.buf_state_indicated_2",
+        "family": "not classified",
+        "tvd": 0.0
+      },
+      {
+        "field": "data.len",
+        "family": "U",
+        "tvd": 0.0
+      }
+    ]
+  }
+}

@@ -211,3 +211,9 @@ and any deviation from `docs/protocol_v0.3.md`.
 - In-domain AWID3 (t->t): the blocked protocol of S4, recomputed on the shared fields of each feature set.
 - Sub-tasks: ET-B = beacons and probe responses, ET-D = data frames; ET-M was dropped (deviation 1).
 - Code: `scripts/12_s5_prepare.py` (alignment, matrices, AWID2 beacon comparison) and `scripts/13_s5_transfer.py` (models, transfer gap, H3a, F-sem part of H3b).
+
+## 2026-11-20 - S5 preparation results
+
+- Ran `scripts/12_s5_prepare.py` on commit `837bfc7` (no uncommitted file). AWID2: 2,167,219 rows kept (3,244 evil_twin, 2,163,975 normal); the rows of the other AWID2 attack classes are left out (counts in `results/S5a_prepare.json`). AWID3 rows and labels equal those of S2b. 37 shared fields, 5 of them in family S.
+- AWID2 beacons (exploratory), 2,634 rogue against 39,744 normal beacons of the impersonated BSSID `28:c6:8e:86:d3:d6`: rogue beacons are 99 bytes against 148 and carry no TIM element (`wlan.tim.*` missing); 55% of them announce an open network (`wlan.fixed.capabilities.privacy` = 0) while the legitimate AP always announces WEP (1). Signal strength differs partly (distance 0.78). On 2026-11-20 I had said, from the Tst file alone, that the rogue AP always announced WEP; over Trn and Tst together that is not true.
+- So in both datasets the rogue AP announces a weaker security setting than the legitimate one in part or all of its beacons (no PMF in AWID3; open network in 55% of AWID2 beacons), and its beacons are shorter. The fields that carry these differences are not shared between AWID2 and AWID3 (`privacy` and TIM are absent from the AWID3 CSV; RSN is absent from WEP beacons).
