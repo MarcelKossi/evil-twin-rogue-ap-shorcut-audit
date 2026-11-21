@@ -34,6 +34,8 @@ warn their users.
 | Detectors do not transfer between AWID3 and AWID2 (G 0.91-1.00 for models above 0.5 in-domain) | `S5_transfer.json` | pre-registered; H3a not supported (rho 0.31, CI includes 0) |
 | One semantic rule transfers: unprotected frames among protected normal traffic (XGB, F-sem, AWID2 -> AWID3 data frames, 0.995) | `S5_transfer.json` | pre-registered stage, result not hypothesised |
 | G is uninformative when the in-domain score is near chance (F-sem on AWID2) | `S5_transfer.json` | to state with H3b |
+| Untrained rules (protocol 9.6) beat transferred models on a new network: AWID2 0.54 vs <= 0.07; R2 flags every rogue announcement in AWID3 | `S6_rules.json` | pre-registered stage; H3b rule part p = 0.002 (deviation 9) |
+| R5 fires on the unprotected deauthentications labelled Normal in Rogue_AP (62,428 vs 62,455 in S1c) | `S6_rules.json`, `S1c_label_diagnostics.json` | descriptive |
 
 ## To say in the limitations
 

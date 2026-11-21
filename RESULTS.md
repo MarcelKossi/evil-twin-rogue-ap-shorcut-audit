@@ -1,10 +1,10 @@
 # Preliminary results
 
-*Status: 21 November 2026. Stages S0-S5 of the pre-registered protocol
+*Status: 21 November 2026. Stages S0-S6 of the pre-registered protocol
 ([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
-the exploratory stages S4x, S4y and the perturbation test, and the transfer
-stage S5. The first sections describe the labels of AWID3; the later sections
-describe detectors trained on them.*
+the exploratory stages S4x, S4y and the perturbation test. The first sections
+describe the labels of AWID3; the later sections describe detectors trained on
+them, their transfer to AWID2 and a rule baseline.*
 
 ## Question
 
@@ -323,8 +323,52 @@ Sources: [`results/S5_transfer.json`](results/S5_transfer.json),
 [`results/S5_runs.csv`](results/S5_runs.csv),
 [`results/S5a_prepare.json`](results/S5a_prepare.json).
 
+## A rule baseline with no training (S6, pre-registered, rule part of H3b)
+
+Five rules fixed in protocol 9.6, calibrated on the first minute of normal
+traffic of each dataset (which APs exist, which network name and security
+profile they announce), applied to the raw fields. Score = number of rules
+fired (0-5).
+
+| Dataset | Chance | Rules, all frames | Rules, beacons and probe responses |
+|---|---|---|---|
+| AWID3 Rogue_AP | 0.0007 | 0.26 | 0.42 |
+| AWID3 Evil_Twin | 0.028 | 0.08 | 0.84 |
+| AWID2 | 0.0015 | 0.54 | 0.65 |
+
+Rule by rule (fires on attack frames / all fires):
+
+| Rule | Rogue_AP | Evil_Twin | AWID2 |
+|---|---|---|---|
+| R1 known name, unknown BSSID | 0 / 0 | 3,594 / 4,366 | 0 / 5 |
+| R2 security profile differs | 1,310 / 4,648 | 3,594 / 4,874 | 1,761 / 7,775 |
+| R3 sequence-number jump | 258 / 7,363 | 3,523 / 3,643 | 2,629 / 16,752 |
+| R4 TSF clock goes back | 1,180 / 1,408 | 2 / 5 | 2,514 / 4,813 |
+| R5 deauthentication burst | 0 / 62,428 | 0 / 0 | 0 / 180,999 |
+
+- **R2 flags every rogue announcement in AWID3** (1,310 of 1,310, 3,594 of
+  3,594): the security-profile difference that the missingness rule removed
+  from the models (S4y) is caught by a one-line rule.
+- R1 cannot fire on Rogue_AP and AWID2, where the rogue AP clones the BSSID;
+  there R4 (two devices with the same address, two clocks) does the work.
+- **On a new network, the rules beat the transferred models**: 0.54 on AWID2
+  against 0.002-0.06 for the F-all models trained on AWID3, and 0.08 on AWID3
+  Evil_Twin against 0.03-0.09 (0.84 on its beacons). One-sided Wilcoxon over
+  the 10 model x direction pairs: p = 0.002 before Holm (deviation 9: the rules
+  learn nothing from labels, so their own transfer gap is 0 by construction).
+- The rules do not see the victims' data frames, which make up 96% of the
+  Evil_Twin attack: hence 0.08 over all frames.
+- R5 fires on 62,428 frames labelled Normal in Rogue_AP: these are the
+  unprotected deauthentication frames sent during the attack and labelled
+  Normal (S1c found 62,455). In AWID2 it fires on 180,999 frames labelled
+  normal, not examined further.
+- R2 also fires on 3,338 legitimate announcements in Rogue_AP and 1,280 in
+  Evil_Twin; their cause was not examined.
+
+Source: [`results/S6_rules.json`](results/S6_rules.json).
+
 ## Next
 
-- Rule baseline (S6), SMOTE probe (S7), statistics and figures (S8).
+- SMOTE probe (S7), statistics and figures (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, then Solpan et al. 2026).

@@ -2,7 +2,7 @@
 
 **Kossi Tamplare**, GD Goenka University
 
-_Status (21 November 2026): stages S0-S5 of the pre-registered protocol, the
+_Status (21 November 2026): stages S0-S6 of the pre-registered protocol, the
 exploratory stages S4x and S4y and the perturbation test done. All results below are
 **preliminary**._
 
@@ -128,6 +128,13 @@ to near chance, for every field set including the 16 published features. The
 beacon-length shortcut takes different values in each dataset. One semantic
 rule does carry over: unencrypted frames among encrypted normal traffic.
 
+**9. Five simple rules do better on a new network than models trained
+elsewhere.** Calibrated on one minute of normal traffic, with no training, the
+rules of the protocol flag every fake announcement in AWID3 through the security
+profile the fake AP announces, and reach PR-AUC 0.54 on AWID2, where models
+trained on AWID3 stay below 0.07. They see only the beacons, not the victims'
+data.
+
 ### Hypotheses: outcome so far
 
 | | Hypothesis | Outcome |
@@ -139,7 +146,8 @@ rule does carry over: unencrypted frames among encrypted normal traffic.
 | H2b | Random splits inflate scores and artefact reliance | **Partly**: scores inflated on Evil_Twin, artefact share not |
 | H2c | The ranking of field families is stable | **Supported** |
 | H3a | The more a detector relies on artefacts, the worse it transfers | **Not supported**: nearly every detector fails to transfer |
-| H3b, H4 | Rule baseline, SMOTE | Not yet tested |
+| H3b | Semantic fields and a rule baseline transfer better than all fields | **Partly**: F-sem not significant (p = 0.053); the untrained rules beat the transferred models (p = 0.002), before Holm |
+| H4 | SMOTE improves scores but not transfer | Not yet tested |
 
 Multiple-testing correction (Holm) is applied at the end, across the
 confirmatory family. Details and every number: [`RESULTS.md`](RESULTS.md).
@@ -170,7 +178,7 @@ discarded by a common cleaning step.
 
 ## Next steps
 
-- Rule baseline (S6), SMOTE probe (S7), statistics and paper (S8).
+- SMOTE probe (S7), statistics and paper (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, Solpan et al. 2026) on their own code.
 
@@ -188,7 +196,7 @@ discarded by a common cleaning step.
 | - | Perturbation test (exploratory) | Done |
 | - | Reproduction of published pipelines (exploratory) | After the preprint |
 | S5 | H3a - transfer AWID3 <-> AWID2 | Done |
-| S6 | H3b - rule baseline | Planned |
+| S6 | H3b - rule baseline | Done |
 | S7 | H4 - imbalance probe | Planned |
 | S8 | Statistics, figures, paper | Planned |
 
