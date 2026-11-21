@@ -220,3 +220,20 @@ python scripts/13_s5_transfer.py
 git add results
 git commit -m "S5 transfer results"
 ```
+
+## 16. Stage S6 - rule baseline
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/14_s6_rules.py` | `results/S6_rules.json` | about 20-40 min |
+
+Five rules fixed in protocol 9.6, applied to the raw fields of AWID3 Rogue_AP, AWID3
+Evil_Twin and AWID2; needs the S5 results for the H3b comparison.
+
+```cmd
+git add scripts/14_s6_rules.py RUNBOOK.md docs/journal.md
+git commit -m "S6: rule baseline script; deviation 9"
+python scripts/14_s6_rules.py
+git add results
+git commit -m "S6 rule baseline results"
+```
