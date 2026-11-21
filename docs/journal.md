@@ -256,3 +256,14 @@ and any deviation from `docs/protocol_v0.3.md`.
   - Transfer: Evil_Twin only, AWID3 <-> AWID2 on the fields kept in the source, as in S5. The third dataset of protocol 6.3 is not available, so there is no Rogue_AP transfer and no arm with real Rogue AP frames (allowed by RQ4).
   - Decision rule: (i) one-sided Wilcoxon, SMOTE > weighting, on in-domain PR-AUC, 20 pairs (2 models x 2 captures x 5 seeds, mean over the 5 blocks); (ii) dG = G(SMOTE) - G(weighting), 20 pairs (2 models x 2 directions x 5 seeds), 95% bootstrap CI with 2,000 resamples, holds if mean dG >= 0 or the CI includes 0; (iii) as (i) on ARS. If every difference is zero, p = 1. H4 is supported only if p(i) < 0.05, (ii) holds and p(iii) < 0.05; the p-value of H4 for Holm (S8) is max(p(i), p(iii)).
 - Known before running, from S4: RF and XGB with weighting already reach PR-AUC 1.000 on every Rogue_AP block and at least 0.9997 on four of the five Evil_Twin blocks (block 3: 0.81 and 0.78). Condition (i) has almost no room, so H4 is unlikely to be supported whatever SMOTE does. I keep the test as registered and will report this ceiling with the result.
+
+## 2026-11-21 - S7 results (H4)
+
+- Ran `scripts/15_s7_smote.py` on commit `c1cf375` (no uncommitted file), seeds 0-4: 360 runs (arms "none" and "smote"); the weighting arm comes from S4 and S5 as planned. Output: `results/S7_runs.csv`, `results/S7_smote.json`.
+- As expected from the design, SMOTE added no synthetic row in 20 of the 50 in-domain Evil_Twin runs (blocks 3 and 4) and in 30 of the 80 transfer runs, where the training set already held at least as many attack rows as normal rows.
+- (i) In-domain PR-AUC: SMOTE 0.9785, weighting 0.9784 (20 pairs), one-sided Wilcoxon p = 0.87. Rogue_AP is at 1.000 in every arm; on Evil_Twin the arms differ by at most 0.001 per block.
+- (ii) Transfer gap: mean dG = +0.007, 95% CI [-0.004, 0.025]. Holds.
+- (iii) ARS: SMOTE 0.674, weighting 0.681, p = 0.99. The direction depends on the model: on Rogue_AP, RF goes from 0.59 (none) and 0.64 (weighting) to 0.65 (SMOTE), XGB from 0.76 and 0.71 to 0.70.
+- **H4 not supported**: (i) and (iii) fail. p for Holm = 0.994. Condition (i) had no room, as noted in the design entry.
+- Descriptive, not tested: AWID2 is the only Evil_Twin training set with a strong imbalance (2,633 attack rows for 100,000 normal rows). There, RF PR-AUC is 0.997 with no treatment, 0.956 with weighting and 0.910 with SMOTE (XGB: 0.9996, 0.9998, 0.998). Trained on AWID2 and tested on AWID3, SMOTE halves the RF transfer PR-AUC (0.093 to 0.050), which raises its G (0.90 to 0.95).
+

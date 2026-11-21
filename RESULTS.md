@@ -1,10 +1,10 @@
 # Preliminary results
 
-*Status: 21 November 2026. Stages S0-S6 of the pre-registered protocol
+*Status: 21 November 2026. Stages S0-S7 of the pre-registered protocol
 ([`docs/protocol_v0.3.md`](docs/protocol_v0.3.md), tag `prereg-v0.3`), plus
 the exploratory stages S4x, S4y and the perturbation test. The first sections
 describe the labels of AWID3; the later sections describe detectors trained on
-them, their transfer to AWID2 and a rule baseline.*
+them, their transfer to AWID2, a rule baseline and an imbalance probe.*
 
 ## Question
 
@@ -367,8 +367,42 @@ Rule by rule (fires on attack frames / all fires):
 
 Source: [`results/S6_rules.json`](results/S6_rules.json).
 
+## Does SMOTE help? (S7, pre-registered H4)
+
+RF and XGB on all fields, three ways of handling the rare attack class: no
+treatment, class weighting (as in S4 and S5), and SMOTE on the training rows
+only. Seeds 0-4. Transfer on Evil_Twin only (AWID3 <-> AWID2).
+
+| | No treatment | Weighting | SMOTE |
+|---|---|---|---|
+| In-domain PR-AUC, mean of RF and XGB, both captures | 0.9785 | 0.9784 | 0.9785 |
+| ARS, same | 0.684 | 0.681 | 0.674 |
+| Transfer gap G, mean of RF and XGB, both directions | 0.962 | 0.965 | 0.972 |
+
+H4 (all three must hold), SMOTE against weighting, 20 pairs each:
+
+- (i) higher in-domain PR-AUC: **no** (p = 0.87). The scores are already at
+  1.000 on Rogue_AP and within 0.001 between arms on Evil_Twin: there is
+  nothing left to improve.
+- (ii) transfer gap not reduced: **holds** (mean dG = +0.007, 95% CI
+  [-0.004, 0.025]).
+- (iii) higher ARS: **no** (p = 0.99). SMOTE raises it for RF on Rogue_AP
+  (0.64 to 0.65) and lowers it for XGB (0.71 to 0.70).
+
+**H4 is not supported** (p = 0.994 before Holm).
+
+- Because of the cap on normal rows (at most 100,000 per training set), the
+  AWID3 Evil_Twin training sets are close to balanced: SMOTE added nothing in
+  20 of the 50 in-domain Evil_Twin runs.
+- Where the imbalance is strong, SMOTE can lower the score: on AWID2 (2,633
+  attack rows for 100,000 normal), RF reaches 0.997 with no treatment, 0.956
+  with weighting and 0.910 with SMOTE. Trained on AWID2 and tested on AWID3,
+  SMOTE halves its transfer PR-AUC (0.093 to 0.050). Descriptive, not tested.
+
+Source: [`results/S7_smote.json`](results/S7_smote.json).
+
 ## Next
 
-- SMOTE probe (S7), statistics and figures (S8).
+- Statistics and figures (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, then Solpan et al. 2026).

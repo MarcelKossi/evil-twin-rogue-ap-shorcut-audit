@@ -35,6 +35,7 @@ warn their users.
 | One semantic rule transfers: unprotected frames among protected normal traffic (XGB, F-sem, AWID2 -> AWID3 data frames, 0.995) | `S5_transfer.json` | pre-registered stage, result not hypothesised |
 | G is uninformative when the in-domain score is near chance (F-sem on AWID2) | `S5_transfer.json` | to state with H3b |
 | Untrained rules (protocol 9.6) beat transferred models on a new network: AWID2 0.54 vs <= 0.07; R2 flags every rogue announcement in AWID3 | `S6_rules.json` | pre-registered stage; H3b rule part p = 0.002 (deviation 9) |
+| SMOTE on the training rows brings nothing on these captures (scores at ceiling, ARS and G unchanged); on AWID2 it lowers RF from 0.997 to 0.910 | `S7_smote.json` | pre-registered; H4 not supported (p = 0.994); AWID2 drop descriptive |
 | R5 fires on the unprotected deauthentications labelled Normal in Rogue_AP (62,428 vs 62,455 in S1c) | `S6_rules.json`, `S1c_label_diagnostics.json` | descriptive |
 
 ## To say in the limitations
@@ -42,3 +43,4 @@ warn their users.
 - One attack run per class, one lab per dataset; no IoT device traffic in AWID.
 - Perturbation done in feature space on recorded frames, not a new capture.
 - The published detectors themselves were not reproduced (planned for the journal version).
+- SMOTE was tested on the training folds only; oversampling before the split, as in some published work, was not tested. The cap on normal rows already balances most AWID3 Evil_Twin training sets.

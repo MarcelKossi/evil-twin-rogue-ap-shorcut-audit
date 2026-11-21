@@ -2,7 +2,7 @@
 
 **Kossi Tamplare**, GD Goenka University
 
-_Status (21 November 2026): stages S0-S6 of the pre-registered protocol, the
+_Status (21 November 2026): stages S0-S7 of the pre-registered protocol, the
 exploratory stages S4x and S4y and the perturbation test done. All results below are
 **preliminary**._
 
@@ -135,6 +135,12 @@ profile the fake AP announces, and reach PR-AUC 0.54 on AWID2, where models
 trained on AWID3 stay below 0.07. They see only the beacons, not the victims'
 data.
 
+**10. SMOTE does not help here.** Oversampling the attack class in the training
+data does not raise the scores, which are already at their ceiling, does not
+increase reliance on artefacts, and leaves the transfer gap unchanged. Where the
+imbalance is strongest (AWID2), it lowers the random forest's score from 0.997
+to 0.910.
+
 ### Hypotheses: outcome so far
 
 | | Hypothesis | Outcome |
@@ -147,7 +153,7 @@ data.
 | H2c | The ranking of field families is stable | **Supported** |
 | H3a | The more a detector relies on artefacts, the worse it transfers | **Not supported**: nearly every detector fails to transfer |
 | H3b | Semantic fields and a rule baseline transfer better than all fields | **Partly**: F-sem not significant (p = 0.053); the untrained rules beat the transferred models (p = 0.002), before Holm |
-| H4 | SMOTE improves scores but not transfer | Not yet tested |
+| H4 | SMOTE improves scores but not transfer | **Not supported**: no gain in score (already at ceiling) nor in artefact share; transfer gap unchanged |
 
 Multiple-testing correction (Holm) is applied at the end, across the
 confirmatory family. Details and every number: [`RESULTS.md`](RESULTS.md).
@@ -174,11 +180,12 @@ discarded by a common cleaning step.
   field values are replaced, not a new capture of a modified attack. Matching
   the signal strength assumes the attacker can reach the legitimate level at the
   sensor, by power or position.
-- **Preliminary numbers**: transfer, rule baseline and imbalance probe are not yet run.
+- **Preliminary numbers**: Holm correction (S8) not yet applied.
+- **Imbalance probe**: the cap of 100,000 normal rows per training set already balances most AWID3 Evil_Twin training sets, so SMOTE was tested mainly on Rogue_AP and AWID2.
 
 ## Next steps
 
-- SMOTE probe (S7), statistics and paper (S8).
+- Statistics, figures and paper (S8).
 - After the preprint: reproduction of published AWID3 pipelines (Ahmad et al.
   2025, Solpan et al. 2026) on their own code.
 
@@ -197,7 +204,7 @@ discarded by a common cleaning step.
 | - | Reproduction of published pipelines (exploratory) | After the preprint |
 | S5 | H3a - transfer AWID3 <-> AWID2 | Done |
 | S6 | H3b - rule baseline | Done |
-| S7 | H4 - imbalance probe | Planned |
+| S7 | H4 - imbalance probe | Done |
 | S8 | Statistics, figures, paper | Planned |
 
 ## Repository guide

@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "script": "scripts/15_s7_smote.py",
+    "git_commit": "c1cf375d858f7a49116d3c0f44833db680e07ed0",
+    "uncommitted_files": [],
+    "timestamp_utc": "2026-11-21T17:30:13+00:00",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "17.0.0",
+      "scikit-learn": "1.5.2",
+      "xgboost": "2.1.1"
+    },
+    "inputs_sha256": {
+      "S4_runs.csv": "0c99b2229f1a11428ef04588f39970c096a8a27e3d660062ba446103a5c94f4d",
+      "S5_runs.csv": "1bd761b9cce6bf6f49dfe68b9f88c03054652ea0b8efb5192cc27e4f2c03a248"
+    }
+  },
+  "results": {
+    "in_domain_means": {
+      "evil_twin | RF | none": {
+        "pr_auc": 0.9599,
+        "ars": 0.6302
+      },
+      "evil_twin | RF | smote": {
+        "pr_auc": 0.9598,
+        "ars": 0.6222
+      },
+      "evil_twin | RF | weighting": {
+        "pr_auc": 0.9585,
+        "ars": 0.624
+      },
+      "evil_twin | XGB | none": {
+        "pr_auc": 0.9542,
+        "ars": 0.7503
+      },
+      "evil_twin | XGB | smote": {
+        "pr_auc": 0.9542,
+        "ars": 0.7265
+      },
+      "evil_twin | XGB | weighting": {
+        "pr_auc": 0.9551,
+        "ars": 0.7495
+      },
+      "rogue_ap | RF | none": {
+        "pr_auc": 1.0,
+        "ars": 0.5922
+      },
+      "rogue_ap | RF | smote": {
+        "pr_auc": 1.0,
+        "ars": 0.6464
+      },
+      "rogue_ap | RF | weighting": {
+        "pr_auc": 1.0,
+        "ars": 0.6423
+      },
+      "rogue_ap | XGB | none": {
+        "pr_auc": 1.0,
+        "ars": 0.7615
+      },
+      "rogue_ap | XGB | smote": {
+        "pr_auc": 0.9999,
+        "ars": 0.6992
+      },
+      "rogue_ap | XGB | weighting": {
+        "pr_auc": 1.0,
+        "ars": 0.707
+      }
+    },
+    "transfer_G_means": {
+      "AWID2->AWID3 | RF | none": 0.9026,
+      "AWID2->AWID3 | RF | smote": 0.9475,
+      "AWID2->AWID3 | RF | weighting": 0.9098,
+      "AWID2->AWID3 | XGB | none": 0.9692,
+      "AWID2->AWID3 | XGB | smote": 0.965,
+      "AWID2->AWID3 | XGB | weighting": 0.9688,
+      "AWID3->AWID2 | RF | none": 0.9789,
+      "AWID3->AWID2 | RF | smote": 0.977,
+      "AWID3->AWID2 | RF | weighting": 0.9823,
+      "AWID3->AWID2 | XGB | none": 0.9982,
+      "AWID3->AWID2 | XGB | smote": 0.9982,
+      "AWID3->AWID2 | XGB | weighting": 0.9983
+    },
+    "smote_runs_without_synthetic_rows": {
+      "in | evil_twin": "20 of 50",
+      "in | rogue_ap": "0 of 50",
+      "transfer | AWID2->AWID3": "20 of 60",
+      "transfer | AWID3->AWID2": "10 of 20"
+    },
+    "H4": {
+      "i_in_domain_pr_auc": {
+        "pairs": 20,
+        "mean_smote": 0.9785032056104391,
+        "mean_weighting": 0.9783950712801273,
+        "wilcoxon_p_one_sided": 0.8721016328277034
+      },
+      "ii_transfer_gap": {
+        "pairs": 20,
+        "mean_dG": 0.0070957100093518855,
+        "ci95": [
+          -0.004440261281354667,
+          0.024965753497753228
+        ],
+        "holds": true
+      },
+      "iii_ars": {
+        "pairs": 20,
+        "mean_smote": 0.6735758133852003,
+        "mean_weighting": 0.680684995543835,
+        "wilcoxon_p_one_sided": 0.9939603805541992
+      },
+      "p_for_holm": 0.9939603805541992,
+      "supported_before_holm": false
+    }
+  }
+}
