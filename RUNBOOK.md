@@ -237,3 +237,24 @@ python scripts/14_s6_rules.py
 git add results
 git commit -m "S6 rule baseline results"
 ```
+
+## 17. Stage S7 - imbalance probe
+
+| Command | Output | Time |
+|---|---|---|
+| `python scripts/15_s7_smote.py --seeds 0` | `results/S7_runs.csv`, `results/S7_smote.json` | about 40-70 min |
+| `python scripts/15_s7_smote.py` | same files, seeds 0-4 | about 3-5 h more |
+
+RF and XGB on F-all, arms "none" and "smote"; the weighting arm is read from the S4 and S5
+results. Needs imbalanced-learn (`requirements.txt`). Finished runs are skipped on a re-run.
+
+```cmd
+python -c "import imblearn; print(imblearn.__version__)"
+git add scripts/15_s7_smote.py RUNBOOK.md docs/journal.md
+git commit -m "S7: imbalance probe script and design"
+python scripts/15_s7_smote.py --seeds 0
+python scripts/15_s7_smote.py
+git add results
+git commit -m "S7 imbalance probe results"
+```
+
